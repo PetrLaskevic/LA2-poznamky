@@ -466,8 +466,9 @@ Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, 
 			- Sudý cyklus (délka $k$ je sudé číslo): Znaménko je $-1$. $\implies$ exponent té $-1$, do kterého dáváme $k$, musíme upravit na liché číslo $\implies$ přičíst nebo odečíst $1$
 
 			**<u>Alternativní odvození:</u>**
-			- Cyklus o délce $k$ se dá rozložit na $(k-1)$ transpozic (výměn dvou prvků).
-			- To znamená, že cyklus s lichým počtem prvků (lichý cyklus) je sudá permutace (znaménko $+$).
+			- Cyklus o délce $k$ se dá rozložit na $(k-1)$ transpozic (výměn dvou prvků). Transpozice má znaménko $-$
+				- zde to znamená $k$-tý řádek transpozicemi dostaneme až na první, každá transpozice mění znaménko
+			- To znamená, že cyklus s lichým počtem prvků $k$ (lichý cyklus) je sudá permutace (znaménko $+$).
 			- A cyklus se sudým počtem prvků (sudý cyklus) je lichá permutace (znaménko $-$).
 		------
 
@@ -527,3 +528,175 @@ Pokud je v tom řádku, podle kterého děláme rozvoj, hodně nul, tak spoustu 
 Taky prakticky nemusíme jít až na base case determinantů velikosti $1 \times 1$, můžeme jít na $2 \times 2$, kde to spočítáme 2 součiny, nebo $3 \times 3$, kde to snadno spočítáme Sarrusovým pravidlem.
 
 ## Adjungovaná matice, Cramerovo pravidlo (17:08, 55M)
+https://kam.mff.cuni.cz/~fiala/LA2/131-adjungovana.pdf
+
+> V této lekci si převedeme, že determinant může být použiz k řešení soustav lineárních rovnic (což také vedlo k jeho objevu), ale mimochodem také souvisí s dalšími vlastnostmi matic i lineárních zobrazení.
+
+> V minulé lekci jsme si zavedli Laplaceův rozvoj determinantu podle $i$-tého řádku, který je dán vzorcem:
+
+> Pro $A \in T^{n \times n}$ a každý řádkový index $i \in \set{1, \dots, n}$ platí:
+$$\det(A) = \sum_{j=1}^n a_{ij} (-1)^{i+j} \det(A^{ij})$$
+kde $A^{ij}$ je podmatice získaná z $A$ odstraněním $i$-tého řádku a $j$-tého sloupce.
+
+![alt text](image-51.png)
+![alt text](image-52.png)
+![alt text](image-53.png)
+![alt text](image-54.png)
+### Věta $A^{-1} = \frac{1}{\det A} \ \text{adj} \ A$
+![alt text](image-55.png)
+
+#### Důkaz věty
+
+Nejpve sem dám ten slide celý, a pak ho okomentuju, v srozumitelnějším pořadí.
+
+![alt text](image-58.png)
+
+> Důkaz vyplývá z Laplaceova rozvoje. Nejprve zjistíme, co získáme, když vynásobíme matici $A$ se svou adjungovanou maticí.
+
+$A \cdot \operatorname{adj} A$
+
+![alt text](image-56.png)
+$(A \cdot \operatorname{adj} A)_{2,2}$ je skalární součin $\color{green}{\text{2. řádku } A}$ s $\color{blue}{\text{2. sloupcem } \operatorname{adj} A}$
+
+V 2. sloupci $\operatorname{adj} A$ najdeme části členů (=znaménko $\cdot$ determinant) Laplaceova rozvoje podle 2. řádku.
+
+Když provádíme takto ten skalární součin s 2. řádkem $A$, tak tím tomu přidáme ty členy $a_{ij}$.
+
+Uvědomme si, že teď levá strana zcela odpovídá definici Laplaceova rozvoje podle 2. řádku, který nám tedy dává determinant $A$.
+
+Toto platí pro všechny členy na hlavní diagonále nové matice vzniklé součinem $A \cdot \operatorname{adj} A$  , jak dokládá tato část slajdu:
+
+![alt text](image-57.png)
+(že jo vždycky sedí řádek, tedy část $a_{ij}$ s částí, kterého řádku to je rozvoj $(-1)^{i+j} \det A^{ij}$)
+
+![alt text](image-59.png)
+To je skalární součin $\color{red}{\text{1. řádku } A}$ s $\color{blue}{\text{2. sloupcem } \operatorname{adj} A}$. Tady to "nesedí", červené členy jsou od jiného řádku než modré členy. To znamená, že stále počítáme determinant nějaké matice, ale už to nebude matice $A$.
+
+Modré členy jsou část Laplaceova rozvoje podle 2. řádku, bez koeficientů $a_{ij}$ 2. řádku. Když ty koeficienty vyměníme, tak jako kdybychom vyměnili 2. řádek matice $A$ za jiný. (že jo, ty podmatice $A^{ij}$ ten řádek neobsahují, ty to neovlivní.) - a my jsme je tady vyměnili tak, aby to byly koeficienty nějakého dalšího řádku. Takže máme teď 2 stejné řádky v matici, a tzn. je singulární, tzn. její determinant je $0$.
+
+To je myšleno touto částí slidu:
+![alt text](image-60.png)
+
+Celkově tedy: 
+
+![alt text](image-61.png)
+![alt text](image-62.png)
+$$
+
+A \cdot \operatorname{adj} A =
+\begin{pmatrix}
+
+\det A & 0 & \dots & 0 \\
+0 & \ddots &\ddots  & \vdots   \\
+\vdots & \ddots & \ddots &0 \\
+0 & \dots & 0 & \det A
+
+\end{pmatrix}
+
+= 
+\det(A)
+\begin{pmatrix}
+
+1 & 0 & \dots & 0 \\
+0 & \ddots &\ddots  & \vdots   \\
+\vdots & \ddots & \ddots &0 \\
+0 & \dots & 0 & 1
+
+\end{pmatrix}
+= \det(A) \cdot I
+$$
+
+Dále pak algebraickými úpravami:
+
+$$
+\begin{align*}
+A \cdot \operatorname{adj} A &= \det(A) \cdot I \quad /:\det A \\
+\frac{1}{\det A} \cdot A \cdot \operatorname{adj} A &= I \quad / \ \text{komutativita} \\
+A \cdot \frac{1}{\det A} \cdot \operatorname{adj} A &= I \quad / \ \text{asociativita} \\
+A \cdot \underbrace{\left( \frac{1}{\det A} \cdot \operatorname{adj} A \right)}_{\mathbf{A^{-1}}}&= I \\
+A^{-1} &= \frac{1}{\det A} \cdot \operatorname{adj} A
+\end{align*}
+$$
+
+### Cramerovo pravidlo
+
+![alt text](image-63.png)
+
+![alt text](image-64.png)
+Nechť $A \in T^{n \times n}$ je **regulární** matice a máme s ní soustavu lin. rovnic ($A\vec{x} = \vec{b}$). Potom víme, že řešení této soustavy je jednoznačné a Cramerovo pravidlo udává vzorec pro řešení této soustavy:
+$i$-tá složka řešení je dána: $x_i = \frac 1 {\det A} \cdot \det(A_{i \to \vec{b}})$
+
+#### Důkaz 1
+
+![alt text](image-65.png)
+(že jo lineární kombinace sloupců)
+![alt text](image-66.png)
+(že jo bylo potřeba zapsat $\color{green}{\sum_{j=1}^n x_j \vec{a_j}}$ do té matice po složkách, $\vec{a_j}$ je tvořen prvky $\begin{pmatrix} a_{1,j} \\ \vdots \\ a_{n, j}\end{pmatrix}$)
+
+(pak bylo třeba rozložit to na těch víc determinantů, pomocí linearity:
+
+$$
+
+\left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{\sum_{j=1}^{n} x_j a_{1j}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots}                    &       & \vdots \\
+a_{n1} & \dots & \color{green}{\sum_{j=1}^{n} x_j a_{nj}} & \dots & a_{nn}
+\end{array} \right|
+
+=
+\left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{x_1 a_{11}+ \dots +x_n a_{1n}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots}                        &       & \vdots \\
+a_{n1} & \dots & \color{green}{x_1 a_{n1}+ \dots +x_n a_{nn}} & \dots & a_{nn}
+\end{array} \right| $$
+
+$$
+=
+\underbrace{\left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{x_1 a_{11}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots}     &       & \vdots \\
+a_{n1} & \dots & \color{green}{x_1 a_{n1}} & \dots & a_{nn}
+\end{array} \right|
++ \dots +
+
+\left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{x_n a_{1n}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots}     &       & \vdots \\
+a_{n1} & \dots & \color{green}{x_n a_{nn}} & \dots & a_{nn}
+\end{array} \right|
+}_n
+$$
+
+$$
+=
+\underbrace{x_1 \left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{a_{11}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots} &       & \vdots \\
+a_{n1} & \dots & \color{green}{a_{n1}} & \dots & a_{nn}
+\end{array} \right|
++ \dots +
+
+x_n \left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{a_{1n}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots} &       & \vdots \\
+a_{n1} & \dots & \color{green}{a_{nn}} & \dots & a_{nn}
+\end{array} \right|
+}_n
+$$
+(Katex neumí obdelník kolem toho sloupce, tak jsem ten $i$-tý sloupec zvýraznil pomocí svislých čar)
+
+A teda v $1$ členu se stane 
+$$x_i \left| \begin{array}{cc|c|cc}
+a_{11} & \dots & \color{green}{a_{1i}} & \dots & a_{1n} \\
+\vdots &       & \color{green}{\vdots} &       & \vdots \\
+a_{n1} & \dots & \color{green}{a_{ni}} & \dots & a_{nn}
+\end{array} \right| = x_i \det(A_{i \to \mathbf{a_i}})= x_i \det(A)$$
+)
+
+### Různé druhy obalu množiny v Euklidovském prostoru
+
+![alt text](image-67.png)
+
+### Geometrický význam determinantu
+![alt text](image-68.png)
+
