@@ -181,7 +181,7 @@ použito:
 
 ![alt text](image-15.png)
 ![alt text](image-17.png)
-(protože výměna 2 řádků = ta permutace je transpozice = záporné znaménko ($-1^{\text{\# inverzí}} = -1^1$)) => ? je to 1, nebo jak to je přesně s tím grafem? nekříží to víc po cestě?
+(protože výměna 2 řádků = ta permutace je transpozice = záporné znaménko ($-1^{\operatorname{\# inverzí}} = -1^1$)) => ? je to 1, nebo jak to je přesně s tím grafem? nekříží to víc po cestě?
 
 ![alt text](image-18.png)
 
@@ -452,10 +452,10 @@ Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, 
 			Akorát, že tady na to nešel přes $\text{\# inverzí p}$, ale přes délku cyklu té permutace (tahle permutace má 1 cyklus, je to že jo ten "pointer chase")	![](počet%20inverzí.png)
 
 			> Permutace s **kladným znaménkem jsou sudé**:
-			$$+1 = (-1)^{\text{\# inverzí}} = (-1)^{i-1} \implies i -1 \text{ je sudé} \implies i \text{ je liché} \implies \text{ délka cyklu $i$ je lichá, tj. lichý cyklus}$$
+			$$+1 = (-1)^{\operatorname{\# inverzí}} = (-1)^{i-1} \implies i -1 \text{ je sudé} \implies i \text{ je liché} \implies \text{ délka cyklu $i$ je lichá, tj. lichý cyklus}$$
 
 			> Permutace s **záporným znaménkem jsou liché**
-			$$-1 = (-1)^{\text{\# inverzí}} = (-1)^{i-1} \implies i -1 \text{ je liché} \implies i \text{ je sudé} \implies \text{ délka cyklu $i$ je sudá, tj. sudý cyklus} $$
+			$$-1 = (-1)^{\operatorname{\# inverzí}} = (-1)^{i-1} \implies i -1 \text{ je liché} \implies i \text{ je sudé} \implies \text{ délka cyklu $i$ je sudá, tj. sudý cyklus} $$
 
 			**<u>Takže jsem odvodil to, podle čeho to napsal on:</u>**
 
