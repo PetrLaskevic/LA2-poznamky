@@ -570,6 +570,23 @@ Toto platí pro všechny členy na hlavní diagonále nové matice vzniklé sou�
 (že jo vždycky sedí řádek, tedy část $a_{ij}$ s částí, kterého řádku to je rozvoj $(-1)^{i+j} \det A^{ij}$)
 
 ![alt text](image-59.png)
+- je tam drobná chybka v indexování
+ 
+	-	(mělo by tam být $(A \cdot \operatorname{adj} A)_{12}$, protože touto částí slidu ![alt text](image-60.png) mimoděk předělal indexování z $C_{ij}$ na $C_{ji}$,
+
+		ptal jsem se, hlubší význam toto předělání nemá, čistě jde o to, zvýrazni, že v obou případech je tam stejný sloupec z $\operatorname{adj} A$ (oranžově) a v prvním případě stejné číslo u řádku a sloupce (červeně)
+		![](dotaz.png)
+		šlo by to vyřešit i takto:
+		![alt text](image-71.png), ale (ptal jsem se)
+		> musel jsem si vybrat, jestli zachovat obvyklé indexování i-tý řádek a
+		j-tý sloupec, o němž píšete,
+		nebo jestli zachovat úzus z elementárních úprav, kde upravovaný řádek
+		bývá i-tý.
+		Přišlo mi názornější to druhé, i když, samozřejmě, to už je jen věc
+		vkusu.
+
+	)
+
 To je skalární součin $\color{red}{\text{1. řádku } A}$ s $\color{blue}{\text{2. sloupcem } \operatorname{adj} A}$. Tady to "nesedí", červené členy jsou od jiného řádku než modré členy. To znamená, že stále počítáme determinant nějaké matice, ale už to nebude matice $A$.
 
 Modré členy jsou část Laplaceova rozvoje podle 2. řádku, bez koeficientů $a_{ij}$ 2. řádku. Když ty koeficienty vyměníme, tak jako kdybychom vyměnili 2. řádek matice $A$ za jiný. (že jo, ty podmatice $A^{ij}$ ten řádek neobsahují, ty to neovlivní.) - a my jsme je tady vyměnili tak, aby to byly koeficienty nějakého dalšího řádku. Takže máme teď 2 stejné řádky v matici, a tzn. je singulární, tzn. její determinant je $0$.
@@ -699,4 +716,7 @@ a_{n1} & \dots & \color{green}{a_{ni}} & \dots & a_{nn}
 
 ### Geometrický význam determinantu
 ![alt text](image-68.png)
-
+![alt text](image-69.png)
+- myšlenka tohoto je, že máme dvě rovnobežky, na kterých jsou úsečky strany. Ty můžeme po těch rovnoběžkách posouvat jak chceme, ale obsah se nezmění. Obsah rovnoběžníku (=kosodélníku) je že jo $S = a \cdot v_a$, kde $a$ je délka té úsečky, a $v_a$ je výška = vzdálenost těch rovnoběžek.
+![alt text](image-70.png)
+![alt text](image-72.png)
