@@ -466,8 +466,8 @@ Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, 
 			- Sudý cyklus (délka $k$ je sudé číslo): Znaménko je $-1$. $\implies$ exponent té $-1$, do kterého dáváme $k$, musíme upravit na liché číslo $\implies$ přičíst nebo odečíst $1$
 
 			**<u>Alternativní odvození:</u>**
-			- Cyklus o délce $k$ se dá rozložit na $(k-1)$ transpozic (výměn dvou prvků). Transpozice má znaménko $-$
-				- zde to znamená $k$-tý řádek transpozicemi dostaneme až na první, každá transpozice mění znaménko
+			- Cyklus o délce $k$ se dá rozložit na $(k-1)$ transpozic (výměn dvou prvků). Transpozice má znaménko $-$ (dokazovalo se to v LA1)
+				- zde to znamená $k$-tý řádek transpozicemi (prohozením 2 řádků) dostaneme až na první, každá transpozice mění znaménko
 			- To znamená, že cyklus s lichým počtem prvků $k$ (lichý cyklus) je sudá permutace (znaménko $+$).
 			- A cyklus se sudým počtem prvků (sudý cyklus) je lichá permutace (znaménko $-$).
 		------
@@ -720,3 +720,170 @@ a_{n1} & \dots & \color{green}{a_{ni}} & \dots & a_{nn}
 - myšlenka tohoto je, že máme dvě rovnobežky, na kterých jsou úsečky strany. Ty můžeme po těch rovnoběžkách posouvat jak chceme, ale obsah se nezmění. Obsah rovnoběžníku (=kosodélníku) je že jo $S = a \cdot v_a$, kde $a$ je délka té úsečky, a $v_a$ je výška = vzdálenost těch rovnoběžek.
 ![alt text](image-70.png)
 ![alt text](image-72.png)
+
+## Počet koster grafu
+
+# 2. Polynomy
+
+## Polynomy, Vandermondova matice, Lagrangeova interpolace (23:39, 73M)
+
+https://kam.mff.cuni.cz/~fiala/LA2/212-polynomy.pdf
+
+> V této lekci bych vám rád připomněl pojem polynomu, jmenovitě polynomu v jedné proměnné nad obecným tělesem $T$.
+
+> Zopakujme si, jaké operace můžeme s polynomy provádět, jaké mohou mít reprezentace, a jak lze mezi těmito reprezentacemi přecházet.
+
+![alt text](image-73.png)
+na IndexErrory se tady nehraje, neexistující prvky se doplní nulami, proto $\max\set{n,m}$ ok
+![alt text](image-74.png)
+![alt text](image-75.png)
+Proč součin takhle funguje, ukázka:
+
+$$(a_3x^3 + a_2x^2 + a_1x^1 + a_0) \cdot(b_3x^3 + b_2x^2 + b_1x^1 + b_0)$$
+
+Jak získáme ve výsledku př. člen s koeficientem $x^3$?
+
+Jde to víc způsoby (obyčejné roznásobení ze střední): 
+
+$$a_3x^3 \cdot b_0 + a_2 x^2 \cdot b_1 x^1 + a_1 x^1 \cdot b_2 x^2 + a_0 \cdot b_3 x^3$$
+
+Pak vytkneme ty koeficienty, a budeme mít $1$ člen $x^3$:
+
+$$(a_3 b_0 + a_2 b_1 + a_1 b_2 + a_0 b_3)x^3$$
+
+A to v závorce přesně delá to $c_i = \sum_{j=0}^i a_j b_{i-j}$
+
+Vždycky číslo $i$ v $a_i$ a $b_i$ odpovídá mocnině u $x$, a jak můžeme složit $x^3$? => všechny možné součty, tj $3+0$, $2+1$, $1+2$, $0+3$, což nám to $a_j b_{i-j}$ přesně prokrokuje = protože u členu $a_j$ bude odpovídající $x^j$ a u členu $b_{i-j}$ bude odpovídající $x^{i-j}$, a $x^j \cdot x^{i-j} = x^{j + i - j} = x^i$
+![alt text](image-78.png)
+- $p$ = polynom, který chceme dělit
+- $q$ = dělitel
+- $s$ = podíl
+- $r$ = zbytek
+![alt text](image-76.png)
+![alt text](image-77.png)
+
+### Malá Fermatova věta (=připomenutí z LA1)
+
+![alt text](image-83.png)
+
+- v [LA1](https://kam.mff.cuni.cz/~fiala/LA1/441-telesa.pdf) to zobrazení označoval $f_a: \set{1, \dots, p-1} \to \set{1, \dots, p-1}$ t.ž. $f_a(x) = (ax)\mod p$ (slide "Tělesa z modulární aritmetiky", pak to zobrazení použil i u důkazu Malé Fermatovy věty o pár slidů později)
+	- ještě proč je to bijekce:![https://kam.mff.cuni.cz/~fiala/LA1/441-telesa.mp4, 17. minuta](image-80.png)
+		- dokážeme $f_a$ je prostá
+			- použijeme vlastnost $f_a$ je prostá $\implies$ $f_a$ je surjektivní
+				- dále $f_a$ je prostá $\land$ $f_a$ je surjektivní $\implies$ $f_a$ je bijektivní
+
+		**<u>Důkaz $f_a$ je prostá</u>**
+		1. Definice prosté funkce:
+		$$\forall b, c \in M: (b \neq c \implies f_a(b) \neq f_a(c))$$
+		2. Důkaz sporem = tu definici, která je naším výrokem, negujeme. V téhle podobě je to pak definice "$f_a$ není prosté".
+		$$\exists b, c \in M: (b \neq c \land f_a(b) = f_a(c))$$
+		3. Takže máme:
+		$$f_a \text{ není prosté} \iff \exists b, c \in M: (b \neq c \land f_a(b) = f_a(c))$$
+		
+		Opřeme se o to $f_a \text{ není prosté}$, z čehož vyplývá, že
+		$b \neq  c$, a tedy př. $b > c$, a zároveň $f_a(b) = f_a(c)$
+
+		4. $f_a(b) = f_a(c)$ můžeme rozepsat jako $f_a(b) - f_a(c) = 0$ (v obrázku zvýrazněno zeleně), pak (červený rámeček) rozepíšeme $f_a$ podle definice jako $(ax)\mod p$, akorát že tu $\mod p$ část schováme tím, že tam místo $=$ napíšeme $\equiv$ a napíšeme ji za celý výraz, z estetických důvodů až zcela napravo. Myšleno je to určitě tak, že se vztahuje k tomu $\equiv$ a ne k obyč. $=$. 
+
+		5. Dostali jsme $0 = a(b-c)$, což nejde, protože jsme v $\mathbb{Z}_p$, kde $p$ je prvočíslo, tedy z nenulových členů jsme $0$ získat nemohli, a při tom nenulové určitě jsou. 
+			- $a > 0$ z definice $f_a$
+			- $b-c > 0$ protože $b > c$, což vyplynulo v 3. kroku důkazu
+		6. Tzn. $0 = a(b-c)$ je spor
+		7. Tedy neplatí "$f_a$ není prosté", tedy $f_a$ je prosté.
+
+
+[Pokračování důkazu z LA1](https://kam.mff.cuni.cz/~fiala/LA1/441-telesa.pdf)
+![alt text](image-81.png)
+- před tím jsme dokázali, že $f_a$ je bijekce, teď díky tomu 
+$$\prod_{x=1}^{p-1}x = \prod_{x=1}^{p-1} f_a(x)$$
+protože $f_a(x)$ těmi členy součinu jenom zamíchá, ale každý z nich tam právě jednou bude, a součin je komutativní.
+
+- zbytek důkazu pak budou algebraické úpravy
+	1. dosadíme $f_a(x) = ax$
+	2. dáme $a$ před produkt
+	3. vydělíme rovnici $$\prod_{x=1}^{p-1}x = a^{p-1} \prod_{x=1}^{p-1}x$$ tím $\displaystyle\prod_{x=1}^{p-1}x$
+
+Zpátky k LA2:
+
+![alt text](image-83.png)
+![alt text](image-79.png)
+$x^{p-1} = 1 \implies x^{p-1}x^1 = 1x \implies x^p = x$ 
+
+To má zajímavý důsledek pro polynomy nad $\mathbb{Z}_p$:
+![alt text](image-82.png)
+= pro každý polynom $q$ s koeficienty z tělesa $\mathbb{Z}_p$ libovolného stupně existuje polynom $r$ jehož stupeň je ovšem nejvýše $p-1$ takový, že oba dva polynomy, jak $q$, tak $r$, pokud jsou vyhodnoceny na prvcích tělesa $\mathbb{Z}_p$ dávají stejné hodnoty.
+
+![alt text](image-84.png)
+Původní polynom $q$ lze totiž vydělit $x^p - x$, což je v $\mathbb{Z}_5$ $x^5 -x$, a hledaný polynom $r$ je zbytek po tomto dělení.
+
+To můžeme označit jako předtím u příkladu s dělením:
+- $p$ = polynom, který chceme dělit
+- $q$ = dělitel
+- $s$ = podíl
+- $r$ = zbytek
+![alt text](image-85.png)
+
+Jenom teda zajímavá otázka, proč nejdřív dělíme něčím co je $0$, a nevadí nám to, a pak v dalším kroku použijeme, že $x^5 -x$ je $0$
+
+**Alternativní postup nalezení toho $r$**
+(ze cvičení)
+
+Můžeme použít Malou Fermatovu větu, ale trochu jinak. 
+Ta nám říká $\forall x \in \mathbb{Z}_p: x^p - x = 0$
+
+Tj. v $\mathbb{Z}_5$ platí $\forall x \in \mathbb{Z}_5: x^5 = x$
+
+Tj.	 do toho původního polynomu za $x^5$ dosadíme $x$.
+
+další ukázka nad $\mathbb{Z}_5$:
+
+$$p(x) = x^6 + x^5 + x ^3 + 4x^2 + 1$$
+$$x^6 = x \cdot x^5 = x \cdot x = x^2$$
+$$r(x) = x^2 + x + x^3 + 4x^2 + 1 = x^3 +5x^2 + x + 1 = x^3 + x + 1$$
+
+> U polynomů nás bude zajímat, které prvky tělesa mají tu vlastnost, že dosazením do plynomu získáme nulový prvek tělesa. Tyto prvky nazveme kořeny.
+
+![alt text](image-86.png)
+př. polynom $p(x)$ dělím $(x-x_r)$, kde $x_r$ = kořen toho polynomu, prostě nějaké číslo.
+
+$\underbrace{p(x)}_{\text{dělenec}} = \underbrace{q(x)}_{\text{podíl}} \cdot \underbrace{(x - x_r)}_{\text{dělitel}} + \underbrace{c}_{\text{zbytek}}$
+
+$x_r$ je kořen $p(x)$, tj. když do $p(x)$ dosadím $x_r$, dostanu $0$
+
+Protože $p(x) = q(x)(x - x_r) + c$, musí platit $0$ i po dosazení do pravé strany, tj. $0 = q(x_r)(x_r - x_r) + c \implies c = 0$
+
+Nulový zbytek $c$ znamená, že $x-x_r$ dělí $p$ beze zbytku.
+
+Vlastně na tohle pozorování jsme intuitivně zvyklí:
+
+př. $2$ je kořenem $x^2 - 2x$, protože můžeme udělat $(x-2)x$ a pak to vydělit $x-2$
+
+To vlastně vysvětluje co říká na videu:
+
+> Kdyby tento lineární dvoučlen polynom beze zbytku nědelil, pak by nenulový zbytek byl také hodnotou, kterou dostaneme, když $r$ dosadíme do polynomu.
+
+![alt text](image-87.png)
+
+> Existence kořenu je tedy podstatná proto, aby bylo možné polynom rozložit na jednodušší členy. 
+
+> Víme, že pr. v $\reals$ toto nemusí být vždy možné. Polynom $x^2 + 1$ nelze rozložit na jednodušší členy, protože tento polynom nemá žádné realné kořeny.
+
+> Na druhou stranu jsou tělesa, v nichž vždy každý polynom má alespoň $1$ kořen. Př. těleso komplexních čísel = $\mathbb{C}$.
+
+![alt text](image-88.png)
+> Základní větu algebry si dokazovat nebudeme, ale naznačíme na ukázce, proč by nějaký takový poznatek měl vlastně platit.
+[Animace z videa](https://kam.mff.cuni.cz/~fiala/LA2/koreny.gif)
+
+> Zpátky k naší prezentaci. Ze základní věty algebry vyplývá:
+![alt text](image-89.png)
+
+Jednoduše opakovaně aplikujeme pozorování:
+1. Každý polynom $p \in \mathbb{C}(x)$ má alespoň $1$ kořen
+2. Prvek $r \in T$ je kořenem polynomu $p$ $\iff$ lineární dvoučlen $x-r$ dělí $p$ **beze zbytku**
+
+$$p(x) = r(x) \cdot (x-r)$$
+
+Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než budou všechny ty polynomu v součinu $1.$ stupně = budeme mít součin lineárních faktorů
+
+![alt text](image-90.png)
+
