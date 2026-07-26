@@ -887,3 +887,103 @@ Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než bu
 
 ![alt text](image-90.png)
 
+> Ve zbývající části této lekce se budeme zabývat otázkou jak lze polynom reprezentovat
+
+### Reprezentace polynomů stupně $n$
+
+1. ![alt text](image-91.png)
+=> že jo $a_i$ je koeficient u $x^i$, je to to $a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x^1 + a_0$
+
+2. ![alt text](image-92.png)
+$a_n \cdot (x-r_1)(x-r_2) \dots (x-r_n)$
+prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten polynom jako v 1. reprezentaci
+
+3. ![alt text](image-93.png)
+
+> Přechody mezi nimi:
+
+- $1. \to 3.$ prostě vyhodnotit
+- $2. \to 1.$ "roznásobit" ty závorky (= vynásobit mezi sebou příslušné lin. dvojčleny) a pot provést skalární násobek koeficientem $a_n$
+
+- přechod k $2.$ reprezentaci nemusí být vždy možný, protože ne všechna tělesa jsou algebraicky uzavřená (př. $\reals$ není, tak $x^2 + 1$ v něm nejde rozložit na součin lin. dvojčlenů)
+
+> Ani v tělesech, která algebraicky uzavřená jsou tento proces nemusí být možné provést v plné obecnosti, a kupříkladu i nad komplexními čísly se používají pouze numerické metody
+
+- v tuto chvíli zbývá pouze přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$, což zle přeformulovat jako:
+
+![alt text](image-94.png)
+= prostě najít polynom taokvý, který se "fitne" do každého takového bodu.
+
+To uděláme soustavou:
+#### Vandermondova matice
+![alt text](image-95.png)
+Vandermondova matice řádu $n+1$ je dána parametry $x_0$ až $x_n$
+
+Žejo $i$-tý řádek té matice je dosazení hodnot toho bodu do polynomu a pak se to vynásobí hledanými koeficienty $a_0, \dots, a_n$, a by se získal $y_i$
+
+Koeficienty co nebudou potřeba budou že jo $0$.
+
+![alt text](image-96.png)
+Důkaz:
+
+1. Vandermondova matice regulární $\implies$ $x_0, \dots, x_n$ navzájem různá
+
+Obměnou: Kdyby nějaké 2 koeficienty byly stejné, měla by matice 2 stejné řádky a nebyla by tedy regulární
+
+2. $x_0, \dots, x_n$ navzájem různá $\implies$ Vandermondova matice regulární
+
+> Zpětnou (=tuto) implikaci dokážeme pomocí determinantu Vandermondovy matice
+
+![alt text](image-97.png)
+- slovo odzadu tam je imho nadbytečné, je jedno v jakém pořadí tyto dílčí operace provedeme
+	- v každém případě je myšleno, že od $i$-tého sloupce odečítáme $x_0$ násobek $(i-1)$-tého sloupce
+
+**První rovnost, rozepsaná:**
+$$
+\begin{vmatrix}
+1		& x_0	& x_0^2 & \dots & x_0^n \\
+1 		& x_1	& x_1^2 & \dots & x_1^n \\
+1 		& x_2	& x_2^2 & \dots & x_2^n \\
+\vdots 	& \vdots& \vdots& \ddots& \vdots \\
+1		& x_n	& x_n^2 & \dots & x_n^n
+\end{vmatrix}
+=
+\begin{vmatrix}
+1 		& x_0 - x_0 	& x_0^2 - x_0 \cdot x_0	& \dots & x_0^n - x_0 \cdot x_0^{n-1} \\
+1 		& x_1 - x_0		& x_1^2 - x_0 \cdot x_1	& \dots & x_1^n - x_0 \cdot x_1^{n-1} \\
+1 		& x_2 - x_0		& x_2^2 - x_0 \cdot x_2	& \dots & x_2^n - x_0 \cdot x_2^{n-1} \\
+\vdots 	& \vdots		& \vdots				& \ddots& \vdots \\
+1		& x_n - x_0		& x_n^2 - x_0 \cdot x_n	& \dots & x_n^n - x_0 \cdot x_n^{n-1}
+\end{vmatrix}
+$$
+Vidíme, že z každého členu můžeme vytknout, a dost tak výraz pravé straně 1. rovnosti.
+
+**Druhá rovnost, rozepsaná:**
+
+Provedeme Laplaceův rozvoj podle 1. řádku
+
+$$= 1 (-1)^{1+1} A^{1,1} = 
+
+\begin{vmatrix} x_1 - x_0 & x_1(x_1 - x_0) & \dots & x_1^{n-1}(x_1 - x_0) \\ x_2 - x_0 & x_2(x_2 - x_0) & \dots & x_2^{n-1}(x_2 - x_0) \\ \vdots & \vdots & \ddots & \vdots \\ x_n - x_0 & x_n(x_n - x_0) & \dots & x_n^{n-1}(x_n - x_0) \end{vmatrix}
+$$
+
+Z každého řádku vytkneme $x_i - x_0$
+___
+
+
+Celý tento proces můžeme provádět víckrát.
+
+Tedy na tento determinant aplikovat ty samé změny. Od každého sloupce odečteme $(x_1)$-násobek přeedchozího sloupce, poté provedeme Laplaceův rozvoj podle 1. řádku, dostaneme determinant matice o 1 menšího řádu, zase vytkneme z každého řádku.
+
+$$\begin{vmatrix}
+1 & x_1 & \cdots & x_1^{n-1} \\
+1 & x_2 & \cdots & x_2^{n-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & x_n & \cdots & x_n^{n-1}
+\end{vmatrix} \prod_{i=1}^{n} (x_i - x_0)$$
+
+Atd. do základního případu této rekurze, což bude determinant matice $1 \times 1$.
+
+To právě vyjadřuje ta rekurence:
+![alt text](image-98.png)
+
