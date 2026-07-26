@@ -909,7 +909,7 @@ prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten 
 
 > Ani v tělesech, která algebraicky uzavřená jsou tento proces nemusí být možné provést v plné obecnosti, a kupříkladu i nad komplexními čísly se používají pouze numerické metody
 
-- v tuto chvíli zbývá pouze přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$, což zle přeformulovat jako:
+- v tuto chvíli zbývá pouze přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$, což lze přeformulovat jako:
 
 ![alt text](image-94.png)
 = prostě najít polynom taokvý, který se "fitne" do každého takového bodu.
@@ -1018,3 +1018,50 @@ x_3 - x_2
 Vidíme, že postupně odečítáme od $x$-ek s vyšším indexem všechny s nižším indexem, a pak vytýkáme, a to až po $x_n - x_{n-1}$.
 
 Jsou-li $x_0, \dots, x_n$ různé prvky tělesa, dostáváme v součin různých prvků tělesa, jinými slovy součin nenulových prvků tělesa, a ten je v každém tělese vždy nenulový. Proto je Vandermondova matice regulární (její det. je nenulový)
+
+#### Langrangeova interpolace
+![alt text](image-100.png)
+= alternativní způsob, jak proložit polynom stupně $n$ skrz $n+1$ bodů.
+
+- tedy další způsob, jak udělat přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$
+
+Metoda má 2 fáze:
+##### 1.fáze
+![alt text](image-101.png)
+- modře vyznačená obyč čísla, xové souřadnice těch $n+1$ bodů
+- v čitateli všechny lin. dvojčleny kromě $x - x_i$
+- ve jmenovateli všechna čísla kromě $x_i - x_i$, protože to by $0$
+
+![alt text](image-102.png)
+- $p_i(x_i) = 1$, protože se pak prostě všechny členy vykrátí
+
+- pro $i \neq j: p_i(x_j)=0$, protože jeden z rozdílů v čitateli pak $0$
+
+Ukázka: 
+
+![alt text](image-103.png)
+
+##### 2. fáze
+
+> Hledaný polynom získáme jako lineární kombinaci těch pomocných polynomů, kde koeficienty jsou: jaké ypsilonové hodnoty má cílový polynom v tom bodě nabývat (=$y_i$)
+
+![alt text](image-104.png)
+- že jo to $p_i(x)$ vždy dá $1$ v tom bodě $x_i$ a $0$ v ostatních $n$ zkoumaných bodech (těch $x_j$)
+- pro jiné body $x$ se to teda taky nějak namíchá, ale už to tak hezky vidět není
+	- vlastně **ve zbytku bodů co se děje nás nemusí zajímat, protože my jsme jenom měli zadaný body, kterýma to musí procházet**, a o zbytku nebylo řečeno nic
+		- je ta interpolace jednoznačná?
+
+![alt text](image-105.png)
+prostě dosadíme každý bod $(x_i, y_i)$ do $p(x_i) = y_i$ a dostaneme tyto rovnice:
+
+![alt text](image-106.png)
+
+![alt text](image-107.png)
+- protože hledaný polynom má stupeň $n=4$, a afaik tedy těmi $n+1$ body je polynom jednoznačně určen.
+
+![alt text](image-108.png)
+![alt text](image-109.png)
+- to je ten požadovaný polynom stupně $4$ = kvartický, co prochází všemi těmi body
+	- těmi $5$ co jsme použili ve výpočtu určitě, zbytek snadno ověříme
+
+![alt text](image-110.png)
