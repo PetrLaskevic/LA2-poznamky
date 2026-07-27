@@ -898,6 +898,10 @@ Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než bu
 $a_n \cdot (x-r_1)(x-r_2) \dots (x-r_n)$
 prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten polynom jako v 1. reprezentaci
 
+	těch závorek je $n$, tedy vidíme, že po roznásobení určitě budeme mít člen $x^n$, který vynásobíme $a_n$
+
+	jinak před vyktnutím $a_n$ ty závorky mohly vypadat nějak takhle $(ax - c)(bx - d)$, my ale chceme u každé závorky u $x$ koeficient 1, tak vytkneme koeficient u něj, tj dostaneme  $ab(x-\frac c a)(x- \frac c b)$
+
 3. ![alt text](image-93.png)
 
 > Přechody mezi nimi:
@@ -1021,6 +1025,7 @@ Jsou-li $x_0, \dots, x_n$ různé prvky tělesa, dostáváme v součin různých
 
 #### Langrangeova interpolace
 ![alt text](image-100.png)
+
 = alternativní způsob, jak proložit polynom stupně $n$ skrz $n+1$ bodů.
 
 - tedy další způsob, jak udělat přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$
@@ -1050,14 +1055,19 @@ Ukázka:
 - pro jiné body $x$ se to teda taky nějak namíchá, ale už to tak hezky vidět není
 	- vlastně **ve zbytku bodů co se děje nás nemusí zajímat, protože my jsme jenom měli zadaný body, kterýma to musí procházet**, a o zbytku nebylo řečeno nic
 		- je ta interpolace jednoznačná?
+			- **vlastně bude muset být, protože polynom stupně $n$, je jednoznačně určen $n+1$ body**
+
+				- a taky btw, jako důsledek tohoto, výsledek musí odpovídat výsledku, který nám dá řešení soustavy rovnic s Vandermondovou maticí. A ta je, jak jsme si dokázali, regulární, a tedy má jednoznačné řešení (rank = počet sloupců, tj, žádné volné proměnné)
 
 ![alt text](image-105.png)
+
 prostě dosadíme každý bod $(x_i, y_i)$ do $p(x_i) = y_i$ a dostaneme tyto rovnice:
 
 ![alt text](image-106.png)
 
 ![alt text](image-107.png)
-- protože hledaný polynom má stupeň $n=4$, a afaik tedy těmi $n+1$ body je polynom jednoznačně určen.
+- protože hledaný polynom má stupeň $n=4$, a tedy těmi $n+1$ body je polynom jednoznačně určen.
+(**forward ref REF3**: viz na to bude aplikace)
 
 ![alt text](image-108.png)
 ![alt text](image-109.png)
@@ -1065,3 +1075,22 @@ prostě dosadíme každý bod $(x_i, y_i)$ do $p(x_i) = y_i$ a dostaneme tyto ro
 	- těmi $5$ co jsme použili ve výpočtu určitě, zbytek snadno ověříme
 
 ![alt text](image-110.png)
+**(REF3) 1. aplikace** 
+![alt text](image-111.png)
+> Tajný kód je pak nějaká vlastnost daného polynomu, př. všechny jeho koeficienty nebo př. absolutní člen v případě, že nikdy nedáme dvojici, kde by 1. složka ($x_i$) byla 0
+
+> Těleso pak může být libovolné, které má dostatečně mnoho hodnot, př. $\reals$ nebo $\mathbb{Z}_p$ s $p \ge m$
+
+> Volba nějakého polynomu stupně $n-1$ má požadované vlastnosti, protože jej lze určit jednoznačně, právě když je k dispozici alespoň $n$ hodnot.
+
+> Pokud je těch hodnot méně, potom takových polynomů může být více.
+_________
+2. aplikace:
+
+![alt text](image-112.png)
+
+_______
+
+> Od polynomů se nyní vrátíme ke tradičním konceptům lineární algebry, tzn. k maticím, vektorovým prostorům, a lineárním zobrazením.
+
+> Polynomy nám přitom budou sloužit jako velice užitečný a klíčový nástroj. 
