@@ -710,6 +710,11 @@ a_{n1} & \dots & \color{green}{a_{ni}} & \dots & a_{nn}
 \end{array} \right| = x_i \det(A_{i \to \mathbf{a_i}})= x_i \det(A)$$
 )
 
+TODO: možná přidat důkaz, že díky linearitě vůči součtu můžeme indeed takhle splitovat 1 sloupec podle víc řádků současně?
+Jakoby tohle v obecnosti 
+
+$\det \begin{pmatrix}{u} +{v} &{a} \\{w} +{x} &{b} \end{pmatrix} = \det \begin{pmatrix}{u} &{a} \\{w} &{b} \end{pmatrix} + \det \begin{pmatrix}{v} &{a} \\ {x} &{b} \end{pmatrix}$
+
 ### Různé druhy obalu množiny v Euklidovském prostoru
 
 ![alt text](image-67.png)
@@ -1097,3 +1102,217 @@ _______
 
 > Polynomy nám přitom budou sloužit jako velice užitečný a klíčový nástroj. 
 
+# 3. Vlastní čísla a vlastní vektory
+
+## Vlastní čísla a vlastní vektory matic a zobrazení
+> Vlastní čísla a vlastní vektory jsou pojmy, které pomohou určit pevné body lineárního zobrazení , nebo alespoň takové vektory, které při lin. zobrazení zachovávají směr
+
+![alt text](image-113.png)
+- kdybychom dovolili nulový vektor, pak by všechny prvky tělesa byly vlastními čísly ($f(\mathbf{0}) = \lambda \mathbf{0} \quad \forall \lambda \in T$)
+- kdybychom to chtěli kvantifikovat tak $$\lambda \text{ je vlastní číslo matice } A \iff \exists \vec{v} \neq \vec{0} : A\vec{v} = \lambda\vec{v}$$
+
+
+![alt text](image-114.png)
+- INTUITIVNĚ ŘEČENO **každý vektor, co po provedení té operace = lineárního zobrazení** (př. zvetšení/zmenšení/překlopení/otočení, apod.) **zůstane na stejné přímce.**
+	- v tom $f(\mathbf{v}) = \lambda \mathbf{v}$ je to $\lambda$ o kolik se zmenší/zvětší vektor, co zůstane na stejné přímce (a když $\lambda$ záporné, tak se ještě otočí o $180^\circ$ = jakoby překlopí na 2. stranu	)
+- tady naopak nulový vektor povolíme, protože budeme chtít, aby množina vlastních vektorů tvořila vektorový prostor
+
+	Ohledně tohohle jsem diskutoval, je to takový zajímavý edge case
+
+	"Je třeba mít 0 jako vlastní vektor právě z důvodu, aby to byl vektorový podprostor. Může to vypadat jako technikálie, ale je to potřeba, aby fungovala správná představa o fungování lineárního zobrazení jakožto součet lineárních zobrazení podprostorů s příslušnými vlastními čísly"
+
+	"Kolman nulový vektor napríklad nepovoloval ako vlastný pre žiadne vlastné číslo. Ale to sú naozaj len technické definície a keď ich vidíš použité tak  si už vieš domyslieť či tam ten nulový má byť alebo nie."
+
+- v každém případě tam ten nulový vektor je trochu divný, protože k němu podle předchozí definice nebude žádné vlastní číslo
+	- ale tak teda nevadí, je to jenom takový "lepidlo", aby ta množina vlastních vektorů byla uzavřená na součty (= že jo def. vekt. podprostoru + každý vekt. prostor je sám sobě podprostorem)
+
+![alt text](image-115.png)
+makes sense, matice lin. robrazení
+
+$[f]_{B,B} = \begin{pmatrix}
+\vert & \vert \\
+[f(\mathbf{b}_1)]_B & [f(\mathbf{b}_2)]_B \\
+\vert & \vert
+\end{pmatrix}$
+
+(recap z LA1): **Vektor souřadnic**
+
+Definice: Nechť
+
+$B = (\mathbf{b}_1, \dots, \mathbf{b}_n)$ je uspořádaná báze vektorového prostoru $V$ nad $T$. 
+Vektor souřadnic $\mathbf{v} \in V$ vzhledem k bázi $B$ je
+
+$$[\mathbf{v}]_B = (a_1, \dots, a_n)^T \in T^n, \text{ kde } \mathbf{v} = \sum_{i=1}^{n} a_i \mathbf{b}_i.$$
+
+![alt text](image-122.png)
+- **tedy celý ten výpočet je zde o tom, že máme vektor, který míří na nějaké místo, a chceme vědět, jaký vektor bude mířit na stejné místo, změníme-li bázi prostoru**
+
+[zdroj LA1, Lineární nezávislost, báze, slide 6/14](https://kam.mff.cuni.cz/~fiala/LA1/532-baze.pdf)
+
+Pro tohle použití, co teď děláme s těmi zobrazeními jsou standardní báze $E$ a báze $B$ jenom různé báze stejného vektorového prostoru $V$, a vektory co cpeme dovnitř $[ \ \ ]$ jsou vyjádřeny implicitně vzhledem ke standardní bázi.
+
+(jiná použití, kdy jsme měli 2 různé prostory a dávali jsme nějak souřadnice vektorovému prostoru sudých podgrafů teď neřeším)
+
+**Příklad:**
+
+
+báze $B$, která je “nestandardní”, třeba:
+
+$$\mathbf{b}_1 = \begin{pmatrix} 2 \\ 0 \end{pmatrix}, \quad \mathbf{b}_2 = \begin{pmatrix} 0 \\ 2 \end{pmatrix}$$
+
+Nyní vezměme vektor 
+$\mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$. Chceme najít jeho souřadnice vzhledem k bázi 
+$B$, tedy 
+$[\mathbf{e}_1]_B$.
+
+Hledáme čísla 
+$a_1, a_2$ taková, aby platilo:
+
+$$\mathbf{e}_1 = a_1 \mathbf{b}_1 + a_2 \mathbf{b}_2$$
+Dosadíme konkrétní čísla:
+
+$$\begin{pmatrix} 1 \\ 0 \end{pmatrix} = a_1 \begin{pmatrix} 2 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 2 \end{pmatrix}$$
+
+Po spočtení soustavy:
+
+$$[\mathbf{e}_1]_B = 
+\begin{pmatrix}
+a_1 \\
+a_2
+\end{pmatrix}
+= 
+
+\begin{pmatrix}
+\frac 1 2 \\
+0
+\end{pmatrix}
+$$
+
+Získali jsme tedy z vektoru vyjádřeného k standardní bázi jeho vyjádření vzhledem k bázi $B$
+
+**Proto dává smysl tento vzorec btw:**
+$$[f]_{E,B} = \begin{pmatrix}
+\vert				& \vert					\\
+[f(\mathbf{e}_1)]_B	& [f(\mathbf{e}_2)]_B	\\
+\vert				& \vert
+\end{pmatrix}$$
+
+To naše zobrazení $f$ je definováno s vstupním vektorem $\mathbf{v}$ vzhledem k standardní bázi, a výstupním vektorem $f(\mathbf{v})$ vzhledem ke standardní bázi.
+
+My ale př. můžeme chtít, aby výstupní vektor byl vzhledem k bázi $B$, tak převedeme výsledky $f(\mathbf{e}_1)$, aby byly vyjádřené vzhledem k bázi $B$.
+
+Získáme tak sloupce $[f(\mathbf{e}_1)]_B$ a $[f(\mathbf{e}_2)]_B$, a tedy když pak té matici dáme vstupní vektor $\mathbf{v}$ vyjádřený vzhledem ke standardní bázi, tak dostaneme lineární kombinaci sloupců vyjádřených k bázi $B$, tak i výsledek bude vyjádřený k bázi $B$.
+
+S maticí přechodu by to vypadalo takto:
+
+$[f]_{E, B} = [id]_{E, B} \cdot [f]_{E,E}$
+
+kde 
+$$[f]_{E,E} = 
+\begin{pmatrix}
+\vert			& \vert				\\
+f(\mathbf{e}_1)	& f(\mathbf{e}_2)	\\
+\vert			& \vert				\\
+\end{pmatrix}
+$$
+
+a 
+$$ 
+[id]_{E, B} = 
+
+\begin{pmatrix}
+\vert				& \vert				\\
+[\mathbf{e}_1]_B	& [\mathbf{e}_2]_B	\\
+\vert				& \vert				\\
+\end{pmatrix}
+$$
+
+že jo $\mathbf{w} := [f]_{E,E} \cdot \mathbf{v}$ nám vyrobí výsledek zobrazení vzhledem ke standardní bázi, a my ho pak musíme převést do výsledku vzhledem k bázi $B$
+
+Takže násobíme $[id]_{E, B} \cdot \mathbf{w}$, čímž počítáme $[\mathbf{w}]_B$
+
+**Takže máme 2 způsoby, jak spočítat vektor souřadnic**:
+
+A) 1. způsob = podle definice:
+1. Vektor $\mathbf{w}$ si můžeme vyjádřit jako lineární kombinaci $\sum_{i=1}^n a_i \mathbf{b_i}$, kde koeficienty $a_1, \dots, a_n$ neznáme, a spočteme je (soustavou)
+2. Výsledek je $[\mathbf w]_B = (a_1, \dots, a_n)^T$
+
+B) 2. způsob = přes matici přechodu
+
+$[\mathbf w]_B = [id]_{E,B} \cdot [\mathbf w]_E$
+
+($[\mathbf w]_E = \mathbf w$ že jo)
+
+**Proč 2. způsob počítá to samé co první**
+
+Z https://kam.mff.cuni.cz/~fiala/LA1/622-matice.pdf:
+
+(
+![alt text](image-121.png)
+nebo
+![alt text](image-119.png)
+
+)
+
+![alt text](image-120.png)
+Náš případ $[\mathbf w ]_B = [id]_{E, B} \cdot [\mathbf w]_B$ z toho pozorování vychází. A to pozorování vychází z toho pozorování o použití matice lineárního zobrazení příp. z toho o složení lineárních zobrazení, zde toho $id(\mathbf u)$. (afaik by šlo i to druhé, protože se v [předchozí prezentaci](https://kam.mff.cuni.cz/~fiala/LA1/612-zobrazeni) (slide 5/14 "Transformace na vektor souřadnic") dozvědeli, že $[\mathbf w ]_B$ je lineární zobrazení, a tato notace je tak "syntax sugar" pro něco, co bychom mohli označit $[f]_{E, B}$).
+
+
+**Moje alternativní (možná zbytečně komplikované) vysvětlení:**
+
+Vektor $\mathbf w$ si můžeme vyjádřit jako lin. kombinaci $\sum_{j=1}^n w_j \mathbf e_j$
+
+Pojďme upravovat vztah $[id]_{E,B} \cdot \mathbf w$
+
+$$[id]_{E,B} \cdot \mathbf w = [id]_{E,B} \cdot \left( \sum_{j=1}^n w_j \mathbf e_j \right)$$
+
+Víme, že pro maticový součin platí $A(B +C) =AB+AC$, a vektory jsou jen matice o 1 sloupci, tak $A(u + v) = Au + Av$ (u matic lin. zobrazení paralela s linearitou vůči součtu $f(u+v) = f(u) + f(v)$)
+
+Což tady umožňuje udělat toto: 
+
+$$[id]_{E,B} \cdot (w_1 \mathbf{e}_1 + w_2 \mathbf{e}_2) = ([id]_{E,B} \cdot w_1 \mathbf{e}_1) + ([id]_{E,B} \cdot w_2 \mathbf{e}_2)$$
+
+Taky víme, že pro maticový součin platí $(tA)B = A(tB)$, což pro vektory znamená $(tA)\mathbf w = A(t\mathbf w)$ (= linearita vůči skalárnímu násobku $tf(\mathbf w)) = f(t\mathbf w)$)
+
+Tedy $[id]_{E,B} \cdot w_1 \mathbf{e}_1 = w_1 \cdot [id]_{E,B} \cdot \mathbf{e}_1$
+
+Jinými slovy díky linearitě maticového součinu můžeme:
+
+$$[id]_{E,B} \cdot \left( \sum_{j=1}^n w_j \mathbf e_j \right) =  w_1 \cdot [id]_{E,B} \cdot \mathbf{e}_1 + \dots +  w_n \cdot [id]_{E,B} \cdot \mathbf{e}_n \\ = \sum_{j=1}^n w_j ( [id]_{E,B} \mathbf{e}_j )$$
+
+$[id]_{E,B} \mathbf{e}_j$ vybere $j$-tý sloupec matice $[id]_{E,B}$, což je $[\mathbf{e}_j]_B$, protože tak jsme matici lineárního zobrazení, a konkrétně matici přechodu $[id]_{E,B}$ [definovali (slide 1/10)](https://kam.mff.cuni.cz/~fiala/LA1/622-matice.pdf)
+
+$$\sum_{j=1}^n w_j ( [id]_{E,B} \mathbf{e}_j ) = \sum_{j=1}^n w_j [\mathbf{e}_j]_B $$
+
+Teď použijeme, že zobrazení $[ \mathbf v ]_B$ [je lineární](https://kam.mff.cuni.cz/~fiala/LA1/612-zobrazeni.pdf) (slide 5/14 "Transformace na vektor souřadnic"), platí $f(\mathbf u) + f(\mathbf v) = f(\mathbf u + \mathbf v)$:
+
+$$\sum_{j=1}^n w_j [\mathbf{e}_j]_B = \left[ \sum_{j=1}^n w_j \mathbf{e}_j\right]_B$$
+
+A substitujeme: 
+
+$$\left[ \sum_{j=1}^n w_j \mathbf{e}_j\right]_B = [ \mathbf w ]_B$$
+
+Takže máme 
+
+$$[id]_{E,B} \cdot \mathbf w = [ \mathbf w ]_B$$
+
+s použitím vlastností maticového součinu, definice matice lineárního zobrazení, tvrzení, že zobrazení  $[ \mathbf v ]_B$ je lineární
+____________________________________________
+**Zpátky k LA2:**
+
+![alt text](image-116.png)
+$f(\mathbf{v}) = \mathbf{Av}$ že jo
+
+![alt text](image-117.png)
+
+### Ukázky
+![alt text](image-118.png)
+- všechno, co bylo na zelené ose (= všechny skalární násobky vektoru $(-1,1)^T$), zůstalo $1$ krát zvětšené
+- všechno co bylo na červené ose (= všechny skalární násobky vektoru $(1,1)^T$) se $-1$ násobí = otočí na druhou stranu
+- ta matice vznikla jako 
+
+$\begin{pmatrix}
+\vert & \vert \\
+[f(\mathbf{e}_1)]_E & [f(\mathbf{e}_2)]_E \\
+\vert & \vert
+\end{pmatrix}$, kde $\mathbf{e}_1 = (1,0)^T$ a $\mathbf{e}_2 = (0,1)^T$ jsou vektory standardní báze
