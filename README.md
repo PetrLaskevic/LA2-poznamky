@@ -939,8 +939,10 @@ Obměnou: Kdyby nějaké 2 koeficienty byly stejné, měla by matice 2 stejné �
 > Zpětnou (=tuto) implikaci dokážeme pomocí determinantu Vandermondovy matice
 
 ![alt text](image-97.png)
-- slovo odzadu tam je imho nadbytečné, je jedno v jakém pořadí tyto dílčí operace provedeme
-	- v každém případě je myšleno, že od $i$-tého sloupce odečítáme $x_0$ násobek $(i-1)$-tého sloupce
+- slovo odzadu tam je jenom proto, aby to bylo "in-place" (ptal jsem se) - myšleno nejdřív zpočteme sloupec nejvíc vpravo, pak ten druhý zprava, apod.
+	- Abychom tedy přepsali předchozí sloupec až potom, co jsme nastavili aktuální sloupec, abychom tedy nemuseli držet kopii matice před těmito úpravami
+- pokud si pamatujeme matici před těmito změnami, je jedno v jakém pořadí tyto dílčí operace provedeme
+	- v každém případě je myšleno, že od $i$-tého sloupce odečítáme $x_0$ násobek $(i-1)$-tého sloupce (1. sloupec je ten nejvíc vlevo)
 
 **První rovnost, rozepsaná:**
 $$
@@ -1094,3 +1096,4 @@ _______
 > Od polynomů se nyní vrátíme ke tradičním konceptům lineární algebry, tzn. k maticím, vektorovým prostorům, a lineárním zobrazením.
 
 > Polynomy nám přitom budou sloužit jako velice užitečný a klíčový nástroj. 
+
