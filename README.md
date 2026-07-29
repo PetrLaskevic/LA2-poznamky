@@ -1316,3 +1316,163 @@ $\begin{pmatrix}
 [f(\mathbf{e}_1)]_E & [f(\mathbf{e}_2)]_E \\
 \vert & \vert
 \end{pmatrix}$, kde $\mathbf{e}_1 = (1,0)^T$ a $\mathbf{e}_2 = (0,1)^T$ jsou vektory standardní báze
+
+![alt text](image-123.png)
+- nulový vektor se tady jako ten divný edge case zase nepočítá
+
+![alt text](image-124.png)
+![alt text](image-125.png)
+![alt text](image-126.png)
+- afaik stejný typ úprav, který jsme dělali v části "Geometrický význam determinantu", konkrétně slide "Idea důkazu - elementární úpravy zachovávají objem" - kde jsme měnili "zkosení"
+	- tj taky tady hýbeme s koncem vektoru $\mathbf u$ po přímce.
+		= pouze vektory na svislé ose zůstávají na stejné přímce, ostatní vektory mění úhel, který svírají s vodorovnou osou
+- "Lineární zobrazení dané maticí" je zde snad každé z nich, akorát tady tomu nedal konkrétnější název
+
+> Pro obecné matice není jednoduché určit, co jsou její vlastní čísla a vlastní vektory.
+
+> Na druhou stranu, je-li ta matice diagonální, potom už to jednoduché je. U ní jsou vlastní čísla totiž prvky na diagonále této matice, a jim odpovídající vlastní vektory tvoří standardní bázi
+
+POZOR!!! Neplatí ale, že bychom mohli matici $A$ převést na diagonální matici Gaussovou metodou, a potom vyčíst vlastní čísla !!!
+(ta se budou těmi úpravami měnit)
+
+![alt text](image-127.png)
+- nějak jsem tam byl nejdřív zmaten, jak to, že když násobíme jednotlivé šložky vektoru různými skaláry, tak jak je možné, že se to bude rovnat násobení všech složek stejným skalárem $\lambda$
+	- pak jsem pochopil, že násobit budeme vektorem $\mathbf v := \mathbf e_i$, který má na jenom na $i$-tém místě $1$, a jinde $0$.
+		- tím se z matice $D$ vybere $i$-tý sloupec, s koeficientem $d_{i,i}$
+		- a na pravé straně, tak jen $i$-tá složka bude násobena $\lambda$
+$$
+\begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+d_{i,i} \\
+0 \\
+\vdots \\
+0 \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+\lambda \\
+0 \\
+\vdots \\
+0 \\
+\end{pmatrix}
+$$
+
+- **forward ref**: Jak se dozvíme v tomto videu, víc řešení opravdu nebude, protože matice řádu $n$ mají nejvýše $n$ různých lineárně nezávislých vlastních vektorů, a nejvýše $n$ vlastních čísel.
+
+### Vlastnosti vlastních čísel a vlastních vektorů
+
+#### Vlastní vektory odpovídající stejnému vlastnímu číslu tvoří podprostor
+![alt text](image-128.png)
+- různá vlastní čísla budou mít různé podprostory
+
+Na této množině $U$ (= "vlastní vektory odpovídající stejnému vlastnímu číslu") ověřme axiomy podprostoru:
+![alt text](image-131.png)
+- uzavřenost na skalární násobky
+![alt text](image-129.png)
+ použito:
+	1. linearita lin. zobrazení k skalárnímu násobku 
+	2. $\mathbf u \in U$ je předpoklad, o který se opřeme:, $\mathbf u \in U \iff f(\mathbf u) = \lambda \mathbf u$, proto substituce
+	3. komutativita a asociativita násobení skalárem
+	4. $ f(t\mathbf u) = \lambda (t \mathbf u)  \iff t \mathbf u \in U$, je to tedy uzavřeno
+- uzavřenost na součet
+![alt text](image-130.png)
+ použito:
+	1. linearita lin. zobrazení k součtu
+	2. substituce
+	3. vytknutí $\lambda$ = distributivita skalárního násobku
+	4. $f(\mathbf u + \mathbf v) = \lambda(\mathbf u + \mathbf v) \iff \mathbf u + \mathbf v \in U$, je to tedy uzavřeno
+
+#### Geometrická násobnost vlastního čísla
+
+> Dimenzi prostoru vlastních vektorů $U$, které přísluší vlastnímu číslu $\lambda$ , budeme označovat jako **geometrickou násobnost vlastního čísla**
+
+![](image-132.png)
+
+#### Vlastní vektory odpovídající různým vlastním číslům jsou lineárně nezávislé
+![alt text](image-133.png)
+> Tzn. podprostory, které přísluší vlastním číslům $\lambda_1, \dots, \lambda_k$, se protínají pouze v počátku
+
+![alt text](image-134.png)
+
+BTW funfact - kdybychom to chtěli napsat ultraformálně:
+
+Necht’ 
+$V$ je vektorový prostor nad tělesem 
+$\mathbb{T}$ a 
+$f \in \mathcal{L}(V, V)$. 
+
+($f \in \mathcal{L}(V, V)$ = alternativní značka pro: "$f$ je lineární zobrazení z $V$ do $V$", prof. Fiala tuto značku nepoužívá)
+
+Pak platí:
+
+$$\forall k \in \mathbb{N}, \forall \lambda_1, \dots, \lambda_k \in \mathbb{T}, \forall \mathbf{v}_1, \dots, \mathbf{v}_k \in V \setminus \{ \mathbf{0} \}:$$
+
+$$\left( \left( \bigwedge_{i \neq j} \lambda_i \neq \lambda_j \right) \wedge \left( \bigwedge_{i=1}^k f(\mathbf{v}_i) = \lambda_i \mathbf{v}_i \right) \right) \implies \text{LN}(\mathbf{v}_1, \dots, \mathbf{v}_k)$$
+Kde 
+$\text{LN}(\mathbf{v}_1, \dots, \mathbf{v}_k)$ je zkratka pro lineární nezávislost, kterou můžeme dále rozepsat jako:
+
+$$\forall a_1, \dots, a_k \in \mathbb{T}: \left( \sum_{i=1}^k a_i \mathbf{v}_i = \mathbf{0} \implies a_1 = a_2 = \dots = a_k = 0 \right)$$
+
+Aka pro důkaz, který bude sporem, tuto implikaci znegujeme, dostaneme:
+
+$$\left( \left( \bigwedge_{i \neq j} \lambda_i \neq \lambda_j \right) \wedge \left( \bigwedge_{i=1}^k f(\mathbf{v}_i) = \lambda_i \mathbf{v}_i \right) \right) \land \neg \text{LN}(\mathbf{v}_1, \dots, \mathbf{v}_k)$$
+=> což že jo dává smysl = "kdyby to do cíle nevedlo, tak by to nebylo slučitelné s předpoklady", když tento výrok tedy neplatí, tak platí původní
+
+tj. u $P \implies Q$ 
+1. Předpoklad: Věřím předpokladům (
+$P$) A SOUČASNĚ tvrdím, že cíl neplatí (
+$\neg Q$).
+2. Srážka: Nechám tyhle dvě věci v jedné místnosti a začnu z nich vyvozovat další kroky.
+3. Výbuch (Spor): Najednou mi vyjde něco naprosto nemožného (např. 
+$1 = 0$ nebo že „číslo je sudé a liché zároveň“).
+4. Závěr: Protože matematika se nesmí „rozbít“, musí být chyba v tom, co jsem si myslel na začátku – tedy cíl musí platit.
+
+##### Důkaz věty:
+Myšlenka: začneme u nějakého $n$ lineárně závislých vektorů. Pak zjistíme, že pro $n-1$ vektorů nám vychází, že nutně musí být též lineárně závislé. Tak to opakujeme, než dojdeme k základnímu případu $n=1$. Ovšem pro $n=1$ vektorů určitě platí, že jsou lineárně nezávislé (je to že jo $1$ vektor). To je spor.
+- těch mnoho iterací zmenšování $n$ si ale můžeme ušetřit
+	- to je ta fráze "$k$ je nejmenší počet lin. závislých vektorů"
+		- tím zaručíme, že tam není vektor navíc, který se neúčastní lin. kombinace, kterou vyjádřujeme nějaký jiný vektor, tj. že v té lin. kombinaci nejsou nulové koeficienty
+			- a odebráním jednoho vektoru z takové množiny se už určitě stane, že vektory už **nebudou** lineárně závislé
+				- ale tím argumentem, jako předtím, ukážeme, že $k-1$ vektorů je závislých
+					- což je spor
+
+Ještě ten počet $k$ se může že jo lišit podle množiny, kterou dostaneme. Víme, že to je alespoň $2$, ale může to být víc, př. $3$:
+
+![alt text](image-135.png)
+
+A protože chceme, aby to bylo pro všechny množiny, tak stanovíme $k$ a ne nějaký konkrétní počet lineárně závislých vektorů z toho vektorového prostoru.
+
+![alt text](image-136.png)
+- tj. $\mathbf v_1, \dots \mathbf v_k$ jsou lineárně závislé
+	- definice závislosti (z [LA1](https://kam.mff.cuni.cz/~fiala/LA1/532-baze.pdf), 1.slide) je ovšem toto:
+	![alt text](image-137.png)
+	=> stačí tam nějaké $a_i \neq 0$
+		- tady jsou všechny $\neq 0$, to je ta minimalita
+			- kdyby se nějaký vektor lin. kombinace neúčastnil, tak nemusí v té množině lin. závislých vektorů být
+
+![alt text](image-138.png)
+![alt text](image-139.png)
+použito
+- $\mathbf 0 = f(\mathbf 0)$ je že jo vlastnost lin. zobrazení:
+protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mathbf{v}) = 0 \cdot f(\mathbf{v}) = \mathbf{0}$
+- linearita lin. zobrazení vůči součtu  a vůči skal. násobku.
+- použítí předpokladu, že $\mathbf v_i$ je vlastní vektor = substituce $\lambda_i \mathbf v_i =  f(\mathbf v_i)$
+
+![alt text](image-140.png)
+- takže zase s netriviálními koeficienty vyšla lineární kombinace $k-1$ vektorů $\mathbf 0$ => těch $k-1$ vektorů je určitě lineárně závislých
+	- na začátku jsme ale řekli, že ten počet $k$ je mimimální, tedy odebrání jakéhokoli vektoru by působilo, že zbytek bude lin. nezávislý
+		- spor, takže $\mathbf v_1, \dots, \mathbf v_n$ jsou lineárně nezávislé.
+
+##### Důsledek:
+![alt text](image-134.png)
+- vl. č. nejvýš $n$ v případě, že by každému vlastnímu číslu náležel právě $1$ lin. nezávislý (=LN) vlastní vektor = **geometrická násobnost** každého vlastního čísla by byla právě $1$
+	- že jo, kdyby nějakému vl. č. náležely $2$ LN vektory, tak by dimenze jejich podprostoru (= geometrická násobnost) byla $2$
+
+> Nyní už víme, co jsou vlastní vektory i vlastní čísla, známe jejich definice, a také známe jejich některé vlastnosti
+
+> Ovšem nevíme, jak vlastní vektory a vlastní čísla určit, protože v definiční rovnici jsou oba objekty jako neznámé. Jak se to dá provést, si předvedeme příště.
