@@ -1630,3 +1630,40 @@ $$(-1)^{1+n} \det(A^{1,n}) =
 $$
 
 Je horní trojúhelníková, det. je součin prvků hlavní diagonály.
+
+Well, idk jak odvodit "Uvedený polynom je řešením této rekurence, ale vím, že, když víme, jak vypadá výsledek, tak to umíme ověřit indukcí.
+
+Označme $(x^n + b_{n-1} x^{n-1} + \dots + b_1 x + b_0)(-1)^n$ jako $P_n(x)$
+
+1. Základní případ $n=1$
+
+	Pro něj ta matice bude $A = (-b_0)$
+
+	$P_1(x) = \det(A - x \cdot I) = \det(-b_0 - x) = -b_0 - x = -1^1(x^1 + b_0)$
+
+2. Předpokládejme, že pro matici řádu $n-1$ vzorec platí.
+![alt text](obrazek.png)
+
+	Protože to zmenšujeme takto, tak se "posune" indexování (1. sloupec menší matice je 2. sloupec původní větší matice, analogicky s řádky) = budeme indexovat indexy původní větší matice.
+
+	Předpokládejme tedy: $P_{n-1}(x) = (-1)^{n-1}(x^{n-1} + b_{n-1} x^{n-2} + \dots + b_1)$
+
+3. Indukční krok
+
+	Použijeme ten Laplaceův rozvoj podle 1. řádku:
+
+	$$P_n(x) = -x(-1)^{1+1}P_{n-1}(x) + (-1)^n b_0$$
+
+	A algebraickými úpravami do cíle:
+
+	$$P_n(x) = -x \cdot \underbrace{(-1)^{n-1} (x^{n-1} + b_{n-1}x^{n-2} + \dots + b_1)}_{P_{n-1}(x)} + (-1)^n b_0$$
+
+	Upravíme první část: $-x \cdot (-1)^{n-1} = (-1) \cdot (-1)^{n-1} \cdot x = (-1)^n \cdot x$.
+
+	$$P_n(x) = (-1)^n \cdot x \cdot (x^{n-1} + b_{n-1}x^{n-2} + \dots + b_1) + (-1)^n b_0$$
+
+	$$P_n(x) = (-1)^n \left[ x(x^{n-1} + b_{n-1}x^{n-2} + \dots + b_1) + b_0 \right]$$
+
+	$$P_n(x) = (-1)^n (x^n + b_{n-1}x^{n-1} + \dots + b_1x + b_0)$$
+
+	________
