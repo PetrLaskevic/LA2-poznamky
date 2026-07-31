@@ -1495,11 +1495,11 @@ protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mat
 
 ![alt text](image-142.png)
 
-#### Důkaz
+#### Důkaz (zároveň návod, jak spočíst vlastní vektor)
 Řetízek ekvivalencí:
 
 $\lambda$ je vlastní číslo $A$ $\iff$ 
-$\exists \mathbf v \in T^n \setminus \set{\mathbf 0}: \lambda \mathbf v = A \mathbf v$
+$\exists \mathbf v \in T^n \setminus \set{\mathbf 0}: \lambda \mathbf v = A \mathbf v$ (existuje vlastní vektor $\mathbf v$)
 
 $\iff$ (odečteme $\lambda \mathbf v$ )
 
@@ -1529,12 +1529,17 @@ $\iff$
 
 vlastní číslo $\lambda$ je kořen charakteristického polynomu
 
+**V podstatě ten důkaz ukazuje, jak počítat vlastní vektor:**
+
+$\lambda$ je vlastní číslo $A$ $\iff$  $\exists v \in T^n \setminus \set{\mathbf 0}: (A - \lambda I) \mathbf v = \mathbf 0$
+
+A to $\mathbf v$, které z definice vl. čísla musí existovat, spočteme jako řešení soustavy
 ___________
 
 > U polynomu jsme si zaváděli pojem násobnosti kořene. Připomínám, že jde o maximální mocninu lineárního členu $(x - \lambda)$, která dělí daný polynom beze zbytku 
 ### Algebraická násobnost vlastního čísla
 ![alt text](image-143.png)
-= největší celé kladné číslo $k$, t.ž. $(x-r)^k$ dělí $p_A(x)$ (tj. beze zbytku)
+= největší celé kladné číslo $k$, t.ž. $(x-\lambda_i)^k$ dělí $p_A(x)$ (tj. beze zbytku)
 
 ![alt text](image-144.png)
 = z def. algebraicky uzavřeného tělesa = pro každý polynom stupně $\ge 1$ v něm existuje kořen
@@ -1570,8 +1575,13 @@ ___________
 2. Nalezeneme kořeny tohoto polynomu = vlastní čísla
 ![alt text](image-145.png)
 $-x^3 + 2x^2 + x - 2 = -x(x^2 - 1) + 2(x^2 - 1) = (x^2 - 1)(2-x)$
+3. Určíme vlastní vektory k těm vl. číslům:
 
-![alt text](image-146.png)
+	$\lambda$ je vlastní číslo $A$ $\iff$  $\exists v \in T^n \setminus \set{\mathbf 0}: (A - \lambda I) \mathbf v = \mathbf 0$
+
+	(viz důkaz věty "Kořen charakteristického polynomu je vlastní číslo matice")
+
+	![alt text](image-146.png)
 ____
 > U některých matic, jako př. u nulové matice můžeme charakteristický mnohočlen (=polynom) i jeho kořeny = vlastní čísla určit přímo.
 
