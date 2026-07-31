@@ -890,6 +890,7 @@ $$p(x) = r(x) \cdot (x-r)$$
 
 Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než budou všechny ty polynomu v součinu $1.$ stupně = budeme mít součin lineárních faktorů
 
+### Algebraicky uzavřené těleso
 ![alt text](image-90.png)
 
 > Ve zbývající části této lekce se budeme zabývat otázkou jak lze polynom reprezentovat
@@ -1476,3 +1477,146 @@ protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mat
 > Nyní už víme, co jsou vlastní vektory i vlastní čísla, známe jejich definice, a také známe jejich některé vlastnosti
 
 > Ovšem nevíme, jak vlastní vektory a vlastní čísla určit, protože v definiční rovnici jsou oba objekty jako neznámé. Jak se to dá provést, si předvedeme příště.
+
+## Charakteristický polynom
+> Dnes si předvedeme, že úlohu nalezení vlastních čísel a vlastních vektorů si můžeme rozdělit na 2 části.
+
+> Nejprve určíme vlastní čísla, a teprve poté budeme hledat vlastní vektory.
+
+> K tomu nám budou užitečné polynomy a také postupy pro řešení soustav lineárních rovnic.
+
+> Slibovaným nástrojem pro výpočet vlastních čísel je tzv. charakteristický polynom čtvercové matice $A$.
+
+![alt text](image-141.png)
+
+> Stupeň charakteristického polynomu se shoduje s řádem matice (= $n$-tá mocnina $x$, součin podle diagonály)
+
+### Kořen charakteristického polynomu je vlastní číslo matice
+
+![alt text](image-142.png)
+
+#### Důkaz
+Řetízek ekvivalencí:
+
+$\lambda$ je vlastní číslo $A$ $\iff$ 
+$\exists \mathbf v \in T^n \setminus \set{\mathbf 0}: \lambda \mathbf v = A \mathbf v$
+
+$\iff$ (odečteme $\lambda \mathbf v$ )
+
+$\exists \mathbf v \in T^n \setminus \set{\mathbf 0}: A \mathbf v - \lambda \mathbf v = \mathbf 0$
+
+$\iff$ (chceme vytknout $\mathbf v$, ale nemůžeme, protože jedno je maticový součin, a jedno skalární násobek => opravíme tím, že vektor $\mathbf v$ zleva vynásobíme jednotkovou maticí, která ho nezmění, ale už tam bude maticový součin)
+
+$\exists v \in T^n \setminus \set{\mathbf 0}: A \mathbf v - \lambda I \mathbf v = \mathbf 0$
+
+$\iff$
+
+$\exists v \in T^n \setminus \set{\mathbf 0}: (A - \lambda I) \mathbf v = \mathbf 0$
+
+$\iff$ (Na toto se můžeme dívat jako na soustavu rovnic, s maticí $A - \lambda I$. Ta soustava má jako řešení nenulový $\mathbf v$. To znamená, že matice $A - \lambda I$ je singulární.)
+
+$A - \lambda I$ je singulární
+
+$\iff$ (to znamená, že její determinant je $0$)
+
+$\det(A - \lambda I) = 0$
+
+$\iff$ (to je přímo definice charakteristického polynomu)
+
+$p_A (\lambda) = 0$
+
+$\iff$
+
+vlastní číslo $\lambda$ je kořen charakteristického polynomu
+
+___________
+
+> U polynomu jsme si zaváděli pojem násobnosti kořene. Připomínám, že jde o maximální mocninu lineárního členu $(x - \lambda)$, která dělí daný polynom beze zbytku 
+### Algebraická násobnost vlastního čísla
+![alt text](image-143.png)
+= největší celé kladné číslo $k$, t.ž. $(x-r)^k$ dělí $p_A(x)$ (tj. beze zbytku)
+
+![alt text](image-144.png)
+= z def. algebraicky uzavřeného tělesa = pro každý polynom stupně $\ge 1$ v něm existuje kořen
+
+- ještě docela zajímavá záležitost, proč jsme mohli prohodit pořadí členů (u polynomů obecně jsme měli $(x - r_i)$, (kde $r_i$ je kořen) a pak u definice charakteristického polynomů jsme měli členy, kde jsme odečítali $x$, stejně jako tady máme $(\lambda_i - x)$)
+
+	Zápis s členy $(\lambda_i - x)$ je trochu "elegantnější", protože skryje v reprezentaci polynomu člen $a_n = (-1)^n$ do těch závorek. 
+
+	Odvození, proč je to ekvivalentní:
+
+
+	$(\lambda_1 - x)^{r_1}(\lambda_2 - x)^{r_2} \dots (\lambda_k - x)^{r_k}$
+
+	$ = (-1(x - \lambda_1))^{r_1}(-1(x - \lambda_2))^{r_2} \dots (-1(x - \lambda_k))^{r_k}$
+
+	$ = (-1)^{r_1}(x - \lambda_1)^{r_1}(-1)^{r_2}(x - \lambda_2)^{r_2} \dots (-1)^{r_k}(x - \lambda_k)^{r_k}$
+
+	$= (-1)^{r_1 + \dots + r_k} (x - \lambda_1)^{r_1}(x - \lambda_2)^{r_2} \dots(x - \lambda_k)^{r_k}$
+
+	jelikož $r_1 + \dots + r_k = n$:
+
+	$= (-1)^n (x - \lambda_1)^{r_1}(x - \lambda_2)^{r_2} \dots(x - \lambda_k)^{r_k}$
+
+	A to odpovídá reprezentaci polynomu $a_n \cdot (x-r_1)(x-r_2) \dots (x-r_n)$,
+
+	protože člen $a_n$ charakteristického polynomu skutečně bude $(-1)^n$:
+
+	![alt text](image-141.png)
+	= že jo před tím $x$ je tam vždycky mínus., to znamená, že když ten determinant spočteme, dostaneme $-x^n$, tedy $(-1)^n x^n$
+
+### Výpočet vlastních čísel a vlastních vektorů
+1. Určíme charakteristický polynom matice $A$
+2. Nalezeneme kořeny tohoto polynomu = vlastní čísla
+![alt text](image-145.png)
+$-x^3 + 2x^2 + x - 2 = -x(x^2 - 1) + 2(x^2 - 1) = (x^2 - 1)(2-x)$
+
+![alt text](image-146.png)
+____
+> U některých matic, jako př. u nulové matice můžeme charakteristický mnohočlen (=polynom) i jeho kořeny = vlastní čísla určit přímo.
+
+![alt text](image-147.png)
+
+$p_{\mathbf 0_n}(x) = \det(\mathbf 0_n - x \cdot I_n)$
+- ten determinant spočteme součinem hlavní diagonály, protože to je nejen trojúhelníková, ale dokonce diagonální matice.
+
+$p_{\mathbf 0_n}(x) = 0$ => $(-x)^n = 0$ => $x=0$
+
+algebraické násobnosti $n$, můžeme ten polynom dělit $(0 - x)^n$
+
+![alt text](image-148.png)
+($*$ značí libovolný prvek tělesa, tj na obrázku je $A$ horní trojúhelníková matice = nulové prvky jsou **pod** hl. diagonálou)
+
+![alt text](image-149.png)
+elementární úpravy:
+1. odečteme poslední řádek od ostatních
+2. k poslednímu sloupci přičteme všechny ostatní sloupce
+
+determinant jako součin prvků na diagonále, protože je dolní trojúhelníková
+
+### Konstrukce matic podle polynomu
+
+> Je také zajímavé, že matice, jejíž sekundární diagonála obsahuje samé $1$, a poslední sloupec obsahuje parametry $b_0, \dots, b_{n-1}$, tak její charakteristický polynom obsahuje právě parametry $b_0, \dots, b_{n-1}$ jako koeficienty u příslušných mocnin $x$.
+
+![alt text](image-150.png)
+- I guess je to užitečné, když chceme nějaký polynom reprezentovat pomocí matice.
+	- pak ale teda výsledek musíme kdyžtak přenásobit $-1$, když se nám nehodí jeho znaménko
+#### Důkaz
+Laplaceův rozvoj podle 1. řádku
+![alt text](image-151.png)
+Ta pravá strana vznikla jako:
+
+$$a_{1,1} (-1)^{1+1} \det(A^{1,1})+ a_{1,n} (-1)^{1+n} \det(A^{1,n})$$
+
+$$(-1)^{1+n} \det(A^{1,n}) = 
+(-b_0) \cdot (-1)^{1+n}
+\begin{vmatrix}
+1		&	-x	& 0 &	\dots	& 0 \\
+0		&	1	&	-x		& \ddots & 0\\
+0		&	0	&	1		& \ddots & 0		\\
+\vdots	& \ddots&	\ddots	& \ddots & -x \\
+0		& \dots &	0		&	0 & 1
+\end{vmatrix} = b_0 \cdot (-1) \cdot (-1)^{1+n} \cdot 1 = (-1)^{n+2} \cdot b_0 = (-1)^{n} \cdot b_0
+$$
+
+Je horní trojúhelníková, det. je součin prvků hlavní diagonály.
