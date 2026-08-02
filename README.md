@@ -898,7 +898,10 @@ Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než bu
 ### Reprezentace polynomů stupně $n$
 
 1. ![alt text](image-91.png)
-=> že jo $a_i$ je koeficient u $x^i$, je to to $a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x^1 + a_0$
+- že jo $a_i$ je koeficient u $x^i$, je to to $a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x^1 + a_0$
+
+	- v pozdějším videu toto zapisoval i jako $\sum_{i=0}^n b_i x^i$, tj. absolutní člen $b_0$ je roven $b_0 x^0$, definiční obor jsou ale všechny prvky tělesa, včetně $0$
+		- $0^0$ je tedy v kontextu lineární algebry číslo $1$ (na rozdíl od matematické analýzy, kde se to považovalo za neurčitý výraz)
 
 2. ![alt text](image-92.png)
 $a_n \cdot (x-r_1)(x-r_2) \dots (x-r_n)$
@@ -927,6 +930,8 @@ prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten 
 To uděláme soustavou:
 #### Vandermondova matice
 ![alt text](image-95.png)
+- side note - první sloupec je $x_i^0$ (což v lingebře $1$ i pro $0^0$)
+
 Vandermondova matice řádu $n+1$ je dána parametry $x_0$ až $x_n$
 
 Žejo $i$-tý řádek té matice je dosazení hodnot toho bodu do polynomu a pak se to vynásobí hledanými koeficienty $a_0, \dots, a_n$, a by se získal $y_i$
@@ -1570,6 +1575,8 @@ ___________
 	![alt text](image-141.png)
 	= že jo před tím $x$ je tam vždycky mínus., to znamená, že když ten determinant spočteme, dostaneme $-x^n$, tedy $(-1)^n x^n$
 
+	**forward ref:** to bude zmíněno na slidu "Koeficienty charakteristického polynomu"
+
 ### Výpočet vlastních čísel a vlastních vektorů
 1. Určíme charakteristický polynom matice $A$
 2. Nalezeneme kořeny tohoto polynomu = vlastní čísla
@@ -1667,3 +1674,58 @@ Označme $(x^n + b_{n-1} x^{n-1} + \dots + b_1 x + b_0)(-1)^n$ jako $P_n(x)$
 	$$P_n(x) = (-1)^n (x^n + b_{n-1}x^{n-1} + \dots + b_1x + b_0)$$
 
 	________
+
+### Koeficienty charakteristického polynomu
+![alt text](image-152.png)
+Zase, $0^0$ je v lineární algebře $1$:
+$$\begin{align*}
+p_A(x) &= \sum_{i=0}^n b_i x^i = \det(A - x I_n) \\
+
+&= \sum_{i=0}^n b_i 0^i = \det(A - 0 I_n) \\
+&= b_0 \underbrace{0^0}_{1} + \underbrace{\sum_{i=1}^n b_i 0^i}_{\forall i \ge 1: 0^i = 0} = \det(A) \\
+&= b_0 = \det A
+\end{align*}
+$$
+Dává to smysl, protože intuitivně bychom čekali, že $b_0 x^0$ z té sumy bude to samé jako $b_0$. Když do polynomu dáme $0$, tak všechny členy s $x$ se vynulují, a zůstane absolutní člen.
+
+![alt text](image-153.png)
+> člen $x^{n-1}$ lze získat pouze ze součinu členů na hlavní diagonále, protože permutace, která vybere nějaký prvek mimo diagonálu, proté vybere ještě alespoň $1$ mimo diagonálu. Z takových permutací můžeme nejvýš získat $n-2$ mocninu.
+
+> V případě, že se nám podaří charakteristický polynom rozložit na součin lineárních členů, můžeme vyjádřit koeficienty $b_0$ a $b_{n-1}$ ještě vzhledem k vlastním číslům:
+
+![alt text](image-154.png)
+- tady zmíněno mimochodem, ale:
+
+#### Determinant je roven součinu vlastních čísel umocněných  na jejich příslušné algebraické násobnosti
+$$\det A = \prod_{i=1}^k \lambda_i^{r_i}$$
+
+(tady, **má-li char. polynom rozklad na lin. členy** (což někdy obecně polynom němá, viz polynom $x^2 + 1$, idk jak to má char. polynom), ale v cvičení Maxové:
+![alt text](image-155.png)
+Že by to platilo vždy?
+)
+
+![alt text](image-156.png)
+$p_A(x) = (\lambda_1 - x)^{r_1}(\lambda_2 - x)^{r_2} \dots (\lambda_k - x)^{r_k}$ můžeme rozepsat jako $n$ lineárních závorek (protože $r_1 + \dots + r_k = n$), kde každé $\lambda_i$ se opakuje v $r_i$ závorkách:
+
+$p_A(x) = (\lambda_1 - x)(\lambda_2 - x) \dots (\lambda_n - x)$
+
+Abychom po roznásobení všech závorek dostali člen, který obsahuje $x^{n-1}$, musíme:
+1. z $n-1$ závorek vybrat člen $-x$
+2. ze zbývající jedné závorky vybrat $\lambda_j$
+
+Pro jednu konkrétní kombinaci dostaneme $\lambda_j \cdot (-x)^{n-1} = \lambda_j \cdot (-1)^{n-1} \cdot x^{n-1}$.
+
+Takhle proces opakujeme pro každou závorku (protože každá může být jednou, ze které nevybereme $x$), celkový koeficient u $x^{n-1}$ bude součet těchto členů:
+
+$$b_{n-1} = \lambda_1 (-1)^{n-1} + \lambda_2 (-1)^{n-1} + \dots + \lambda_n (-1)^{n-1} = (-1)^{n-1} \sum_{j=1}^n \lambda_j$$
+
+A protože se každé $\lambda_j$ vyskytovalo v $r_j$ závorkách, tak ta sumu odpovídá $\sum_{i=1}^k r_i \lambda_i$, tedy:
+
+$$b_{n-1} = \sum_{i=1}^k r_i \lambda_i$$
+
+> Pro hledání kořenů polynom řádů vyšších než $5$ neexistují žádné přesné vzorce, a proto se při hledání kořenů a i vlastních čísel musíme spolehnout na numerické metody. U nich mlže být užitečné, víme-li předem, v jaké oblasti se čísla nacházejí. To říká následující věta:
+
+### Věta o Geršgorinových kruzích
+
+![alt text](image-157.png)
+> Uvedené nerovnosti vymezují v komplexní rovině řadu kruhů, a každé vlastní číslo patří do některého z nich. Kruhy se mohou překrývat, a některé mohou obsahovat více vlastních čísel, ale také něktěré nemusí obsahovat žádné.
