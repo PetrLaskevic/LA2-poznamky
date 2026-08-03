@@ -1110,7 +1110,7 @@ _______
 
 # 3. Vlastní čísla a vlastní vektory
 
-## Vlastní čísla a vlastní vektory matic a zobrazení
+## Vlastní čísla a vlastní vektory matic a zobrazení (10:38, 50M)
 > Vlastní čísla a vlastní vektory jsou pojmy, které pomohou určit pevné body lineárního zobrazení , nebo alespoň takové vektory, které při lin. zobrazení zachovávají směr
 
 ![alt text](image-113.png)
@@ -1483,7 +1483,7 @@ protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mat
 
 > Ovšem nevíme, jak vlastní vektory a vlastní čísla určit, protože v definiční rovnici jsou oba objekty jako neznámé. Jak se to dá provést, si předvedeme příště.
 
-## Charakteristický polynom
+## Charakteristický polynom (19:39, 81M)
 > Dnes si předvedeme, že úlohu nalezení vlastních čísel a vlastních vektorů si můžeme rozdělit na 2 části.
 
 > Nejprve určíme vlastní čísla, a teprve poté budeme hledat vlastní vektory.
@@ -1728,4 +1728,45 @@ $$b_{n-1} = \sum_{i=1}^k r_i \lambda_i$$
 ### Věta o Geršgorinových kruzích
 
 ![alt text](image-157.png)
-> Uvedené nerovnosti vymezují v komplexní rovině řadu kruhů, a každé vlastní číslo patří do některého z nich. Kruhy se mohou překrývat, a některé mohou obsahovat více vlastních čísel, ale také něktěré nemusí obsahovat žádné.
+> Uvedené nerovnosti vymezují v komplexní rovině řadu kruhů, a každé vlastní číslo patří do některého z nich. Kruhy se mohou překrývat, a některé mohou obsahovat více vlastních čísel, ale také něktěré nemusí obsahovat žádné
+
+Hezky to ilustruje alternativní zápis, co jsem našel:
+
+Pro matici $A$ jsou řádkové Geršgorinovy kruhy:
+
+$$D_i=\{z\in\mathbb C:\ |z-a_{ii}|\le R_i\}, \qquad R_i=\sum_{j\ne i}|a_{ij}|$$
+
+Věta pouze zaručuje
+$$\sigma(A)\subseteq \bigcup_{i=1}^n D_i$$
+
+kde $\sigma(A)$ je množina vlastních čísel.
+
+#### Důkaz
+![alt text](image-158.png)
+Nechť $\lambda$ je nějaké vlastní číslo. Pro něj musí existovat nějaký netriviální $\mathbf u$.
+Určíme si, která je jeho složka s největší absolutní hodnotou, to bude $u_i$.
+
+Vektor $\mathbf u$ normalizujeme tak, že ho vydělíme touto největší složkou.
+
+![alt text](image-159.png)
+($i$-tá rovnice = součin prvků z $i$-tého řádku $A$ se složkami $\mathbf v$ a na pravé straně $\lambda$-násobek $i$-té složky vektoru $\mathbf v$, ovšem ta je rovna $1$)
+
+$$\sum_{j=1}^n a_{ij}v_j = \lambda v_i$$
+
+$$\sum_{j \neq i} a_{ij} v_j = \lambda v_i - a_{ii} v_i$$
+
+$v_i = 1$:
+
+$$\sum_{j \neq i} a_{ij} v_j = \lambda - a_{ii}$$
+
+![alt text](image-160.png)
+
+> Na závěr této lekce bych vám rád představil jeden jednoduchý dynamický systém, a ukázal, čemu v něm odpovídají vlastní čísla, a vlastní vektory:
+
+![alt text](image-161.png)
+
+![alt text](image-162.png)
+
+![alt text](image-163.png)
+
+> Vlastní čísla a vlastní vektory lze také použít ke zjednodušení matice lineárního zobrazení. To budeme předmětem nektěré z příštích lekcí.
