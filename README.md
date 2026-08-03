@@ -1770,3 +1770,89 @@ $$\sum_{j \neq i} a_{ij} v_j = \lambda - a_{ii}$$
 ![alt text](image-163.png)
 
 > Vlastní čísla a vlastní vektory lze také použít ke zjednodušení matice lineárního zobrazení. To budeme předmětem nektěré z příštích lekcí.
+
+## Cayleyova-Hamiltonova věta (6:24, 36M)
+
+![alt text](image-164.png)
+
+### Důkaz
+
+Použijeme větu, že $\det(M) \cdot I_n = M \cdot \text{adj } M$ pro $M = A - x I_n$.
+(tu větu jsme odvodili v důkazu Věty $A^{-1} = \frac{1}{\det A} \ \text{adj} \ A$, tam jsem podrobně okomentoval, proč platí).
+
+$\det(M) \cdot I_n = M \cdot \text{adj } M$, kde $M = A - x I_n$
+
+$\det(A - x I_n) \cdot I_n = (A - x I_n) \cdot \text{adj }(A - x I_n)$
+
+Teď si rozebereme jednotlivé členy, vymyslíme jakým novým členům s mocninami $x$ se rovnají, potom nové členy znovu substitujeme do této rovnice, a odvodíme, že protože rovnost platí pro celek, tak musí platit i pro koeficienty u stejných mocnin $x$. 
+
+Poté jakoby za $x^i$ "dosadíme" $A^i$ (pomocí běžných operací), a poté algebraickými úpravami dostaneme rovnost nule.
+
+**ČLENY**:
+
+1. $\det(A - x I_n)$
+
+	$\det(A - x I_n) = p_A(x) = (-1)^n x^n + b_{n-1} x^{n-1} + \dots + b_2 x^2 + b_1 x + b_0$
+
+2. $\text{adj }(A - x I_n)$
+
+	$\text{adj }(A - x I_n)$ upravíme, uděláme z toho tzv. **maticový polynom** (nový pojem, polynom, kde koeficienty jsou matice).
+
+	Prvek adjungované matice $M$ je znaménko $(-1)^{i+j}$ krát **determinant podmatice $A^{ij}$.**
+	- když v té matici jsou $x$-ka, tak budou i vtom výsledku toho determinantu, což bude polynom
+		- nejvyšší exponent u $x$ bude $n-1$, protože ty podmatice jsou řádu $n-1$, takže koeficient $-x$ z diagonály $n-1$ krát
+
+	Tu matici $M$ můžeme složit z víc matic, kde bude vždycky:
+	
+	$$x^i \cdot \begin{pmatrix}{\text{matice koeficientů}} \\ \text{ kde, a kolikrát se  vyskytuje } x^i\end{pmatrix}$$
+
+	Viz ukázka:
+
+	![alt text](image-165.png)
+
+	Když to zformalizujeme:
+
+	![alt text](image-166.png)
+
+
+Teď ty členy dosadíme zpátky do naší rovnice $\det(A - x I_n) \cdot I_n = (A - x I_n) \cdot \text{adj }(A - x I_n)$:
+
+$((-1)^n x^n + b_{n-1} x^{n-1} + \dots + b_2 x^2 + b_1 x + b_0)\cdot I_n = (A - x I_n) \cdot (x^{n-1} C_{n-1} + \dots + xC_1 + C_0)$
+
+Roznásobíme:
+
+$$(-1)^n x^n I_n + b_{n-1} x^{n-1} I_n + \dots + b_2 x^2 I_n + b_1 x I_n + b_0 I_n = -x^n C_{n-1} + x^{n-1}(AC_{n-1} - C_{n-2}) + \dots + x(AC_1 - C_0) + AC_0$$
+
+Rovná se to, musejí se rovnat i koeficienty u stejných mocnin $x$:
+
+koeficient u $x^n$: $(-1)^n I_n = -C_{n-1}$
+
+koeficienty u $x^i$: $b_i I_n = AC_{i-1} - C_{i-2}$
+
+koeficient u $x^0$: $b_0 I_n = AC_0$
+
+
+**Jakoby za $x^i$ "dosadíme" $A^i$**:
+
+Teď si napíšeme ty koeficienty:
+
+$$(-1)^n I_n + b_{n-1} I_n + \dots + b_2 I_n + b_1 I_n + b_0 I_n = C_{n-1} + (AC_{n-1} - C_{n-2}) + \dots + (AC_1 - C_0) + AC_0$$
+
+A koeficient, který byl u $x^i$ vynásobíme zleva $A^i$
+
+V prezentaci to napsal trochu komplikovaněji, ale je to to samé
+![alt text](image-167.png)
+- tj. $A^0 = I_n$, což explicitně nikde neřekl, ale mj. to dává smysl:
+	- $A^{m+n} = A^m \cdot A^n$, tj. $A^{m+0} = A^m \cdot A^0$
+	- $A \text{ "děleno" } A = A^1 \cdot A^{-1} = I_n$
+		- tenhle argument jenom pro regulární matice, kdežto tady se $A^0 = I_n$ tak definuje pro všechny - aby př. to tady v tom důkazu vycházelo
+
+	- forward ref, dávalo by to smysl i protože: $A^k = R D^k R^{-1}$ aby platilo pro $k=0$: $A^0 = R D^0 R^{-1} = R \cdot I \cdot R^{-1} = R \cdot R^{-1} = I$ (Protože u diagonální matice 
+$D$ jsou na diagonále čísla, a pro ně platí 
+$d_{ii}^0 = 1$, což z 
+$D^0$ udělá jednotkovou matici).
+
+
+$$(-1)^n A^n + b_{n-1} A^{n-1} + \dots + b_2 A^2 + b_1 + b_0 I_n = A^n C_{n-1} + A^{n-1}(AC_{n-1} - C_{n-2}) + \dots + A(AC_1 - C_0) + AC_0$$
+
+Teď posčítáme pravou stranu:
