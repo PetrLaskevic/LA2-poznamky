@@ -143,9 +143,17 @@ a_{11} & a_{12} & \dots & a_{1n} \\
 Vztah mezi permutací a její inverzí je bijekce.
 
 (tím $p \to q = p^{-1}$ "zkomprimoval" 2 věci dohromady:
-$p \to p^{-1}$ a přeznačení $q = p^{-1}$ pro přehlednost ve zbytku důkazu.)
+$p \to p^{-1}$ a přeznačení $q = p^{-1}$ pro přehlednost ve zbytku důkazu.
 
-(a pokud bychom chtěli být formální, tak řekl "bijekce **mezi**", což znamená obojsměrný vztah (bijektivní zobrazení z A do B a jemu inverzní bijektivní zobrazení z B do A), a $\to$ je vztah jednosměrný (bijektivní zobrazení z A do B)
+"Divný" zápis zobrazení $p \to p^{-1}$ (= z slov prof. Fialy (u podobného zápisu v pozdějším videu) "přiřazení ... na ...") odpovídá zápisu $f: S_n \to S_n$, dané předpisem $f(p) = p^{-1}$
+(někdy se pro odlišení od zápisu množin odkud, kam (=toho obvyklého $f: U \to V$) používá $\mapsto$ = v LaTeX `\mapsto`, čili co se přímo na co zobrazí)
+)
+
+(TODO: možná tento odstavec smazat, afaik to je skutečně jedno, protože A=B,a vlastně tím, že A=B je to obousměrné... :
+
++ TODO, JESTLI SE FAKT NĚKDE PÍŠE $\leftrightarrow$	 	ZJISTIT, bylo by to hezky intuitivní
+
+ a pokud bychom chtěli být formální, tak řekl "bijekce **mezi**", což znamená obojsměrný vztah (bijektivní zobrazení z A do B a jemu inverzní bijektivní zobrazení z B do A), a $\to$ je vztah jednosměrný (bijektivní zobrazení z A do B)
 => asi když se množiny A, B rovnají, tak je to asi jedno
 
 => mohli bychom ale napsat $p \leftrightarrow p^{-1}$, pro naprostou zřejmost, ne?
