@@ -1904,3 +1904,42 @@ A to je přesně Cayley-Hamiltonova věta.
 $$b_n A^n + b_{n-1} A^{n-1} + \dots + b_1 A^1 + b_0 I = 0$$
 
 Ty konkrétní koeficienty tedy budou existovat, budou to koeficienty charakteristického polynomu $p_A$ (v něm je $b_n = (-1)^n$)
+
+## Podobné matice, diagonalizace (15:01, 64M)
+
+https://kam.mff.cuni.cz/~fiala/LA2/412-podobnost.pdf
+
+> Jedno, a to samé lineární zobrazení může být reprezentováno řadou různých matic, a to vzhledem k různým bazím.
+
+> Vlastní číslo i vlastní vektor ovšem zůstává neměnným, pouze co se může měnit, jsou souřadnice vlastního vektoru = vyjádřené vůči různým bazím.
+
+> Dnes si ukážeme, jak se tyto souřadnice mění, a jak lze hledat šikovný popis matice lineárního zobrazení.
+
+![alt text](image-173.png)
+$[id]_{B,C}$ = matice přechodu od báze $B$ k bázi $C$
+
+To $[f]_{C,C} [id]_{B,C}$ je $f(id(\mathbf u))$
+
+> Matice přechodu jsou regulární a splňují $[id]_{C,B} = [id]_{B,C}^{-1}$. To vede na koncept podobnosti matic.
+
+### Podobné matice
+![alt text](image-174.png)
+
+$$\underbrace{\mathbf A}_{\large [f]_{B,B}} = 
+\underbrace{\mathbf R^{-1}}_{\large [id]_{C,B}} \cdot 
+\underbrace{\mathbf B}_{\large [f]_{C,C}} \cdot 
+\underbrace{\mathbf R}_{\large [id]_{B,C}}$$
+
+To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou to matice stejného zobrazení, akorát vůči různým bazím**
+- jedná se stále o stejné zobrazení, co s vektory dělá stejnou věc, je je jinak "pojmenováváme" pomocí souřadnic. Proto musí mezi maticemi $A$, $B$ existovat vztah = podobnost.
+
+> (někdy se to definuje jako $A = R \cdot B \cdot R^{-1}$ = pak se jen liší, co přesně je ta matice $R$:
+> - v té 1. definici je to $[id]_{B,C}$
+> - v téhle 2. definici je to $[id]_{C,B}$
+>
+>)
+
+> Stejný vztah jako: ![alt text](image-175.png) lze formulovat pomocí podobnosti takto:
+
+![alt text](image-176.png)
+![alt text](image-177.png)
