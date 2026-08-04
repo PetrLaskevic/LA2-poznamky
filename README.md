@@ -1773,6 +1773,8 @@ $$\sum_{j \neq i} a_{ij} v_j = \lambda - a_{ii}$$
 
 ## Cayleyova-Hamiltonova věta (6:24, 36M)
 
+Říká, že matice je "kořenem" svého charakteristického polynomu, tedy $p_{\mathbf A}(\mathbf A) = \mathbf 0_{n,n}$
+
 ![alt text](image-164.png)
 
 ### Důkaz
@@ -1832,11 +1834,11 @@ koeficienty u $x^i$: $b_i I_n = AC_{i-1} - C_{i-2}$
 koeficient u $x^0$: $b_0 I_n = AC_0$
 
 
-**Jakoby za $x^i$ "dosadíme" $A^i$**:
+**Jakoby za $x^i$ do charakteristického polynomu "dosadíme" $A^i$**:
 
 Teď si napíšeme ty koeficienty:
 
-$$(-1)^n I_n + b_{n-1} I_n + \dots + b_2 I_n + b_1 I_n + b_0 I_n = C_{n-1} + (AC_{n-1} - C_{n-2}) + \dots + (AC_1 - C_0) + AC_0$$
+$$(-1)^n I_n + b_{n-1} I_n + \dots + b_2 I_n + b_1 I_n + b_0 I_n = -C_{n-1} + (AC_{n-1} - C_{n-2}) + \dots + (AC_1 - C_0) + AC_0$$
 
 A koeficient, který byl u $x^i$ vynásobíme zleva $A^i$
 
@@ -1846,13 +1848,51 @@ V prezentaci to napsal trochu komplikovaněji, ale je to to samé
 	- $A^{m+n} = A^m \cdot A^n$, tj. $A^{m+0} = A^m \cdot A^0$
 	- $A \text{ "děleno" } A = A^1 \cdot A^{-1} = I_n$
 		- tenhle argument jenom pro regulární matice, kdežto tady se $A^0 = I_n$ tak definuje pro všechny - aby př. to tady v tom důkazu vycházelo
-
+	
+	- **znění téhle Cayley-Hamiltonovy věty**, to $b_0 I$ v něm: $$b_n A^n + b_{n-1} A^{n-1} + \dots + b_1 A^1 + b_0 I = 0$$ 
+	je analogie k předchozímu zápisu polynomu $\sum_{i=0}^n b_i x^i$, kde $b_0 x^0$ byl roven $b_0$ (viz diskuze, co je $0^0$, je to zde $1$ )
 	- forward ref, dávalo by to smysl i protože: $A^k = R D^k R^{-1}$ aby platilo pro $k=0$: $A^0 = R D^0 R^{-1} = R \cdot I \cdot R^{-1} = R \cdot R^{-1} = I$ (Protože u diagonální matice 
 $D$ jsou na diagonále čísla, a pro ně platí 
 $d_{ii}^0 = 1$, což z 
 $D^0$ udělá jednotkovou matici).
 
 
-$$(-1)^n A^n + b_{n-1} A^{n-1} + \dots + b_2 A^2 + b_1 + b_0 I_n = A^n C_{n-1} + A^{n-1}(AC_{n-1} - C_{n-2}) + \dots + A(AC_1 - C_0) + AC_0$$
+$$(-1)^n A^n + b_{n-1} A^{n-1} + \dots + b_2 A^2 + b_1 + b_0 I_n = -A^n C_{n-1} + A^{n-1}(AC_{n-1} - C_{n-2}) + \dots + A(AC_1 - C_0) + AC_0$$
 
-Teď posčítáme pravou stranu:
+Teď posčítáme pravou stranu. Konkrétně si uvědomme, co se stane se členy, které roznásobujeme:
+
+$$A^i(AC_i - C_{i-1}) + A^{i-1}(AC_{i-1} - C_{i-2}) = A^{i+1} C_i \ \  \underbrace{- A^i C_{i-1} + A^{i-1} AC_{i-1}}_{0} \ \ - A^{i-1}C_{i-2}$$
+
+A to pasuje jako takové domino:
+
+$A^{i+1} C_i$ další dvojici roznásobovaných členů vlevo
+
+$A^{i-1}C_{i-2}$ další dvojici roznásobovaných členů vpravo
+
+První člen, před členy, na které to aplikujeme, je $-A^n C_{n-1}$.
+
+Poslední člen, za členy, na které to aplikujeme, je $+A^1C_0$.
+
+Celkově tedy vyjde nulová matice.
+
+Zde slidy k tomu:
+
+![alt text](image-168.png)
+![alt text](image-169.png)
+![alt text](image-170.png)
+![alt text](image-171.png)
+
+### Z kvízu:
+
+![alt text](image-172.png)
+
+Když jsou lineárně závislé, tak to můžeme vyjářit jako lineární kombinaci matic, které spolu s koeficienty dají nulovou matici:
+
+
+$$\sum_{i=0}^n b_i A^i = 0_{n,n}$$
+
+A to je přesně Cayley-Hamiltonova věta.
+
+$$b_n A^n + b_{n-1} A^{n-1} + \dots + b_1 A^1 + b_0 I = 0$$
+
+Ty konkrétní koeficienty tedy budou existovat, budou to koeficienty charakteristického polynomu $p_A$ (v něm je $b_n = (-1)^n$)
