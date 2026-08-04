@@ -1907,3 +1907,98 @@ A to je přesně Cayley-Hamiltonova věta.
 $$b_n A^n + b_{n-1} A^{n-1} + \dots + b_1 A^1 + b_0 I = 0$$
 
 Ty konkrétní koeficienty tedy budou existovat, budou to koeficienty charakteristického polynomu $p_A$ (v něm je $b_n = (-1)^n$)
+
+## Podobné matice, diagonalizace (15:01, 64M)
+
+https://kam.mff.cuni.cz/~fiala/LA2/412-podobnost.pdf
+
+> Jedno, a to samé lineární zobrazení může být reprezentováno řadou různých matic, a to vzhledem k různým bazím.
+
+> Vlastní číslo i vlastní vektor ovšem zůstává neměnným, pouze co se může měnit, jsou souřadnice vlastního vektoru = vyjádřené vůči různým bazím.
+
+> Dnes si ukážeme, jak se tyto souřadnice mění, a jak lze hledat šikovný popis matice lineárního zobrazení.
+
+![alt text](image-173.png)
+$[id]_{B,C}$ = matice přechodu od báze $B$ k bázi $C$
+
+To $[f]_{C,C} [id]_{B,C}$ je $f(id(\mathbf u))$
+
+> Matice přechodu jsou regulární a splňují $[id]_{C,B} = [id]_{B,C}^{-1}$. To vede na koncept podobnosti matic.
+
+### Podobné matice
+![alt text](image-174.png)
+
+$$\underbrace{\mathbf A}_{\large [f]_{B,B}} = 
+\underbrace{\mathbf R^{-1}}_{\large [id]_{C,B}} \cdot 
+\underbrace{\mathbf B}_{\large [f]_{C,C}} \cdot 
+\underbrace{\mathbf R}_{\large [id]_{B,C}}$$
+
+To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou to matice stejného zobrazení, akorát vůči různým bazím**
+- jedná se stále o stejné zobrazení, co s vektory dělá stejnou věc, je je jinak "pojmenováváme" pomocí souřadnic. Proto musí mezi maticemi $A$, $B$ existovat vztah = podobnost.
+
+> (někdy se to definuje jako $A = R \cdot B \cdot R^{-1}$ = pak se jen liší, co přesně je ta matice $R$:
+> - v té 1. definici je to $[id]_{B,C}$
+> - v téhle 2. definici je to $[id]_{C,B}$
+>
+>)
+
+> Stejný vztah jako: ![alt text](image-175.png) lze formulovat pomocí podobnosti takto:
+
+![alt text](image-176.png)
+![alt text](image-177.png)
+
+> Bezprostředním důsledkem je, že jsou-li $A$, $B$ navzájem podobné, potom vlastní číslo $\lambda$ má v obou maticích stejnou **geometrickou násobnost** = dimenzi prostoru vlastních vektorů.
+
+![alt text](image-178.png)
+
+- to "$\mathbf v \to \mathbf{Rv}$ je isomorfismus"
+	- $R$ je, že jo $[id]_{B,C}$
+
+	- **= Každému nezávislému vlastnímu vektoru v matici 
+$A$ odpovídá právě jeden nezávislý vlastní vektor v matici 
+$B$.**
+		- jak jsme měli o pár řádek výše: "pokud je $\mathbf{v}$ vlastní vektor matice $A$, pak $\mathbf{w} = R \mathbf{v}$ je vlastní vektor matice $B$ pro stejné vlastní číslo $\lambda$."
+
+	- je to "divný" způsob zápisu:
+
+		bijektivní zobrazení $f: U \to V$ dané $f(\mathbf v) = \mathbf{Rv}$
+		($U$ i $V$ jsou podprostory prostoru, nad kterým matice $A$ i $B$ jsou - liší se jenom bází, protože $A$, i $B$ očekávají vstup v různých bazích, dávají výstupu v různých bazích, jejich vl. vektory jsou tudíž taky v různých bazích)
+
+		- isomorfismus = bijektivní lineární zobrazení protože věta o charakterizaci izomorfismů (z LA1):
+			- izomorfismus je to proto, že matice $R$ je regulární
+				- bijektivní zobrazení má inverzní zobrazení - a ta věta říká, že jeho matice je inverzní matice
+					- dává smysl, protože $f \circ f^{-1} = \text{id}$ odpovídá $R \cdot R^{-1} = I$
+
+> Další společnou vlastností podobných matic je, že mají shodné charakteristické polynomy:
+
+![alt text](image-179.png)
+
+![alt text](image-180.png)
+1. definice $p_B(x)$
+2. substituce $B = RAR^{-1}$ a rozšíření součinu $xI$ zleva $R$ i zprava $R^{-1}$
+	- to můžeme, protože uvnitř je pouze $x$-násobek jednotkové matice:
+	
+		$R(xI)R^{-1} = x(R(I)R^{-1}) = x(RR^{-1}) = xI$
+3. vytknutí $R$ zleva a $R^{-1}$ zprava
+4. pravidlo o determinantu součinu matic
+5. $\det R$ a $\det(R^{-1})$ jsou navzájem inverzní skaláry
+6. definice $p_A(x)$
+
+> Máme-li vlastní číslo matice $A$, která je podobná matici $B$, potom toto vl. číslo má v obou maticích shodnou **algebraickou násobnost**:
+![alt text](image-181.png)
+Protože algebraická násobnost je násobnost kořene v charakteristickém polynomu a char. polynomy obou matic jsou naprosto shodné.
+
+> Mezi podobnými maticemi, které přísluší témuž lineárnímu zobrazení se budeme snažit nalézt ty, které mají co nejjednodušší struktury. Ukázka:
+![alt text](image-182.png)
+> Má $[f]_{E,E} = \begin{pmatrix} 0 & 2 \\ -1 & 3 \end{pmatrix}$ nějaký jednodušší popis?
+
+> Tato vlastní čísla a vlastní vektory nám o tomto zobrazení něco říkají. Ve skutečnosti na to samé zobrazení se můžeme dívat tak, že podél osy procházející bodem $\mathbf v_1$ je toto lin. zobrazení fixovováno (=žejo vl. číslo $\lambda_1 = 1$). Zatímco podél přímky procházející $\mathbf v_2$ odpovídá toto lin. zobrazení 2násobnému natažení.
+
+> Pokud bychom si za bázi vzali právě vektory $B =  \set{\mathbf v_1, \mathbf v_2}$, tak:
+![alt text](image-183.png)
+
+> Situace, kterou jsme si popsali v ukázce, tzn. co se stane, když dosadíme vlastní vektory do báze prostoru, vůči kterému vyjadřujeme matici lineárního zobrazení, ve skutečnosti platí i obecně:
+
+### Proč diagonální matice má na diagonále vlastní čísla
+![alt text](image-184.png)
+
