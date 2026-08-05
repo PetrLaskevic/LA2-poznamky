@@ -1969,4 +1969,21 @@ $B$.**
 				- bijektivní zobrazení má inverzní zobrazení - a ta věta říká, že jeho matice je inverzní matice
 					- dává smysl, protože $f \circ f^{-1} = \text{id}$ odpovídá $R \cdot R^{-1} = I$
 
+> Další společnou vlastností podobných matic je, že mají shodné charakteristické polynomy:
+
 ![alt text](image-179.png)
+
+![alt text](image-180.png)
+1. definice $p_B(x)$
+2. substituce $B = RAR^{-1}$ a rozšíření součinu $xI$ zleva $R$ i zprava $R^{-1}$
+	- to můžeme, protože uvnitř je pouze $x$-násobek jednotkové matice:
+	
+		$R(xI)R^{-1} = x(R(I)R^{-1}) = x(RR^{-1}) = xI$
+3. vytknutí $R$ zleva a $R^{-1}$ zprava
+4. pravidlo o determinantu součinu matic
+5. $\det R$ a $\det(R^{-1})$ jsou navzájem inverzní skaláry
+6. definice $p_A(x)$
+
+> Máme-li vlastní číslo matice $A$, která je podobná matici $B$m potom toto vl. číslo má v obou maticích shodnou **algebraickou násobnost**:
+![alt text](image-181.png)
+Protože algebraická násobnost je násobnost kořene v charakteristickém polynomu a char. polynomy obou matic jsou naprosto shodné.
