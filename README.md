@@ -1984,6 +1984,21 @@ $B$.**
 5. $\det R$ a $\det(R^{-1})$ jsou navzájem inverzní skaláry
 6. definice $p_A(x)$
 
-> Máme-li vlastní číslo matice $A$, která je podobná matici $B$m potom toto vl. číslo má v obou maticích shodnou **algebraickou násobnost**:
+> Máme-li vlastní číslo matice $A$, která je podobná matici $B$, potom toto vl. číslo má v obou maticích shodnou **algebraickou násobnost**:
 ![alt text](image-181.png)
 Protože algebraická násobnost je násobnost kořene v charakteristickém polynomu a char. polynomy obou matic jsou naprosto shodné.
+
+> Mezi podobnými maticemi, které přísluší témuž lineárnímu zobrazení se budeme snažit nalézt ty, které mají co nejjednodušší struktury. Ukázka:
+![alt text](image-182.png)
+> Má $[f]_{E,E} = \begin{pmatrix} 0 & 2 \\ -1 & 3 \end{pmatrix}$ nějaký jednodušší popis?
+
+> Tato vlastní čísla a vlastní vektory nám o tomto zobrazení něco říkají. Ve skutečnosti na to samé zobrazení se můžeme dívat tak, že podél osy procházející bodem $\mathbf v_1$ je toto lin. zobrazení fixovováno (=žejo vl. číslo $\lambda_1 = 1$). Zatímco podél přímky procházející $\mathbf v_2$ odpovídá toto lin. zobrazení 2násobnému natažení.
+
+> Pokud bychom si za bázi vzali právě vektory $B =  \set{\mathbf v_1, \mathbf v_2}$, tak:
+![alt text](image-183.png)
+
+> Situace, kterou jsme si popsali v ukázce, tzn. co se stane, když dosadíme vlastní vektory do báze prostoru, vůči kterému vyjadřujeme matici lineárního zobrazení, ve skutečnosti platí i obecně:
+
+### Proč diagonální matice má na diagonále vlastní čísla
+![alt text](image-184.png)
+
