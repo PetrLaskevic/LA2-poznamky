@@ -1946,3 +1946,27 @@ To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou 
 
 ![alt text](image-176.png)
 ![alt text](image-177.png)
+
+> Bezprostředním důsledkem je, že jsou-li $A$, $B$ navzájem podobné, potom vlastní číslo $\lambda$ má v obou maticích stejnou **geometrickou násobnost** = dimenzi prostoru vlastních vektorů.
+
+![alt text](image-178.png)
+
+- to "$\mathbf v \to \mathbf{Rv}$ je isomorfismus"
+	- $R$ je, že jo $[id]_{B,C}$
+
+	- **= Každému nezávislému vlastnímu vektoru v matici 
+$A$ odpovídá právě jeden nezávislý vlastní vektor v matici 
+$B$.**
+		- jak jsme měli o pár řádek výše: "pokud je $\mathbf{v}$ vlastní vektor matice $A$, pak $\mathbf{w} = R \mathbf{v}$ je vlastní vektor matice $B$ pro stejné vlastní číslo $\lambda$."
+
+	- je to "divný" způsob zápisu:
+
+		bijektivní zobrazení $f: U \to V$ dané $f(\mathbf v) = \mathbf{Rv}$
+		($U$ i $V$ jsou podprostory prostoru, nad kterým matice $A$ i $B$ jsou - liší se jenom bází, protože $A$, i $B$ očekávají vstup v různých bazích, dávají výstupu v různých bazích, jejich vl. vektory jsou tudíž taky v různých bazích)
+
+		- isomorfismus = bijektivní lineární zobrazení protože věta o charakterizaci izomorfismů (z LA1):
+			- izomorfismus je to proto, že matice $R$ je regulární
+				- bijektivní zobrazení má inverzní zobrazení - a ta věta říká, že jeho matice je inverzní matice
+					- dává smysl, protože $f \circ f^{-1} = \text{id}$ odpovídá $R \cdot R^{-1} = I$
+
+![alt text](image-179.png)
