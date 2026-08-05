@@ -324,6 +324,9 @@ TLDR: Pro trojici matic, kde $i$-tý řádek v $A$ je součtem $i$-tého řádku
 - k důkazu  1. důsledku - už víme, že matice s 2 stejnými řádky má nulový determinant, viz předchozí video Determinanty, základní vlastnosti
 - k 2. důsledku, viz (REF1)
 ![alt text](image-34.png)
+
+### Determinant součinu
+
 ![alt text](image-35.png)
 (V případě, že alespoň 1 z nich singulární, pak bude singulární i jejich součin, a det. singulární maice = 0, tedy dostaneme $0=0$)
 
