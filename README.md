@@ -1943,7 +1943,6 @@ To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou 
 >)
 
 > Stejný vztah jako: ![alt text](image-175.png) lze formulovat pomocí podobnosti takto:
-
 ![alt text](image-176.png)
 ![alt text](image-177.png)
 
@@ -1951,23 +1950,24 @@ To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou 
 
 ![alt text](image-178.png)
 
-- to "$\mathbf v \to \mathbf{Rv}$ je isomorfismus"
+- to "$\mathbf v \to \mathbf{Rv}$ je **isomorfismus**"
 	- $R$ je, že jo $[id]_{B,C}$
 
-	- **= Každému nezávislému vlastnímu vektoru v matici 
-$A$ odpovídá právě jeden nezávislý vlastní vektor v matici 
-$B$.**
-		- jak jsme měli o pár řádek výše: "pokud je $\mathbf{v}$ vlastní vektor matice $A$, pak $\mathbf{w} = R \mathbf{v}$ je vlastní vektor matice $B$ pro stejné vlastní číslo $\lambda$."
+	- **= Každému nezávislému vlastnímu vektoru $\mathbf v$ v matici 
+$A$ odpovídá právě jeden nezávislý vlastní vektor $\mathbf{Rv}$ v matici 
+$B$.** (viz pozorování)
+		- jak jsme měli o pár řádek výše: "pokud je $\mathbf{v}$ vlastní vektor matice $\mathbf A$, pak $\mathbf{w} = R \mathbf{v}$ je vlastní vektor matice $\mathbf B$ pro stejné vlastní číslo $\lambda$."
+	
+	- **izomorfismus** (= bijektivní lineární zobrazení) je to proto, že matice $\mathbf R $ je regulární (viz věta o charakterizaci izomorfismů (z LA1))
+		- ta věta: **bijektivní zobrazení má inverzní zobrazení - a ta věta říká, že jeho matice je inverzní matice**
+						- dává smysl, protože $f \circ f^{-1} = \text{id}$ odpovídá $R \cdot R^{-1} = I$
 
-	- je to "divný" způsob zápisu:
+	- to $\mathbf v \to \mathbf{Rv}$ je "divný" způsob zápisu:
 
-		bijektivní zobrazení $f: U \to V$ dané $f(\mathbf v) = \mathbf{Rv}$
-		($U$ i $V$ jsou podprostory prostoru, nad kterým matice $A$ i $B$ jsou - liší se jenom bází, protože $A$, i $B$ očekávají vstup v různých bazích, dávají výstupu v různých bazích, jejich vl. vektory jsou tudíž taky v různých bazích)
+		bijektivní (protože řečeno izomorfismus) zobrazení $f: U \to V$ dané $f(\mathbf v) = \mathbf{Rv}$
 
-		- isomorfismus = bijektivní lineární zobrazení protože věta o charakterizaci izomorfismů (z LA1):
-			- izomorfismus je to proto, že matice $R$ je regulární
-				- bijektivní zobrazení má inverzní zobrazení - a ta věta říká, že jeho matice je inverzní matice
-					- dává smysl, protože $f \circ f^{-1} = \text{id}$ odpovídá $R \cdot R^{-1} = I$
+		($U$ i $V$ jsou podprostory prostoru, nad kterým matice $A$ i $B$ jsou (konkrétně $U$ je podprostor vlastních vektorů matice $A$, a $V$ je podprostor vlastních vektorů matice $B$) - liší se jenom bází, protože $A$, i $B$ očekávají vstup v různých bazích, dávají výstupu v různých bazích, jejich vl. vektory jsou tudíž taky v různých bazích)
+		- někdy se pro tuto šipku používá `\mapsto` = $\mathbf v \mapsto \mathbf{Rv}$
 
 > Další společnou vlastností podobných matic je, že mají shodné charakteristické polynomy:
 
