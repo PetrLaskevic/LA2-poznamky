@@ -1144,15 +1144,26 @@ _______
 	- ale tak teda nevadí, je to jenom takový "lepidlo", aby ta množina vlastních vektorů byla uzavřená na součty (= že jo def. vekt. podprostoru + každý vekt. prostor je sám sobě podprostorem)
 
 ![alt text](image-115.png)
-makes sense, matice lin. robrazení
+makes sense, viz. definice matice lineárního zobrazení (z [LA1](https://kam.mff.cuni.cz/~fiala/LA1/622-matice.pdf)):
+
+![alt text](image-185.png)
+
+Takže:
 
 $[f]_{B,B} = \begin{pmatrix}
 \vert & \vert \\
 [f(\mathbf{b}_1)]_B & [f(\mathbf{b}_2)]_B \\
 \vert & \vert
 \end{pmatrix}$
+- že jo ty $\mathbf{b}_1, \mathbf{b}_2 \in B$ jsou implicitně vyjádřeny vůči standardní bázi.
+- aplikujeme na ně zobrazení $f$
+- potom je vyjádříme jako koeficienty lin. kombinace pomocí vektorů $B$ = to je to $[\ ]_B$
+- když pak provádíme maticový součin této matice s vektorem, který jsme taky vyjádřili jako koeficienty lineární kombinace TODO: doplnit
 
-(recap z LA1): **Vektor souřadnic**
+- **forward ref:** O této matici toho bude víc v videu "Podobné matice, diagonalizace" (nadpis "Proč matice $[f]_{B,B}$, je-li její báze $B$ tvořena pouze vlastními vektory, je diagonální a má na diagonále vlastní čísla")
+	- pokud ty vektory báze budou vlastní vektory, tak matice v příslušných sloupcích bude na diagonále obsahovat vlastní čísla
+
+(recap z LA1): **Vektor souřadnic ($[\ ]_B$)**
 
 Definice: Nechť
 
@@ -1165,6 +1176,13 @@ $$[\mathbf{v}]_B = (a_1, \dots, a_n)^T \in T^n, \text{ kde } \mathbf{v} = \sum_{
 - **tedy celý ten výpočet je zde o tom, že máme vektor, který míří na nějaké místo, a chceme vědět, jaký vektor bude mířit na stejné místo, změníme-li bázi prostoru**
 
 [zdroj LA1, Lineární nezávislost, báze, slide 6/14](https://kam.mff.cuni.cz/~fiala/LA1/532-baze.pdf)
+
+
+(Btw, **výpočet vektoru souřadnic je lineární zobrazení**:
+
+![alt text](image-187.png)
+[zdroj "Lineární zobrazení, afinní prostory"](https://kam.mff.cuni.cz/~fiala/LA1/612-zobrazeni.pdf), slide 5/14
+)
 
 Pro tohle použití, co teď děláme s těmi zobrazeními jsou standardní báze $E$ a báze $B$ jenom různé báze stejného vektorového prostoru $V$, a vektory co cpeme dovnitř $[ \ \ ]$ jsou vyjádřeny implicitně vzhledem ke standardní bázi.
 
@@ -1266,6 +1284,10 @@ Z https://kam.mff.cuni.cz/~fiala/LA1/622-matice.pdf:
 
 (
 ![alt text](image-121.png)
+- VTIPNÝ JE, ŽE DŮKAZ **Proč 2. způsob počítá to samé co první** JE HNED POD TÍM: ![alt text](image-186.png)
+
+TO JEST POD TÍM DO NADPISU **Zpátky k LA2:** JE TO SPÍŠ JEN RAMBLING
+
 nebo
 ![alt text](image-119.png)
 
@@ -1992,13 +2014,31 @@ Protože algebraická násobnost je násobnost kořene v charakteristickém poly
 ![alt text](image-182.png)
 > Má $[f]_{E,E} = \begin{pmatrix} 0 & 2 \\ -1 & 3 \end{pmatrix}$ nějaký jednodušší popis?
 
-> Tato vlastní čísla a vlastní vektory nám o tomto zobrazení něco říkají. Ve skutečnosti na to samé zobrazení se můžeme dívat tak, že podél osy procházející bodem $\mathbf v_1$ je toto lin. zobrazení fixovováno (=žejo vl. číslo $\lambda_1 = 1$). Zatímco podél přímky procházející $\mathbf v_2$ odpovídá toto lin. zobrazení 2násobnému natažení.
+> Tato vlastní čísla a vlastní vektory nám o tomto zobrazení něco říkají. Ve skutečnosti na to samé zobrazení se můžeme dívat tak, že podél osy procházející bodem $\mathbf v_1$ je toto lin. zobrazení fixováno (=žejo vl. číslo $\lambda_1 = 1$). Zatímco podél přímky procházející $\mathbf v_2$ odpovídá toto lin. zobrazení 2násobnému natažení.
 
 > Pokud bychom si za bázi vzali právě vektory $B =  \set{\mathbf v_1, \mathbf v_2}$, tak:
 ![alt text](image-183.png)
 
 > Situace, kterou jsme si popsali v ukázce, tzn. co se stane, když dosadíme vlastní vektory do báze prostoru, vůči kterému vyjadřujeme matici lineárního zobrazení, ve skutečnosti platí i obecně:
 
-### Proč diagonální matice má na diagonále vlastní čísla
+### Proč matice $[f]_{B,B}$, je-li její báze $B$ tvořena pouze vlastními vektory, je diagonální a má na diagonále vlastní čísla
 ![alt text](image-184.png)
 
+Definice matice lineárního zobrazení:
+$[f]_{B,B} = \begin{pmatrix}
+\vert & \vert \\
+[f(\mathbf{b}_1)]_B & [f(\mathbf{b}_2)]_B \\
+\vert & \vert
+\end{pmatrix}$, kde $\mathbf{b}_1, \mathbf{b}_2 \in B$ 
+
+A v pozorování se říká, co když nějaký $\mathbf{b}_i$ je vlastní vektor.
+
+V důkazu použito:
+1. $f(\mathbf v) = \lambda \mathbf v$
+2. výpočet vektoru souřadnic je lineární zobrazení, tj. linearita vůči skalárnímu násobku
+	- (viz LA1 ["Lineární zobrazení, afinní prostory"](https://kam.mff.cuni.cz/~fiala/LA1/612-zobrazeni.pdf), slide 5/14![alt text](image-187.png))
+3. $\lambda [\mathbf v]_B = \lambda \mathbf e_i$ je vidět z příkladu:
+
+	$[\lambda_1 \mathbf v_1]_B = (a_1, a_2)^T$ kde $\lambda_1 \mathbf v_1 = a_1 \mathbf v_1 + a_2 \mathbf b_2$
+
+	$a_1 = \lambda_1$ a $a_2 = 0$ (určeno jednoznačně, protože $\mathbf v_1, \mathbf b_2 \in B$, jsou tedy lineárně nezávislé)
