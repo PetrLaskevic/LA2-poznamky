@@ -2041,4 +2041,37 @@ V důkazu použito:
 
 	$[\lambda_1 \mathbf v_1]_B = (a_1, a_2)^T$ kde $\lambda_1 \mathbf v_1 = a_1 \mathbf v_1 + a_2 \mathbf b_2$
 
-	$a_1 = \lambda_1$ a $a_2 = 0$ (určeno jednoznačně, protože $\mathbf v_1, \mathbf b_2 \in B$, jsou tedy lineárně nezávislé)
+	$a_1 = \lambda_1$ a $a_2 = 0$ (určeno jednoznačně, protože $\mathbf v_1, \mathbf b_2$ jsou v bázi $B$, jsou tedy lineárně nezávislé)
+
+	= vždy vybereme koeficient u příslušeného vlastního vektoru z báze $1$ a u ostatních $0$.
+
+
+### Diagonalizace
+
+![alt text](image-188.png)
+
+Důkaz:
+
+1. prostor $T^n$ má bázi sestávající se z vlastních vektorů $A$. $\implies$ matice $A \in T^{n \times n}$
+
+> z vlastních vektorů matice $A$ sestavíme matici $R$, a protože jich bude dostatek, tato matice bude nutně regulární, a potom součin $AR$ odpovídá součinu $RD$
+
+> Čili matice $A$ a $D$ si navzájem budou podobné.
+
+Rozeberme si to:
+
+Prostor $T^n$ má bázi z $n$ vektorů. Jsou to vlastní vektory, které jsou nezávislé. Takže máme $n$ vlastních vektorů, které můžeme dát vedle sebe do sloupců, a tím stvořit regulární $R \in T^{n \times n}$. Kdyby jich dostatek nebyl, tak by matice nebyla čtvercová, nebo bychom museli vektory opakovat, čímž by pak byla singulární.
+
+> součin $AR$ odpovídá součinu $RD$
+
+To vychází z obrázku **(potřeba nezapomenout, že sloupce $R$ jsou vlastní vektory)**:
+
+Sloupce matice $R$ jsou tvořeny vlastními vektory matice $A$. Pojďme se opřít o to, že to jsou vlastní vektory, a tedy pro každý z nich platí vztah $A \mathbf v_i = \lambda_i \mathbf v_i$
+
+![alt text](image-189.png)
+- na levé části obrázku provádíme $n$ krát, pro každý sloupec, součin $A \mathbf v$
+- jelikož je $\mathbf v$ vlastní vektor matice $A$, tak $A \mathbf v = \lambda \mathbf v$
+
+Pravá část
+
+
