@@ -2145,4 +2145,20 @@ Důkaz:
 
 2. matice $A \in T^{n \times n}$ je podobná diagonální matici $\implies$ prostor $T^n$ má bázi sestávající se z vlastních vektorů $A$.
 
-> Pokud je matice $A$ podobná diagonální matici $D$, můžeme si tento součin přepsat do $AR = RD$, a vidíme, že sloupce této matice $R$ je opravdu tvoří bázi prostoru $T^n$ a všechny jsou vlastními vektory matice $A$
+	> Pokud je matice $A$ podobná diagonální matici $D$, můžeme si tento součin přepsat do $AR = RD$, a vidíme, že sloupce této matice $R$ je opravdu tvoří bázi prostoru $T^n$ a všechny jsou vlastními vektory matice $A$
+
+	Rozeberme si to:
+
+	Podívejme se na $AR = RD$ znovu po sloupcích (viz ten obrázek). V tuto chvíli o sloupcech matice $R$ nic nevíme, kromě toho, že jsou lineárně nezávislé, protože matice $R$ je regulární. Označme si ty sloupce $\mathbf v_1, \dots, \mathbf v_n$.
+
+	$A \cdot R = \begin{pmatrix} | & | & & | \\ A \mathbf v_1 & A \mathbf v_2 & \dots & A \mathbf v_n \\ | & | & & | \end{pmatrix}$
+
+	$R \cdot D = \begin{pmatrix} | & | & & | \\ d_{1,1} \mathbf v_1 & d_{2,2} \mathbf v_2 & \dots & d_{n,n} \mathbf v_n \\ | & | & & | \end{pmatrix}$
+
+
+	$AR = RD$
+
+	$\begin{pmatrix} | & | & & | \\ A \mathbf v_1 & A \mathbf v_2 & \dots & A \mathbf v_n \\ | & | & & | \end{pmatrix} = \begin{pmatrix} | & | & & | \\ d_{1,1} \mathbf v_1 & d_{2,2} \mathbf v_2 & \dots & d_{n,n} \mathbf v_n \\ | & | & & | \end{pmatrix}$
+
+	$A \mathbf v_i =  d_{i,i} \mathbf v_i$ je definice toho, že $\mathbf v_i$ je vlastní vektor.
+	Takže všechny naše vektory $\mathbf v_1, \dots, \mathbf v_n$ jsou vlastní vektory, a, jak už víme z regularity $R$ jsou lineárně nezávislé. Máme $n$ lineárně nezávislých vektorů = všechno co potřebujeme pro sestavení báze prostoru $T^n$.
