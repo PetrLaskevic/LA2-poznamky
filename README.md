@@ -2062,7 +2062,13 @@ Důkaz:
 
 	Prostor $T^n$ má bázi z $n$ vektorů. Jsou to vlastní vektory, které jsou nezávislé. Takže máme $n$ vlastních vektorů, které můžeme dát vedle sebe do sloupců, a tím stvořit regulární $R \in T^{n \times n}$. Kdyby jich dostatek nebyl, tak by matice nebyla čtvercová, nebo bychom museli vektory opakovat, čímž by pak byla singulární.
 
+	To, že takto sestrojíme $R$ odpovídá matici přechodu $[id]_{C, E}$, kde $C$ je báze vlastních vektorů, a $E$ je standardní báze. (viz definice matice lin. zobrazení: ![alt text](image-185.png)).
+
 	> součin $AR$ odpovídá součinu $RD$
+
+	$\underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot \underbrace{\mathbf R}_{\large [id]_{C,E}} = \underbrace{\mathbf R}_{\large [id]_{C,E}} \cdot \underbrace{\mathbf D}_{\large [f]_{C,C}}$
+
+	kde $C$ je báze vlastních vektorů
 
 	To vychází z obrázku **(potřeba nezapomenout, že sloupce $R$ jsou vlastní vektory)**:
 
@@ -2070,17 +2076,72 @@ Důkaz:
 
 	![alt text](image-189.png)
 	**Levá část obrázku**
-	- provádíme $n$ krát, pro každý sloupec, součin $A \mathbf v$
-	- jelikož je $\mathbf v$ vlastní vektor matice $A$, tak $A \mathbf v = \lambda \mathbf v$
+	- provádíme pro každý sloupec součin $A \mathbf v_i$
+	- jelikož je $\mathbf v_i$ vlastní vektor matice $A$, tak $A \mathbf v_i = \lambda \mathbf v_i$
 
 	**Pravá část**
-	- Násobíme $R \cdot D$, a chceme, aby výsledná matice dopadla tak, že v každém sloupci bude výsledek $\lambda \mathbf v$
-		- tomu můžeme vyhovět tak, že matice $D$ bude mít na hlavní diagonále vždy $\lambda$ a jinde nuly
+	- Násobíme $R \cdot D$, a chceme, aby výsledná matice dopadla tak, že v $i$-tém sloupci bude výsledek $\lambda_i \mathbf v_i$
+		- tomu můžeme vyhovět tak, že matice $D$ bude mít na hlavní diagonále vždy $\lambda_i$ a jinde nuly
 
 	Skutečně tedy jsme našli $D$, která vyhoví $AR = RD$.
 	Tvar $AR = RD$ můžeme převést na tvar, kterým se běžně definuje "$A$ je podobná $D$" vynásobením zprava $R^{-1}$:
 
 	![alt text](image-190.png)
+
+	**JINÝMI SLOVY:**
+
+	Chceme zjistit, jak vypadá matice zobrazení vůči bázi 
+	$C = \{\mathbf v_1, \dots, \mathbf v_n\}$. Označme ji 
+	$D = [f]_{C,C}$.
+	Podle definice matice zobrazení platí, že její sloupce jsou souřadnice obrazů bázových vektorů vyjádřené v téže bázi.
+	Vezměme první bázový vektor 
+	$\mathbf v_1$:
+
+	Obraz: 
+	$f(\mathbf v_1) = A \mathbf v_1 = \lambda_1 \mathbf v_1$.
+	Souřadnice obrazu v bázi 
+	$C$: Jak zapíšeme 
+	$\lambda_1 \mathbf v_1$ pomocí vektorů 
+	$\mathbf v_1, \mathbf v_2, \dots, \mathbf v_n$?
+	$$\lambda_1 \mathbf v_1 = \lambda_1 \cdot \mathbf v_1 + 0 \cdot \mathbf v_2 + \dots + 0 \cdot \mathbf v_n$$
+	První sloupec 
+	$D$: Jsou to právě ty koeficienty: 
+	$\begin{pmatrix} \lambda_1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$.
+
+	Když to samé uděláme pro 
+	$i$-tý vektor 
+	$v_i$:
+
+	Obraz: 
+	$f(v_i) = \lambda_i v_i$.
+	Souřadnice: 
+	$\lambda_i v_i = 0 \cdot v_1 + \dots + \mathbf{\lambda_i} \cdot v_i + \dots + 0 \cdot v_n$.
+
+	$i$-tý sloupec 
+	$D$: Bude mít nuly všude, kromě 
+	$i$-tého řádku, kde bude 
+	$\lambda_i$.
+
+	$D = \begin{pmatrix} \lambda_1 & 0 & \dots & 0 \\ 0 & \lambda_2 & \dots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \dots & \lambda_n \end{pmatrix}$
+
+	**A to je přesně to naše předchozí pozorování**:
+
+	Obsahuje-li báze 
+	$B$ vlastní vektor 
+	$\mathbf{v}$ zobrazení 
+	$f$, pak sloupec matice 
+	$[f]_{B,B}$ odpovídající 
+	$\mathbf{v}$ má 
+	$\lambda$ na diagonále a jinak 
+	$0$.
+
+	Důkaz: 
+	$[f(\mathbf{v})]_B = [\lambda \mathbf{v}]_B = \lambda [\mathbf{v}]_B = \lambda \mathbf{e}_i$ kde 
+	$i$ je index 
+	$\mathbf{v}$ v bázi $B$.
+
+	(toto:)
+	![Nadpis: Proč matice $[f]_{B,B}$, je-li její báze $B$ tvořena pouze vlastními vektory, je diagonální a má na diagonále vlastní čísla](image-184.png)
 
 2. matice $A \in T^{n \times n}$ je podobná diagonální matici $\implies$ prostor $T^n$ má bázi sestávající se z vlastních vektorů $A$.
 
