@@ -2162,3 +2162,11 @@ Důkaz:
 
 	$A \mathbf v_i =  d_{i,i} \mathbf v_i$ je definice toho, že $\mathbf v_i$ je vlastní vektor.
 	Takže všechny naše vektory $\mathbf v_1, \dots, \mathbf v_n$ jsou vlastní vektory, a, jak už víme z regularity $R$ jsou lineárně nezávislé. Máme $n$ lineárně nezávislých vektorů = všechno co potřebujeme pro sestavení báze prostoru $T^n$.
+
+### Diagonalizovatelná matice
+![alt text](image-191.png)
+
+
+A samotný ten nadpis **Diagonalizace** tam vysvětlený není, ale I assume, že to JE to nalezení matice $D$ s vlastními čísly matice $A$ na diagonále. To že taková matice dává smysl, platí právě když:
+
+$\exists \text{ regulární } R: AR = RD$
