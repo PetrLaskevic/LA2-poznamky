@@ -473,3 +473,72 @@ $\exists \text{ regulární } R: AR = RD$)
 > - a nebo ani vlastních vektorů
 
 > Příště si ukážeme, že některé matice však jde diagonalizovat vždy.
+
+## Diagonalizovatelnost hermitovských matic (16:29, 58M)
+
+> Rád bych vám ukázal , že existuje rozsáhlá třída matic, které lze vždy diagonalizovat. Konkrétně půjde o **realné symetrické matice** a **komplexní hermitovské matice**.
+
+> Nejprve si tyto matice zadefinujeme, a pak se vás pokusím přesvědčit, že je opravdu lze vždy diagonalizovat.
+
+> V této lekci budeme pracovat s komplexními vektory a maticemi, a proto si nejprve připomeňme:
+
+### Komplexně sdružené číslo
+
+![alt text](image-202.png)
+
+### Hermitovská transpozice
+
+![alt text](image-203.png)
+
+### Hermitovská matice
+![alt text](image-204.png)
+
+### Unitární matice
+![alt text](image-205.png)
+
+![alt text](image-206.png)
+Analogie unitárních matic v realném případě, jsou **ortogonální matice** (použijeme obyč. transpozici místo Hermitovské transpozice)
+
+### Vlastnosti
+![alt text](image-207.png)
+![alt text](image-208.png)
+- analogie s obyč. transpozicí
+
+![alt text](image-209.png)
+viz. def unitární matice: $A^{-1} = A^H$
+
+![alt text](image-210.png)
+
+![alt text](image-211.png)
+- to platí z definice unitární matice:  $A^{-1} = A^H$
+
+- Analogicky s obyč. transpozicí, kterou si můžeme představit tak, že transponujeme jednotlivé řádky (=co bylo napsané do sloupce napíšeme do řádku):
+$$A^H = \begin{pmatrix}
+\text{---} & \mathbf v_1^H & \text{---} \\
+& \vdots  &\\
+\text{---} & \mathbf v_n^H &\text{---} \\
+\end{pmatrix}$$
+
+> V naší lekci využijeme fakt:
+>
+> ![alt text](image-212.png)
+>
+> lze doplnit na unitární matici tak, že tento vektor bude tvořit její první sloupec.
+>
+> To si dokážeme o několik lekcí později.
+
+> Hlavním cílem této lekce je ukázat, že každá Hermitovská matice má všechna vlastní čísla realná, a dokonce ji lze diagonalizovat pomocí unitární matice. To znamená lze nalézt unitární matici $R$ takovou, že součin $R^{-1}AR$ je diagonální.
+
+(že jo matice $A$ je podobná $D$ $\iff$ $A = RDR^{-1}$, kde to $A = RDR^{-1}$ můžeme upravit
+
+$$
+\begin{align*}
+A &= RDR^{-1} \quad / \cdot R \text{ zprava} \\
+AR &= RDR^{-1}R \quad / \cdot R^{-1} \text{ zleva}\\
+R^{-1}AR &= R^{-1}RD \\
+R^{-1}AR &= D
+\end{align*}
+$$
+)
+### Diagonalizace Hermitovských matic
+![alt text](image-213.png)

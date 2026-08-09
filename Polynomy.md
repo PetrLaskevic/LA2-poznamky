@@ -163,6 +163,8 @@ Tedy dělíme to $r(x)$, výsledkem polynom nižšího stupně, do doby, než bu
 ### Algebraicky uzavřené těleso
 ![alt text](image-90.png)
 
+Př. těleso komplexních čísel ($\mathbb{C}$) je algebraicky uzavřené.
+
 > Ve zbývající části této lekce se budeme zabývat otázkou jak lze polynom reprezentovat
 
 ### Reprezentace polynomů stupně $n$
