@@ -283,8 +283,7 @@ Důkaz:
 	Obraz: 
 	$f(\mathbf v_1) = A \mathbf v_1 = \lambda_1 \mathbf v_1$.
 	Souřadnice obrazu v bázi 
-	$C$: Jak zapíšeme 
-	$\lambda_1 \mathbf v_1$ pomocí vektorů 
+	$C$: Jak zapíšeme $\lambda_1 \mathbf v_1$ pomocí vektorů 
 	$\mathbf v_1, \mathbf v_2, \dots, \mathbf v_n$?
 	$$\lambda_1 \mathbf v_1 = \lambda_1 \cdot \mathbf v_1 + 0 \cdot \mathbf v_2 + \dots + 0 \cdot \mathbf v_n$$
 	První sloupec 
@@ -338,7 +337,6 @@ Důkaz:
 
 	$R \cdot D = \begin{pmatrix} | & | & & | \\ d_{1,1} \mathbf v_1 & d_{2,2} \mathbf v_2 & \dots & d_{n,n} \mathbf v_n \\ | & | & & | \end{pmatrix}$
 
-
 	$AR = RD$
 
 	$\begin{pmatrix} | & | & & | \\ A \mathbf v_1 & A \mathbf v_2 & \dots & A \mathbf v_n \\ | & | & & | \end{pmatrix} = \begin{pmatrix} | & | & & | \\ d_{1,1} \mathbf v_1 & d_{2,2} \mathbf v_2 & \dots & d_{n,n} \mathbf v_n \\ | & | & & | \end{pmatrix}$
@@ -348,7 +346,7 @@ Důkaz:
 
 ### Diagonalizovatelná matice
 ![alt text](image-191.png)
-#### Kdy ja matice diagonalizovatelná
+#### Kdy je  matice diagonalizovatelná
 > Podmínka z pozorování je splněna př. v případě, že máme tolik různých vlastních čísel, kolik je řád dané matice. Potom totiž platí, že jim odpovídající vlastní vektory jsou navzájem lineárně nezávislé, a lze z nich sestavit hledanou bázi.
 >
 > ![alt text](image-197.png)
@@ -359,7 +357,11 @@ Důkaz:
 >
 > ![alt text](image-198.png)
 
-Ten rozklad na lineární faktory (závorky typu $(x - \lambda)$) je nezbytný, protože vlastní čísla musí existovat v daném číselném oboru. (**=aby jich bylo dost**)
+Ten rozklad na lineární faktory (závorky typu $(x - \lambda)$) je nezbytný, protože vlastní čísla musí existovat v daném číselném oboru. (**=aby jich bylo dost**, tj. $r_1 + \dots + r_k = n$) 
+
+<details>
+<summary>Vysvětlení proč</summary>
+
  - a že jo: ![alt text](image-86.png)
 	- a právě když je kořenem toho char. polynomu, tak je to vlastní číslo
 
@@ -383,10 +385,76 @@ Ten rozklad na lineární faktory (závorky typu $(x - \lambda)$) je nezbytný, 
 	$\lambda_2 = -i$.
 	V tomto komplexním světě je tato matice rotace diagonalizovatelná!
 	</details>
+</details>
+<br>
+
+##### Implikace $\forall i: \dim(\ker(A - \lambda_iI)) \implies A \text{ je diagonalizovatelná}$
 
 Takže 
-$p_{\mathbf{A}}(x) = \prod(x - \lambda_i)^{r_i}$ znamená máme $n$ vlastních čísel.
+$p_{\mathbf{A}}(x) = \prod(x - \lambda_i)^{r_i}$ znamená  $r_1 + \dots + r_k = n$ (=součet algebraických násobností vl. čísel je $n$).
 
+$A$ je diagonalizovatelná $\iff$ prostor $T^n$ má bázi z vlastních vektorů $A$
+
+Tu bázi má právě tehdy, když má $n$ nezávislých vl. vektorů.
+
+Zbývá ukázat, že $$\forall i: \text{geometrická násobnost vl. č. } \lambda_i = \text{algebraická násobnost vl. č.} \lambda_i$$ ukazuje stejnou věc.
+
+Měli jsme už větu, že pro každé vl. č. je jeho geometrická násobnost $\le$ jeho algebraické násobnosti.
+
+Jinými slovy:
+
+**algebraická násobnost** = kolikrát se dané číslo objeví jako kořen char. polynomu. **Je to horní limit, kolik vl. vektorů by toto číslo mohlo dodat.**
+
+**geometrická násobnost** = kolik nezávislých vlastních vektorů *skutečně* dokážeme k tomuto číslu nalézt.
+
+A když stanovíme podmínku jako $$\forall i: r_i = \text{geometrická násobnost vl. č. } \lambda_i$$, a $r_1 + \dots + r_k = n$, tak skutečně $\sum \text{geom. nás.} = \text{počet lin. nezávislých vl. vektorů} = n$
+
+A když je LN vlastních vektorů $n$, tak z nich dokážeme zcela určitě sestavi bázi prostoru $T^n$, tedy $A$ je určitě diagonalizovatelná.
+
+____
+
+##### Implikace $A \text{ je diagonalizovatelná} \implies \forall i: \dim(\ker(A - \lambda_iI))$
+
+Ta je o něco jednodušší.
+
+$A$ je diagonalizovatelná $\iff$ prostor $T^n$ má bázi z vlastních vektorů $A$
+
+Tedy máme $n$ lin. nezávislých vlastních vektorů. Ty jsou rozdělěny mezi jednotlivá vlastní čísla. Každé vlastní číslo má tolik lin. nezávislých vektorů, kolik je jeho geometrická násobnost.
+
+Víme, že pro každé vl. č. je jeho algebraická násobnost $\ge$ jeho geometrické násobnosti.
+
+Též víme, že v matici nemůže být více než $n$ vlastních čísel = protože char. polynom stupně $n$ nemá více než $n$ kořenů, a víme, že $r_1 + \dots + r_k = n$ = tady předpokládáme, existenci toho rozkladu na závorky = ten předpoklad $p_{\mathbf{A}}(x) = \prod(x - \lambda_i)^{r_i}$.
+
+Označíme-li geometrickou násobnost jako $g_i$, a algebraickou násobnost jako $r_i$ tak:
+
+$$\sum_{i=1}^k g_i = n$$
+
+$$\sum_{i=1}^k r_i = n$$
+
+A z té věty víme:
+
+$$\forall i: g_i \le r_i$$
+
+Všechny 3 věci lze splnit právě když $\forall i: g_i = r_i$ (protože jak víme, tak jak všechna $g_i$, tak všechna $r_i$ jsou kladná čísla
+- $r_i \ge 1$, protože 
+$\lambda_i$ je kořen (takže tam ta závorka aspoň jednou je). 
+- $g_i \ge 1$, protože k vlastnímu číslu 
+$\lambda_i$ z definice musí existovat alespoň jeden nenulový vlastní vektor.
+)
+
+**Jinými slovy:**
+
+Kdyby existovalo alespoň jedno vlastní číslo 
+$\lambda_j$, pro které by platila ostrá nerovnost 
+$g_j < r_j$ (geometrická by byla menší než algebraická), pak by se to projevilo v celkovém součtu:
+
+$$\underbrace{\sum g_i}_{n} < \underbrace{\sum r_i}_{n}$$
+
+
+Dostali bychom spor: 
+$n < n$, což není možné.
+
+____
 
 > Na závěr si ukážeme, že mocniny diagonalizovatelných matic se snadno spočítají z mocnin příslušných diagonálních matic.
 
