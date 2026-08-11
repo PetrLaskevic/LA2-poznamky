@@ -519,11 +519,11 @@ $$A^H = \begin{pmatrix}
 \text{---} & \mathbf v_n^H &\text{---} \\
 \end{pmatrix}$$
 
-> V naší lekci využijeme fakt:
+> V naší lekci využijeme Fakt:
 >
 > ![alt text](image-212.png)
 >
-> lze doplnit na unitární matici tak, že tento vektor bude tvořit její první sloupec.
+> každý $\mathbf v \in C^n$, t.ž, $\mathbf v^H \mathbf v = 1$ lze doplnit na unitární matici tak, že tento vektor bude tvořit její první sloupec.
 >
 > To si dokážeme o několik lekcí později.
 
@@ -543,7 +543,14 @@ $$
 ### Diagonalizace Hermitovských matic
 ![alt text](image-213.png)
 
+<details>
+
+<summary>
+Vysvětlení ukázky
+
 ![alt text](image-214.png)
+
+</summary>
 
 > inverzní matice k této matici $R$ je rovna hermitovské transpozici $R$ (=$R$ je unitární), a dokonce v tomto konkrétním případě dostáváme tutéž matici
 
@@ -556,11 +563,16 @@ $$\underbrace{\mathbf D}_{\large [f]_{B,B}} =
 \underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot 
 \underbrace{\mathbf R}_{\large [id]_{B,E}}$$
 
-A viz ![](image-188.png)
+A viz
+
+ ![](image-188.png)
+
 (právě když v tom prostoru dokážeme nalézt takovou bázi)
 => ta báze je $B$
 
-A viz ![](image-184.png)
+A viz 
+
+![](image-184.png)
 
 $R$ je $[id]_{B,E}$, proto "je složena z vhodných vlastních vektorů příslušných vlastním číslům", tj:
 
@@ -592,3 +604,177 @@ analogicky pro druhý vektor.
 Tak tedy 
 
 ![alt text](image-215.png)
+
+![alt text](image-216.png)
+- a v obráceném pořadí tedy vezmeme i vlastní vektory (= tedy prohodíme sloupce)
+
+</details>
+
+#### Důkaz
+
+!!! $A_{n-1}$ není podmatice (výřez) z té původní matice 
+$A$. - je to nová (v důkazu odvodíme, že hermitovská) matice
+
+Závěr, ke kterému se chceme dostat:
+
+Protože matice 
+$D_n$ je diagonální a podobná matici 
+$A_n$ (přes unitární transformaci 
+$R_n$), obsahuje na diagonále právě všechna vlastní čísla matice 
+$A_n$. Protože 
+$\lambda$ je reálné a všechna čísla v 
+$D_{n-1}$ jsou reálná, jsou všechna vlastní čísla matice 
+$A_n$ reálná.
+
+**Indukční předpoklad:** Předpokládejme, že pro **každou hermitovskou matici** o rozměru 
+$(n-1) \times (n-1)$ už víme, že:
+- její **vlastní čísla jsou reálná**
+- a že je **diagonalizovatelná** (=je podobná diagonální matici) pomocí **unitární** matice $R$.
+	- tj. existuje unitární $R$ taková, že $R^{-1} A R$ je diagonální
+
+**Indukční krok:** ukázat, že pro hermitovskou matici velikosti $n \times n$ platí:
+- je diagonalizovatelná pomocí unitární matice, to je tato cílová rovinka:
+
+	![alt text](image-221.png)
+
+- a že má vlastní čísla realná:
+	to je vidět z:
+
+	![alt text](image-222.png)
+	- $\lambda$ je realné
+		- to jsme odvodili od
+			
+			![alt text](image-225.png),
+			
+			což je hermitovská matice = platí pro ni, že čísla na hlavní diagonále jsou realná
+
+	- $D_{n-1}$ je hermitovská = dle indukčního předpokladu "pro **každou hermitovskou matici** o rozměru 
+$(n-1) \times (n-1)$ už víme, že její **vlastní čísla jsou reálná**"
+		- proč je hermitovská:
+
+			![alt text](image-223.png)
+			- **důležité:** $A_{n-1}$ je hermitovská
+				- tedy i součin s unitární maticí $R^{-1}_{n-1}$ a unitární maticí $R_{n-1}$ je hermitovský:
+					tj. chceme ukázat:
+
+					matice $C$ je hermitovská, tj. $C = C^H$, kde $C = R^{-1}_{n-1} A_{n-1} R_{n-1}$
+
+					pro přehlednost odeberu dolní indexy:
+
+					$(R^{-1}AR)^H$
+
+					1.) použiju $R^{-1} = R^H$ (matice $R$ je unitární):
+
+					$(R^HAR)^H$
+
+					2.) $(ABC)^H = C^H B^H A^H$:
+
+					$R^H A (R^H)^H = R^H A R$
+
+					3.) $R^{-1} = R^H$
+
+					$R^{-1} A R$, což je to $C$
+
+					(přesně tento krok udělal v části ![alt text](image-224.png) 
+					
+					($P_n$ byla unitární))
+
+Tj.:
+
+1. **Báze indukce** (
+$n=1$): Ukážeme, že věta platí pro nejmenší možný rozměr (matice 
+$1 \times 1$ je jen jedno číslo, a pokud je hermitovská, je to reálné číslo).
+2. **Indukční předpoklad:** Předpokládáme, že věta platí pro libovolnou matici o rozměru 
+$(n-1) \times (n-1)$. Tedy předpokládáme, že každá taková hermitovská matice má reálná vlastní čísla a je unitárně diagonalizovatelná.
+3. **Indukční krok** (
+$n-1 \to n$): Pomocí tohoto předpokladu dokážeme, že věta musí platit i pro matici o rozměr větší, tedy 
+$n \times n$.
+
+
+![alt text](image-226.png)
+
+$A = (a_{11})$
+
+Matice řádu $1$ je diagonální a za $R$ můžeme vzít jednotkovou matici řádu $1$
+
+$AR = RD$ splněno
+
+$(a_{11})(1) = (1)(a_{11})$
+
+A vlastní číslo $A$ je přímo to jediné číslo v matici (že jo $A \mathbf v = \lambda \mathbf v$), které je zároveň na hlavní diagonále, a proto je realné.
+
+> protože jde o komplexní matici, víme, že těleso (=$\mathbb{C}$) je algebraicky uzavřené, tzn. charakteristický polynom má alespoň $1$ kořen (protože má stupeň $\ge 1$, a tzn., že komplexní matice má alespoň $1$ vlastní číslo $\lambda$, kterému odpovídá nějaký vlastní vektor $\mathbf v$)
+>
+> ![alt text](image-227.png)
+
+![alt text](image-228.png)
+- ![alt text](image-212.png)
+
+![alt text](image-229.png)
+1. $(ABC)^H = C^H B^H A^H$
+2. $A_n^H$ je hermitovská (=předpoklad)
+
+![alt text](image-230.png)
+- unitární matice $P_n$ má $\mathbf v$ jako 1. sloupec.
+
+![alt text](image-231.png)
+- unitární matice splňuje:
+	![](image-211.png)
+
+- A první řádek $P_n^H$ právě bude $\mathbf v^H$, takže s tím 1. sloupcem $\mathbf v$ to dá $1$, a zbytek sloupců s 1. sloupcem dá $0$
+
+![alt text](image-232.png)
+- $\lambda \in \reals$ protože je to prvek na hl. diagonále (hl. diagonála u hermitovských matic vždy realná)
+- zbytek 1. řádku nuly, protože symetrické s prvním sloupcem, jehož zbytek jsou $0$, (přesně je zbytek 1. řádku $0^H$, ale $0^T$ dá stejný výsledek)
+
+> Proto ten součin ve skutečnosti vypadá tak, že jde o blokovou matici:
+>
+> ![alt text](image-233.png)
+- celá tato matice je hermitovská, tak i její blok, který si označíme $A_{n-1}$, je hermitovský
+	- znovu zdůrazňuji, $A_{n-1}$ NEVZNIKÁ z $A_n$ něčím jako odseknutím sloupce a řádku - jak $A_{n-1}$ vzniká se odvodí později
+		- aka $A_{m}$ je prostě označení hermitovské matice řádu $m$
+
+![alt text](image-234.png)
+
+Konkrétně dle této jeho části:
+
+Předpokládejme, že pro **každou hermitovskou matici** o rozměru 
+$(n-1) \times (n-1)$ už víme, že je **diagonalizovatelná** (=je podobná diagonální matici) pomocí **unitární** matice $R_{n-1}$.
+- tj. **existuje** unitární $R_{n-1}$ taková, že $R_{n-1}^{-1} A_{n-1} R_{n-1}$ je diagonální
+
+![alt text](image-235.png)
+
+- $R_{n-1}$ je unitární z indukčního předpokladu
+	- dopněním na matici řádu $n$ přidáním nového sloupce a řádku tímto způsobem pořád bude unitární
+- $P_n$ je unitární
+
+> Zbývá už jen ověřit, že takto sestavená $R_n$ je skutečně ta, kterou jsme hledali:
+>
+> ![alt text](image-236.png)
+- to je indukční krok
+- dá se to vyhodnotit po blocích
+
+> Tím je důkaz obou částí věty dokončen.
+
+> Analogická verze této věty platí i pro realný případ. 
+>
+> Tzn., že každá realná symetrická  matice má všechna vl. č. realná a lze ji diagonalizovat pomocí ortogonální matice 
+> 
+> ![alt text](image-237.png)
+
+> Důkaz se provede úplně stejně, akorát ve $2$ místech je potřeba zařídit, že objekty, se kterými budeme pracovat, budou realné a ne komplexní.
+>
+> Druhou ingrediencí je konstrukce ortogonální matice z vektoru $\mathbf v$, který splňuje $\mathbf v^T \mathbf v = 1$. I tento krok lze provést tak, že dokonce získáme ortogonální matici (= takovou unitární matici, že má všechny složky realné)
+>
+> ![alt text](image-238.png)
+___
+
+> Postup, kterým byla věta dokázána, lze ilustrovat na konkrétní ukázce:
+>
+> ![alt text](image-239.png)
+
+![alt text](image-240.png)
+
+> Hermitovské matice nám mohou připadat poněkud umělé, ale budeme je potřebovat v následujících lekcích o skalárním součinu a o pozitivně definitních maticích. 
+>
+> I dnešní věta, která byla těžká a technická bude mít praktické a zajímavé důsledky.
