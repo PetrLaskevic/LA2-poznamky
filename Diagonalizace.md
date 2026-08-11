@@ -592,3 +592,33 @@ analogicky pro druhý vektor.
 Tak tedy 
 
 ![alt text](image-215.png)
+
+![alt text](image-216.png)
+- a v obráceném pořadí tedy vezmeme i vlastní vektory (= tedy prohodíme sloupce)
+
+#### Důkaz
+
+Nejdřív trochu nastíním myšlenky za tím, podrobnosti později.
+
+Dokazovat budeme indukcí zvlášť dvě věci:
+
+1. ![alt text](image-217.png)
+- to dokážeme tím, že o diagonální $D$, která je podobná $A$, dokážeme, že její vlastní čísla jsou realná (= že jo, podobné matice mají stejná vlastní čísla)
+	
+	- matici $A$ řádu $n$ si označíme $A_n$
+	- diagonální $D_n$ je podobná $A_n$, tj $D_n = P_n^{-1} A_n P_n$
+		- tj. opět: $$\underbrace{\mathbf D_n}_{\large [f]_{B,B}} = 
+\underbrace{\mathbf P_n^{-1}}_{\large [id]_{E,B}} \cdot 
+\underbrace{\mathbf A_n}_{\large [f]_{E,E}} \cdot 
+\underbrace{\mathbf P_n}_{\large [id]_{B,E}}$$
+	- akorát budeme pracovat s unitární $P_n$, proto tam místo $P_n^{-1}$ má $P_n^H$ - **to, že to můžeme udělat, že existuje unitární $P_n$, taková kde ten součin dá skutečně diagonální $D_n$ si ukážeme v druhé části**
+
+	- Podaří se nám dokázat až toto:
+		Tj. $D_n$ má v levém horním rohu vl. č. $\lambda$, a protože je na hl. diagonále, a součin $P_n^H A_n P_n$ je hermitovský, tak je realné
+		![alt text](image-218.png)
+
+		- a afaik, protože to můžeme udělat pro jakýkoli řád, tak máme vyhráno
+
+2. ![alt text](image-219.png)
+
+![alt text](image-220.png)
