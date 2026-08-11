@@ -503,12 +503,12 @@ Analogie unitárních matic v realném případě, jsou **ortogonální matice**
 ![alt text](image-207.png)
 ![alt text](image-208.png)
 - analogie s obyč. transpozicí
-
+#### $A$ unitární $\implies$ $A^H$ unitární
 ![alt text](image-209.png)
 viz. def unitární matice: $A^{-1} = A^H$
-
+#### Součin unitárních matic je unitární
 ![alt text](image-210.png)
-
+#### Unitární $A$ splňuje $A^H A=I$
 ![alt text](image-211.png)
 - to platí z definice unitární matice:  $A^{-1} = A^H$
 
@@ -542,3 +542,53 @@ $$
 )
 ### Diagonalizace Hermitovských matic
 ![alt text](image-213.png)
+
+![alt text](image-214.png)
+
+> inverzní matice k této matici $R$ je rovna hermitovské transpozici $R$ (=$R$ je unitární), a dokonce v tomto konkrétním případě dostáváme tutéž matici
+
+**Jak vznikla, co je zač $R$:**
+
+Podle věty $D$ = $R^{-1}AR$ je diagonální
+
+$$\underbrace{\mathbf D}_{\large [f]_{B,B}} = 
+\underbrace{\mathbf R^{-1}}_{\large [id]_{E,B}} \cdot 
+\underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot 
+\underbrace{\mathbf R}_{\large [id]_{B,E}}$$
+
+A viz ![](image-188.png)
+(právě když v tom prostoru dokážeme nalézt takovou bázi)
+=> ta báze je $B$
+
+A viz ![](image-184.png)
+
+$R$ je $[id]_{B,E}$, proto "je složena z vhodných vlastních vektorů příslušných vlastním číslům", tj:
+
+$$R = [id]_{B,E} = \begin{pmatrix}
+\vert & \vert \\
+[\text{id}(\mathbf{b}_1)]_E & [\text{id}(\mathbf{b}_2)]_E \\
+\vert & \vert
+\end{pmatrix}$$
+
+Tj. lineárně nezávislé vlastní vektory jsou sloupce $R$.
+
+Akorát teda ne ledajaké, ale takové, aby pro každý platilo $\mathbf b_i^H \cdot \mathbf b_i = 1$ (=aby ta $R$ byla unitární (Unitární $A$ splňuje $A^H A=I$)). Takže můžeme nalézt nějaké vlastní vektory, pak spočíst součin, a pak vydělit vhodným skalárem.
+
+Matice $R$ vznikla takto:
+
+pro $\lambda = 3$ je vl. vektor $\begin{pmatrix} 1 \\ 1-i \end{pmatrix}$
+
+pro $\lambda = 0$ je vl. vektor $\begin{pmatrix} 1+i \\ -1 \end{pmatrix}$
+
+
+$\begin{pmatrix} 1 \\ 1-i \end{pmatrix}^H = \begin{pmatrix} 1 & 1+i \end{pmatrix}$
+
+$\begin{pmatrix} 1 & 1+i \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1-i \end{pmatrix} = 3$
+
+=> chceme to vynásobit $\frac 1 3$, a protože $^H$ se vyrábí z toho pův. vektoru, tak je ho třeba vynásobit $\frac{1}{\sqrt{3}}$
+
+analogicky pro druhý vektor.
+
+Tak tedy 
+
+![alt text](image-215.png)
