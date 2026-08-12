@@ -778,3 +778,46 @@ ___
 > Hermitovské matice nám mohou připadat poněkud umělé, ale budeme je potřebovat v následujících lekcích o skalárním součinu a o pozitivně definitních maticích. 
 >
 > I dnešní věta, která byla těžká a technická bude mít praktické a zajímavé důsledky.
+
+## Jordanova normální forma
+
+> Pokoušíme-li se diagonalizovat matici nad algebraicky uzavřeným tělesem, jako jsou př. komplexní čísla, máme zaručen dostatek vlastních čísel. 
+>
+> Navzdory tomu některé matice stále diagonalizovat nejde. Ukážeme si však, že je lze převést do téměř diagonálního tvaru.
+
+> Nejprve si uvědomíme, že ne každá matice je diagonalizovatelná
+>
+>![alt text](image-241.png)
+
+> Právě matice, které mají podobnou strukturu jako matice z naší ukázky, budou hlavními stavebními kameny Jordanovy normální formy, a proto si je pojmenujeme.
+
+![alt text](image-242.png)
+- na hlavní diagonále číslo $\lambda$
+- nad tím, na horní sekundární diagonále, číslo $1$
+
+### Každá čtvercová komplexní matice je podobná blokové matici v Jordanově normální formě
+
+![alt text](image-243.png)
+- blokové matici takové, že její bloky jsou právě Jordanovy bloky
+
+> každému vlastnímu číslu odpovídá tolik Jordanových bloků, kolik je jeho geometrická násobnost
+
+![alt text](image-244.png)
+= až na permutaci Jordanových bloků na diagonále
+
+> Pokud je matice diagonalizovatelná, pak její normální forma je diagonální matice, a Jordanovy bloky zde mají velikost $1 \times 1$. Jinými slovy nikdy nenajdeme $1$ na horní sekundární diagonále.
+![alt text](image-245.png)
+
+### Zobecněné vlastní vektory
+
+![alt text](image-246.png)
+- že jo $R$ je matice přechodu od báze vlastních vektorů, vzhledem ke které je vyjádřena matice $D$, k standardní bázi
+
+$$R = [id]_{B,E} = \begin{pmatrix}
+\vert & \vert \\
+[\text{id}(\mathbf{b}_1)]_E & [\text{id}(\mathbf{b}_2)]_E \\
+\vert & \vert
+\end{pmatrix}$$
+
+$$\underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot \underbrace{\mathbf R}_{\large [id]_{B,E}} = \underbrace{\mathbf R}_{\large [id]_{B,E}} \cdot \underbrace{\mathbf D}_{\large [f]_{B,B}}$$
+
