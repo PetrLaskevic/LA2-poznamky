@@ -69,7 +69,11 @@ důkaz věty od pozice 8:30 je doplňující téma
 
 ## Moje poznámky
 
+Pro optimální vykreslení otevřít Preview ve VS Code.
+(Zobrazení `.md` na Githubu je částečně nekompatibilní)
+
 1. [Determinanty](Determinanty.md)
 2. [Polynomy](Polynomy.md)
 3. [Vlastní čísla a vlastní vektory](Vlastni_cisla_a_vlastni_vektory.md)
 4. [Diagonalizace](Diagonalizace.md)
+5. [Skalární součin](Skalární_součin.md)
