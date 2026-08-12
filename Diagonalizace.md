@@ -542,6 +542,9 @@ $$
 )
 ### Diagonalizace Hermitovských matic
 ![alt text](image-213.png)
+Tj. diagonální $D = R^{-1}AR$, tj. $A$ je podobná diagonální $D$ = matice $A$ je diagonalizovatelná.
+
+(Btw Wikipedie téhle vlastnosti říká "hermitovskou matici vždy lze unitárně diagonalizovat")
 
 <details>
 
