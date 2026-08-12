@@ -778,3 +778,133 @@ ___
 > Hermitovské matice nám mohou připadat poněkud umělé, ale budeme je potřebovat v následujících lekcích o skalárním součinu a o pozitivně definitních maticích. 
 >
 > I dnešní věta, která byla těžká a technická bude mít praktické a zajímavé důsledky.
+
+## Jordanova normální forma
+
+> Pokoušíme-li se diagonalizovat matici nad algebraicky uzavřeným tělesem, jako jsou př. komplexní čísla, máme zaručen dostatek vlastních čísel. 
+>
+> Navzdory tomu některé matice stále diagonalizovat nejde. Ukážeme si však, že je lze převést do téměř diagonálního tvaru.
+
+> Nejprve si uvědomíme, že ne každá matice je diagonalizovatelná
+>
+>![alt text](image-241.png)
+
+> Právě matice, které mají podobnou strukturu jako matice z naší ukázky, budou hlavními stavebními kameny Jordanovy normální formy, a proto si je pojmenujeme.
+
+![alt text](image-242.png)
+- na hlavní diagonále číslo $\lambda$
+- nad tím, na horní sekundární diagonále, číslo $1$
+
+### Každá čtvercová komplexní matice je podobná blokové matici v Jordanově normální formě (= Věta o Jordanově normální formě)
+
+![alt text](image-243.png)
+- blokové matici takové, že její bloky jsou právě Jordanovy bloky
+
+> každému vlastnímu číslu odpovídá tolik Jordanových bloků, kolik je jeho geometrická násobnost
+
+![alt text](image-244.png)
+= až na permutaci Jordanových bloků na diagonále
+
+> Pokud je matice diagonalizovatelná, pak její normální forma je diagonální matice, a Jordanovy bloky zde mají velikost $1 \times 1$. Jinými slovy nikdy nenajdeme $1$ na horní sekundární diagonále.
+![alt text](image-245.png)
+
+### Zobecněné vlastní vektory
+
+![alt text](image-246.png)
+- že jo $R$ je matice přechodu od báze vlastních vektorů, vzhledem ke které je vyjádřena matice $D$, k standardní bázi
+
+$$R = [id]_{B,E} = \begin{pmatrix}
+\vert & \vert \\
+[\text{id}(\mathbf{b}_1)]_E & [\text{id}(\mathbf{b}_2)]_E \\
+\vert & \vert
+\end{pmatrix}$$
+
+$$\underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot \underbrace{\mathbf R}_{\large [id]_{B,E}} = \underbrace{\mathbf R}_{\large [id]_{B,E}} \cdot \underbrace{\mathbf D}_{\large [f]_{B,B}}$$
+
+> Pro jednoduchost se omezme na matice, které jsou podobny jednomu Jordanovu bloku ($AR = R J_{\lambda}$). Potom sloupce příslušné matice $R$ splňují $(A - \lambda I)^i \mathbf v_i = \mathbf 0$
+>
+> ![alt text](image-247.png)
+- $(A - \lambda I)^i \mathbf v_i = \mathbf 0$ plyne přímo ze součinu $R J_{\lambda}$
+
+Teď využijeme předpokladu $AR = R J_{\lambda}$, podíváme se na to po sloupcích
+
+$A \cdot R = \begin{pmatrix} | & | & & | \\ A \mathbf v_1 & A \mathbf v_2 & \dots & A \mathbf v_n \\ | & | & & | \end{pmatrix}$
+
+Takže pro 1. sloupec máme $A \mathbf v_1 = \lambda \mathbf v_1 \implies$ $A \mathbf v_1 - \lambda I \mathbf v_1 = \mathbf 0 \implies (A - \lambda I) \mathbf v_1 = \mathbf 0$. Atd. pro ostatní:
+
+![alt text](image-248.png)
+- tyhle vztahy tvoří takové řetízky
+
+Můžeme ale jít dál, a začít rekurzivně dosazovat.
+Př. v 2. řádku jsme si vyjádřili vektor $\mathbf v_1$ z 1. řádku, můžeme ten výraz dosadit za $\mathbf v_1$ v 1. řádku, dostaneme $(A - \lambda I)^2 \mathbf v_2 = \mathbf 0$.
+
+
+Atd. vždy můžeme dosadit. Př. pro 3:
+
+$(A - \lambda I) \mathbf v_1 = \mathbf 0$
+
+dosadíme $\mathbf v_1 = (A - \lambda I) \mathbf v_2$
+
+$(A - \lambda I) \mathbf (A - \lambda I) \mathbf v_2 = \mathbf 0$
+
+dosadíme $\mathbf v_2 = (A - \lambda I) \mathbf v_3$
+
+$(A - \lambda I) \mathbf (A - \lambda I) \mathbf (A - \lambda I) \mathbf v_3 = \mathbf 0$
+
+Tedy:
+
+![alt text](image-249.png)
+
+Celkově tedy:
+
+![alt text](image-250.png)
+
+> Vztah $(A - \lambda I)^i \mathbf v_i = \mathbf 0$ bude kličový pro následující definici:
+> #### Definice: Zobecněný vlastní vektor
+> ![alt text](image-251.png)
+- tj. že jo v tom řetězci to $\mathbf 0 = \mathbf v_0$, aby to sedělo
+- následující (v té posloupnosti, tj. s menším indexem) vektor získáme z předchozího pomocí součinu s maticí
+
+> Koncept zobecněného vlastního vektoru platí nejen pro matice, ale také pro lineární zobrazení
+>
+>![alt text](image-252.png)
+
+> Jak pro matici tak i pro lineární zobrazení se uvedené vztahy dají zapsat pomocí jádra.
+> (Rovnost $(A - \lambda I)^i \mathbf v_i = \mathbf 0$ neříká nic jiného, než že vektor $\mathbf v_i$ náleží jádru $i$-té mocniny matice $(A - \lambda I)$)
+> ![alt text](image-253.png)
+- viz def. jádra = množina vektorů takových, že platí ta rovnost
+
+### Ekvivalentní formulace věty o Jordanově normální formě
+> Větu o Jordanově normální formě 
+>
+> tj. 
+> ![alt text](image-243.png)
+> jde vyslovit i takto:
+>
+> ![alt text](image-254.png)
+
+> V důkazu $\mathbb{C}$ používáme pouze k důkazu existence vl. č. = důkaz projde nad libovolným tělesem v případě, že má dostatek vl. čísel
+>
+> ![alt text](image-255.png)
+
+### Ukázka
+
+![alt text](image-256.png)
+
+> Matice $R$ je složena z vl. vektorů a z zobecněných vl. vektorů.
+
+![alt text](image-257.png)
+- aka dosadíme podle definice a ono to funguje, nice
+
+$(2, 2, 1)^T$ je zobecněný vlastní vektor, dojdeme k tomu, že platí $(A - 2I_3)^2 \cdot (2, 2, 1)^T= \mathbf 0$,
+> a dokonce platí, že v tom řetízku je hned za $\mathbf v_1 = (3,2,1)^T$, tj. $(2, 2, 1)^T$ je $\mathbf v_2$
+
+$A \mathbf v_2 = \mathbf v_1 + 2 \mathbf v_2$
+![alt text](image-258.png)
+- viz "tyhle vztahy tvoří takové řetízky" ![alt text](image-248.png)
+
+... (důkaz věty) ...
+
+Závěr:
+
+> Jordanův normální tvar a podobné téměř diagonální tvary mají veliký význam v numerické matematice. My se však v příštích lekcích vrátíme v lin. algebře zpět k vektorovým prostorům.
