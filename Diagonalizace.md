@@ -874,7 +874,7 @@ Celkově tedy:
 > ![alt text](image-253.png)
 - viz def. jádra = množina vektorů takových, že platí ta rovnost
 
-#### Ekvivalentní formulace věty o Jordanově normální formě
+### Ekvivalentní formulace věty o Jordanově normální formě
 > Větu o Jordanově normální formě 
 >
 > tj. 
@@ -883,6 +883,28 @@ Celkově tedy:
 >
 > ![alt text](image-254.png)
 
-> V důkazu $\mathbb{C}$ používáme pouez k důkazu existence vl. č. = důkaz projde nad libovolným tělesem v případě, že má dostatek vl. čísel
+> V důkazu $\mathbb{C}$ používáme pouze k důkazu existence vl. č. = důkaz projde nad libovolným tělesem v případě, že má dostatek vl. čísel
 >
 > ![alt text](image-255.png)
+
+### Ukázka
+
+![alt text](image-256.png)
+
+> Matice $R$ je složena z vl. vektorů a z zobecněných vl. vektorů.
+
+![alt text](image-257.png)
+- aka dosadíme podle definice a ono to funguje, nice
+
+$(2, 2, 1)^T$ je zobecněný vlastní vektor, dojdeme k tomu, že platí $(A - 2I_3)^2 \cdot (2, 2, 1)^T= \mathbf 0$,
+> a dokonce platí, že v tom řetízku je hned za $\mathbf v_1 = (3,2,1)^T$, tj. $(2, 2, 1)^T$ je $\mathbf v_2$
+
+$A \mathbf v_2 = \mathbf v_1 + 2 \mathbf v_2$
+![alt text](image-258.png)
+- viz "tyhle vztahy tvoří takové řetízky" ![alt text](image-248.png)
+
+... (důkaz věty) ...
+
+Závěr:
+
+> Jordanův normální tvar a podobné téměř diagonální tvary mají veliký význam v numerické matematice. My se však v příštích lekcích vrátíme v lin. algebře zpět k vektorovým prostorům.
