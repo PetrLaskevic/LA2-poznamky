@@ -10,3 +10,152 @@
 > Podotýkám však, že se nejprve omezíme na vektorové prostory nad realnými a nad komplexními čísly.
 
 ![alt text](image-259.png)
+- čili na $\reals$ dá se říct komutativita
+- zobrazení z $V \times V$ = kartézský součin $V$ se sebou samým $V$ = libovolná dvojice vektorů z $V$
+- linearita vůči součtu bude i vzhledem k 2. složce, ale to si odvodíme z ostatních axiomů (forward ref):
+
+	![alt text](image-264.png)
+
+![alt text](image-260.png)
+- šlo by i $\mathbf u^T (\mathbf v^H)^T$, což odpovídá pořadí $u_i \overline{v_i}$
+	- jde to protože výsledkem tohoto maticového součinu je skalár, což je jako matice o $1$ prvku = je symetrická, platí pro ni $A = A^T$
+- ze stejného důvodu u skal. součinu na $\reals^n$ by šlo: $\mathbf u^T \mathbf v$
+
+> skal. součin 2 vektorů můžeme definovat pomocí maticového součinu,  tak že doprostřed součinu $\mathbf v^T \mathbf u$ ještě vložíme součin matice s její transpozicí 
+>
+> ![alt text](image-261.png)
+> vidíme, že kromě $u_i v_i$ zde máme i smíšené součiny
+> je třeba ukázat, že i tento skalární součin všech 5 axiomů z definice
+- nebo se na to dívat tak, že $\mathbf v^T A^T$ je $(A\mathbf v)^T$, tj. $\langle \mathbf u | \mathbf v \rangle = (A\mathbf v)^T A \mathbf u$
+	- tj. že na oba operandy provedeme lineární zobrazení $A$ (zobrazení dané regulární $A$ určitě je lineární, dokonce je to izomorfismus), a pak na ně provedeme standardní skalární součin
+
+> lze ukázat, že i takto definovaný součet splňuje všechny axiomy
+>
+> ![alt text](image-262.png)
+
+### Vlastnosti skalárního součinu
+![alt text](image-263.png)
+- číslo a k němu komplexně sdružené se rovná právě když je realné, že jo $a + bi = a - bi$, když $b = 0$
+#### Linearita vůči součtu v druhé složce
+![alt text](image-264.png)
+- použita vlastnost komplexního sdružení, že součet, nad kterým provedeme komplexní sdružení, je stejný, jako když komplexní sdružení provedeme na jednotlivých sčítancích (to afaik se nikde neodvozovalo, ale dává to smysl)
+- použit 3. axiom, o záměně pořadí vektorů
+
+![alt text](image-265.png)
+
+![alt text](image-266.png)
+$$\left\langle \sum_{i=1}^k a_i \mathbf u_i  \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle$$
+
+$$\left\langle  a_1 \mathbf u_1 + \dots + a_k \mathbf u_k  \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle$$
+
+$$\left\langle  a_1 \mathbf u_1 \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle + \dots + \left\langle  a_k \mathbf u_k \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle$$
+
+$$a_1\left\langle \mathbf u_1 \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle + \dots +  a_k \left\langle \mathbf u_k \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle$$
+
+Rozepišme si 1. sčítanec:
+
+$$a_1\left\langle \mathbf u_1 \middle| \sum_{i=1}^l b_j \mathbf v_j  \right\rangle$$
+
+$$a_1\left\langle \mathbf u_1 \middle| b_1 \mathbf v_1 + \dots + b_l \mathbf v_l \right\rangle$$
+
+$$a_1\left\langle \mathbf u_1 \middle| b_1 \mathbf v_1 \right\rangle + \dots + a_1\left\langle \mathbf u_1 \middle| b_l \mathbf v_l \right\rangle$$
+
+$$a_1\overline{b_1} \left\langle \mathbf u_1 \middle| \mathbf v_1 \right\rangle + \dots + a_1 \overline{b_l} \left\langle \mathbf u_1 \middle| \mathbf v_l \right\rangle$$
+
+Takto tedy vypadá rozepsaný 1. sčítanec.
+
+$$\sum_{j=1}^l a_1 \overline{b_j} \left\langle \mathbf u_1 \middle| \mathbf v_j \right\rangle$$
+
+My jich máme ale celkově $k$:
+
+$$\sum_{j=1}^l a_1 \overline{b_j} \left\langle \mathbf u_1 \middle| \mathbf v_j \right\rangle + \dots + \sum_{j=1}^l a_i \overline{b_j} \left\langle \mathbf u_i \middle| \mathbf v_j \right\rangle + \dots + \sum_{j=1}^l a_k \overline{b_j} \left\langle \mathbf u_k \middle| \mathbf v_j \right\rangle$$
+
+Tedy je to součet $k$ sčítanců, z nichž každý je vyjádřen sumou $\sum_{j=1}^l$.
+
+$$\sum_{i=1}^k \left( \sum_{j=1}^l a_i \overline{b_j} \left\langle \mathbf u_i \middle| \mathbf v_j \right\rangle \right)$$
+
+V podstatě jako nested `for`, kde $\sum_{j=1}^l$ je ta vnitrřní smyčka a $\sum_{i=1}^k$ ta vnější.
+
+On tam akorát nenapsal tu závorku.
+___
+![alt text](image-267.png)
+$t \overline{t} = (a+bi)(a-bi) = a^2 - b^2 i^2= a^2+b^2$
+
+absolutní hodnota komplexního čísla je $\sqrt{a^2+b^2}$
+
+> Nyní už máme skalární součin nadefinovaný a známe také jeho některé podoby. Připomínám, že byl motivován geometricky, a proto si na Euklidovských prostorech aukážeme, jak souvisí s úhly a délkami úseček.
+
+> Poté také odvodíme některá známá fakta, jako např. trojúhelníkovou nerovnost nebo Cauchyho-Schwarzovu nerovnost.
+
+![alt text](image-268.png)
+$$||\mathbf u|| = \sqrt{\langle \mathbf u | \mathbf u \rangle} = \sqrt{\sum_{i=1}^n u_i \overline{u_i}} = \sqrt{|u_1|^2 + \dots +|u_n|^2}$$
+- btw. v podstatě jako abs. hodnota komplexního čísla, ale pro vektory (že jo komplexní čísla bychom samy o sobě mohli vnímat jako vektory o $2$ složkách)
+
+![alt text](image-269.png)
+$$||t\mathbf u|| := \sqrt{\langle t \mathbf u | t \mathbf u \rangle} = \sqrt{t \overline{t} \langle \mathbf u | \mathbf u \rangle} = \sqrt{|t|^2\langle \mathbf u | \mathbf u \rangle} = \sqrt{|t|^2} \sqrt{\langle \mathbf u | \mathbf u \rangle} = |t| \cdot ||\mathbf u||$$
+
+#### Geometrická interpretace normy
+![alt text](image-270.png)
+
+$$-2 \| \mathbf{u} \| \cdot \| \mathbf{v} \| \cos \varphi =
+- \langle \mathbf u | \mathbf v \rangle - \langle \mathbf v | \mathbf u \rangle$$
+Jsme na $\reals^n$, komplexně sdružené číslo k realnému číslu je realné číslo, tj. máme komutativitu:
+$- \langle \mathbf u | \mathbf v \rangle - \langle \mathbf v | \mathbf u \rangle = -2 \langle \mathbf u | \mathbf v \rangle$
+### Cauchyho-Schwarzova nerovnost
+![alt text](image-271.png)
+- protože
+$\sqrt{\langle \mathbf u | \mathbf u \rangle \langle \mathbf v | \mathbf v \rangle} = \sqrt{\langle \mathbf u | \mathbf u \rangle}\sqrt{\langle \mathbf v | \mathbf v \rangle}$
+
+- ta absolutní hodnota je tam proto, aby tam lvelo bylo vždy realné č. (abychom neporovnávali komplexní $\le$ realné, to nejde)
+
+![alt text](image-272.png)
+> Pro důkaz nerovnosti v ostatních případech nejprve prozkoumáme, jak vypadá 2. mocnina normy lin. kombinace, kde k $\mathbf u$ přičteme vhodný skalární násobek $\mathbf v$ (jaký vzít si ukážeme za chvíli)
+
+![alt text](image-273.png)
+![](dukaz_cauchy_schwarz.png)
+
+### Důsledky Cauchyho-Schwarzovy nerovnosti
+
+![alt text](image-274.png)
+Btw **Definice: kvadratický průměr**
+$$=\sqrt {{1 \over n} \sum_{i=1}^{n} u_i^2} = \sqrt {{u_1^2 + u_2^2 + \cdots + u_n^2} \over n}$$
+= odmocnina z aritmetického průměru druhých mocnin složek toho vektoru
+
+Tím jak ten vektor je realný, tak v tom vzorci nemusí na složky $u_i$ nemusí být absolutní hodnota.
+- že jo na komplexní čísla by nefungovala pořadně odmocnina = 2 výsledky - s tím by si afaik nevědělo rady $\le$
+- také $\le$ ostatně funguje jenom pro realná čísla (která mají lineární uspořádání)
+
+Obecná verze vzorce (pro komplexní vektor) by btw afaik vypadala takto:
+$$\left| \sum_{i=1}^{n} u_{i} \right| \leq \sqrt{\sum_{i=1}^{n} |u_{i}|^{2}} \cdot \sqrt{n}$$
+(a dokázalo by se to stejně)
+(
+$\langle \boldsymbol{u} \mid \boldsymbol{u} \rangle = \sum u_i \overline{u_i} = \sum |u_i|^2$
+)
+![alt text](image-275.png)
+
+<details>
+<summary>Detour, jak by to bylo u komplexních čísel</summary>
+
+(pro komplexní by std. součin byl $\langle \boldsymbol{u} \mid \boldsymbol{v} \rangle = \sum u_i \overline{v_i}$,
+
+U standardního skalárního součinu (i v komplexním oboru) počítáme 
+$\sum u_i \cdot \overline{v_i}$. Protože 
+$v_i = 1$, tak 
+$\overline{1} = 1$.
+
+$$\langle \boldsymbol{u} \mid \boldsymbol{v}\rangle = u_1 \cdot 1 + u_2 \cdot 1 + \dots + u_n \cdot 1 = \sum_{i=1}^n u_i$$
+Když na to aplikujeme tu absolutní hodnotu z, máme levou stranu:
+
+$$\left| \sum_{i=1}^n u_i \right| = |\langle \boldsymbol{u} \mid \boldsymbol{v} \rangle |$$
+
+Pak aplikujeme Cauchyho-Schwarzovu větu.
+
+A zbytek dokončíme stejně, akorát na tu abs. hodnotu u $u_i$ pod odmocninou.
+</details>
+
+![alt text](image-276.png)
+- makes sense, to nalevo by se to mohlo od sebe odečíst
+
+![](dukaz_norma_splnuje_trojuhelnikovou_nerovnost.png)
+
+> Předvedli jsme si, že v Euklidovských prostorech (= ty $\reals^n$) odpovídá skalární součin úhlu mezi $2$ vektory. V realném životě se však $1$ z úhlů vyskytuje častěji než jiný = pravý úhel. Kolmost prozkoumáme v příštích lekcích podrobněji.
