@@ -159,3 +159,11 @@ A zbytek dokončíme stejně, akorát na tu abs. hodnotu u $u_i$ pod odmocninou.
 ![](dukaz_norma_splnuje_trojuhelnikovou_nerovnost.png)
 
 > Předvedli jsme si, že v Euklidovských prostorech (= ty $\reals^n$) odpovídá skalární součin úhlu mezi $2$ vektory. V realném životě se však $1$ z úhlů vyskytuje častěji než jiný = pravý úhel. Kolmost prozkoumáme v příštích lekcích podrobněji.
+
+## Kolmost, ortonormální báze, Fourierovy koeficienty, isometrie (19:38, 117M)
+
+> Minule jsme zjistili, že v Euklidovských prostorech (= $\reals^n$) odpovídá skalární součin kosinu úhlu sevřeneho 2 vektory (přesněji řečeno $\langle \mathbf u | \mathbf v \rangle = ||\mathbf u || \cdot || \mathbf v || \cdot \cos \varphi$)
+
+> Kosinus pravého úhlu je 0, a proto definice kolmých vektorů bude velice jednoduchá:
+
+![alt text](image-277.png)
