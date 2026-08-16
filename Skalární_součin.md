@@ -21,6 +21,7 @@
 	- jde to protože výsledkem tohoto maticového součinu je skalár, což je jako matice o $1$ prvku = je symetrická, platí pro ni $A = A^T$
 - ze stejného důvodu u skal. součinu na $\reals^n$ by šlo: $\mathbf u^T \mathbf v$
 
+#### Skalární součin na $\reals^n$ určený regulární maticí $A$
 > skal. součin 2 vektorů můžeme definovat pomocí maticového součinu,  tak že doprostřed součinu $\mathbf v^T \mathbf u$ ještě vložíme součin matice s její transpozicí 
 >
 > ![alt text](image-261.png)
@@ -214,6 +215,14 @@ S vektory standardní báze jako sloupce to je vidět hned, ale platí to pro ja
 ![alt text](image-287.png)
 - této věty jsme už využili, když jsme definovali standardní skalární součin na $\reals^n$ a $\mathbb{C}^n$ (ty že jo mají by default standardní bázi, která je ortonormální)
 	- ![alt text](image-260.png)
+		- pokud bychom si v $\mathbb{C}^n$ nebo $\reals^n$ vzali jinou než ortonormální bázi, tak by v skalárním součinu byly **smíšené členy**, viz část <details> <summary>
+		"Skalární součin na $\reals^n$ určený regulární maticí $A$"</summary>
+		![alt text](image-261.png)
+		zde ty smíšené členy jsou $2u_1 v_2$ a $2u_2 v_1$ 
+			</details>
+
+			- potřeba se na to dívat tak, že $\mathbf v^T A^T$ je $(A\mathbf v)^T$, tj. $\langle \mathbf u | \mathbf v \rangle = (A\mathbf v)^T A \mathbf u$
+			- tj. že na oba operandy provedeme lineární zobrazení $A$, zde **matice přechodu od původní báze k nějaké ortogonální bázi**, a pak na ně provedeme standardní skalární součin
 
 ![alt text](image-288.png)
 - vnitřní sumu můžeme odstranit tím, že si uvědomíme, že člen  $\langle \mathbf b_i | \mathbf b_j \rangle$ bude $0$ kromě případu $j=i$, kdy bude $1$.
@@ -284,5 +293,19 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 
 - když odečteme druhou rovnici od první, máme výsledek
 
+### Maticová charakterizace bijektivních isometrií
+> v ukázkách **isometrií** jsem záměrně uváděl jejich matice, protože matice zobrazení lze hezky využít při charakterizaci bijektivních isometrií. To je shrnuto v této větě:
+>
+> ![alt text](image-294.png)
 
+#### Důkaz 
+> Již dříve jsme si ukázali, že lin. zobrazení je bijekcí (=isomorfismem) právě když matice tohoto zobrazení je regulární.
+>
+> ![alt text](image-295.png)
 
+![alt text](image-296.png)
+- to jedna implikace (použit předpoklad "díky isometrii")
+
+![alt text](image-297.png)
+- v tomhle je schovaná i ta druhá, je tam psáno "pokud", ale to jistě $\iff$, protože ta rovnost je definiční robnost isometrie, a isometrie je definována pomocí ekvivalence:
+	- ![alt text](image-298.png)
