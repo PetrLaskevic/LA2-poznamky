@@ -309,3 +309,7 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 ![alt text](image-297.png)
 - v tomhle je schovaná i ta druhá, je tam psáno "pokud", ale to jistě $\iff$, protože ta rovnost je definiční robnost isometrie, a isometrie je definována pomocí ekvivalence:
 	- ![alt text](image-298.png)
+
+> Zjistili jsme, že ortonormální báze mají řadu pěkných vlastností, které umožní zjednodušit řadu výpočtů.
+>
+> Ovšem nevíme, jak takové ortonormální báze nalézt. To se dozvíme příště.
