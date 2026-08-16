@@ -15,7 +15,7 @@
 - linearita vůči součtu bude i vzhledem k 2. složce, ale to si odvodíme z ostatních axiomů (forward ref):
 
 	![alt text](image-264.png)
-
+### Ukázky, mj. Standardní skalární součin
 ![alt text](image-260.png)
 - šlo by i $\mathbf u^T (\mathbf v^H)^T$, což odpovídá pořadí $u_i \overline{v_i}$
 	- jde to protože výsledkem tohoto maticového součinu je skalár, což je jako matice o $1$ prvku = je symetrická, platí pro ni $A = A^T$
@@ -32,6 +32,7 @@
 > lze ukázat, že i takto definovaný součet splňuje všechny axiomy
 >
 > ![alt text](image-262.png)
+- pokud bychom si namísto aritmetických vektorů vzali spojité objekty, tzn. 2 funkce, taky je můžeme mezi sebou vynásobit ve všech bodech a potom vše dohromady sečíst, ovšem pomocí integrálů.
 
 ### Vlastnosti skalárního součinu
 ![alt text](image-263.png)
@@ -167,3 +168,121 @@ A zbytek dokončíme stejně, akorát na tu abs. hodnotu u $u_i$ pod odmocninou.
 > Kosinus pravého úhlu je 0, a proto definice kolmých vektorů bude velice jednoduchá:
 
 ![alt text](image-277.png)
+
+![alt text](image-278.png)
+- tedy $\mathbf v_0$ nepatří do množiny netriválních vektorů, což je spor
+
+> Už dobře víme, že standardní skalární součin se počítá tak, že 2 vektory postupně procházíme po složkách, ty mezi sebou násobíme a všechny dílčí součty pak dohromady sečteme.
+>
+> Pokud bycho si namísto aritmetických vektorů vzali spojité objekty, tzn. 2 funkce, taky je můžeme mezi sebou vynásobit ve všech bodech a potom vše dohromady sečíst, ovšem pomocí integrálů. To je standardní skalární součin na množině funkcí, tak, jak jsme si jej zavedli minule.
+
+### Ortonormální báze
+![alt text](image-279.png)
+![alt text](image-280.png)
+$$A = \begin{pmatrix}
+| & | & & | \\
+\mathbf e_1  & \mathbf e_2  & \dots & \mathbf e_n \\
+| & | & & |
+\end{pmatrix}$$
+
+$$A^H = \begin{pmatrix}
+\text{---} & \mathbf e_1^H & \text{---} \\
+\text{---} & \mathbf e_2^H & \text{---} \\
+& \vdots  &\\
+\text{---} & \mathbf e_n^H &\text{---} \\
+\end{pmatrix}$$
+
+Viz unitární matice splňuje $\mathbf v_i^H \mathbf v_i = 1$ a pro $i \neq j: \mathbf v_i^H \mathbf v_j = 0$
+
+S vektory standardní báze jako sloupce to je vidět hned, ale platí to pro jakoukoli ortonormální bázi, viz její definice. 
+
+- $|| \mathbf b_i || = 1$, tedy $\sqrt{|b_1|^2 + \dots + |b_n|^2} = \sqrt{\langle \mathbf b_i | \mathbf b_i \rangle} = 1$, tj. $\langle \mathbf b_i | \mathbf b_i \rangle = 1$ 
+- $\boldsymbol{b}_i \perp \boldsymbol{b}_j \iff \langle \mathbf b_i | \mathbf b_j \rangle = 0$
+
+### Ukázky
+![alt text](image-281.png)
+![alt text](image-282.png)
+![alt text](image-283.png)
+![alt text](image-284.png)
+
+### Vlastnosti ortonormální báze: Fourierovy koeficienty
+![alt text](image-285.png)
+- pro ty vektory jsou kolmé, pro $i \neq j$ je skal. součin $0$, jenom pro $i=j$ to je $1$
+
+![alt text](image-286.png)
+
+![alt text](image-287.png)
+- této věty jsme už využili, když jsme definovali standardní skalární součin na $\reals^n$ a $\mathbb{C}^n$ (ty že jo mají by default standardní bázi, která je ortonormální)
+	- ![alt text](image-260.png)
+
+![alt text](image-288.png)
+- vnitřní sumu můžeme odstranit tím, že si uvědomíme, že člen  $\langle \mathbf b_i | \mathbf b_j \rangle$ bude $0$ kromě případu $j=i$, kdy bude $1$.
+- $n$ složek $\langle \mathbf u | \mathbf b_i \rangle$ odpovídá $[\mathbf u]_B$ (=Fourierovy koeficienty)
+- $n$ složek $\overline{\langle \mathbf v | \mathbf b_i \rangle}$ odpovídá $[\mathbf v]^H_B$ (=Fourierovy koeficienty)
+- součin skalárů je v tělese vždy komutativní, proto můžeme činitele v součinu v sumě prohodit
+
+### Lineární zobrazení, která zachovávají skalární součin (=isometrie)
+![alt text](image-289.png)
+![alt text](image-290.png)
+
+> Ukážeme si větu, díky níž už nemusíme kontrolovat skalární součin všech možných dvojic vektorů, stačí zkontrolovat, že se zachovává skalární součin každého vektoru se sebou samým. Jinými slovy, tato podmínka je jednodušší než ta, kterou je isometrie definována.
+>
+> ![alt text](image-291.png)
+
+![alt text](image-292.png)
+isometrie, tj. zachovává skalární součin $\implies$ zachovává normu
+
+norma je definována odmocninou ze skalárního součinu $2$ stejných vektorů
+
+$\forall \mathbf u, \mathbf v \in V:  \langle \mathbf u | \mathbf v \rangle =  \langle f(\mathbf u) | f(\mathbf v) \rangle \implies \forall \mathbf u \in V: \langle \mathbf u | \mathbf u \rangle =  \langle f(\mathbf u) | f(\mathbf u) \rangle \implies ||\mathbf u||= \sqrt{\langle \mathbf u | \mathbf u \rangle} = \sqrt{\langle f(\mathbf u) | f(\mathbf u) \rangle} = || f(\mathbf u) ||$
+_______
+
+zachovává normu $\implies$ isometrie, tj. zachovává skalární součin
+
+podívejme se, jakou hodnotu nabývá $|| \mathbf u + t \mathbf v ||^2$ = lin. kombinace $\mathbf u$ a $t \mathbf v$, přičemž hodnotu toho skal. násobku si určíme za chvilku
+
+Stejně, tak, když zachovává normu (=předpoklad), tak se norma této lin. kombinace rovná normě svého obrazu. 
+
+![alt text](image-293.png)
+- červeně tedy máme členy, které se díky předpokladu rovnají
+	- tzn. součty zbytků se rovnájí
+
+- je to komplexní rovnice, tj. číslo na levé i na pravé části má reálnou a imaginární část.
+
+
+TODO: zamyslet se 
+Naše rovnice vypadá v podstatě takto:
+
+$t \bar{A} + \bar{t} A = t \bar{B} + \bar{t} B$
+
+my chceme zjistit, čemu se rovná realná a čemu imaginární část.
+
+Pokud zvolíme pouze jednu hodnotu, například 
+$t = 1$:
+
+$$\bar{A} + A = \bar{B} + B$$
+Protože 
+$A + \bar{A} = 2\operatorname{Re}(A)$, tato rovnice nám říká pouze to, že:
+
+$$\operatorname{Re}(\langle\boldsymbol{u}\mid\boldsymbol{v}\rangle) = \operatorname{Re}(\langle f(\boldsymbol{u})\mid f(\boldsymbol{v})\rangle)$$
+To znamená: reálné části se rovnají, ale o imaginárních částech nevíme vůbec nic. (Například čísla 
+$2 + 5\mathrm{i}$ a 
+$2 - 3\mathrm{i}$ mají stejnou reálnou část, ale nejsou stejná).
+
+Proč potřebujeme i druhou hodnotu (
+$t = \mathrm{i}$)?
+Abychom zjistili, co se děje s imaginární částí, potřebujeme druhou nezávislou rovnici. Proto dosadíme 
+$t = \mathrm{i}$:
+
+$$\bar{A} - A = \bar{B} - B$$
+Tato druhá rovnice nám dává informaci o imaginární části:
+
+$$\operatorname{Im}(\langle\boldsymbol{u}\mid\boldsymbol{v}\rangle) = \operatorname{Im}(\langle f(\boldsymbol{u})\mid f(\boldsymbol{v})\rangle)$$
+
+
+TODO: pak teda dobrá otázka, co s tím t=1 a t=i
+
+- když odečteme druhou rovnici od první, máme výsledek
+
+
+
