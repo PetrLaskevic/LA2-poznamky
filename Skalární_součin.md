@@ -490,3 +490,137 @@ $A = LQ$
 Jinými slovy:
 ### LQ rozklad
 ![alt text](image-324.png)
+
+(prof. Fiala tomu LQ rozklad explicitně neříkal, ale podařilo se mi najít anglický [zdroj](https://rtmath.net/assets/docs/finmath/html/8ae6a59f-a8a0-497c-afa4-abfdc0509149.htm#!), který ano + je tam paralela s QR rozkladem)
+
+![alt text](image-325.png)
+- regularita je důležitá, aby šlo udělat **unitární** matici (a + to dává smysl vzhledem k použítí = převodu báze na ortonormální)
+	- cílová **unitární matice** $Q$ je definována $Q^{-1} = Q^H$, tedy je **regulární**, tedy má hodnost $n$. 
+	
+		Hodnost matice nemůžeme pomocí elementárních úprav zvýšit. Tedy, vstupní matice musí být regulární = mít hodnost $n$.
+
+		Důvody (LA1):
+
+		$$\dim(R_A) = \dim(S_A) = \operatorname{rank}(A) = \operatorname{rank}(A^T)$$
+		---
+		$$A \sim\sim A' \implies R_A = R_{A'} \implies \dim(R_A) = \dim(R_{A'})$$
+		---
+		$$\operatorname{rank}(A) = \operatorname{rank}(A')$$
+
+		- elementární úpravy nemění dimenzi řádkového prostoru.	
+			- dimenze řádkového prostoru je rovna dimenzi sloupcového prostoru (protože př. $\det A = \det A^T$ - tedy buď obě jsou singulární (rank < n), anebo regulární (rank = n))
+				- tím jsme btw v LA1 určovali, jestli je matice singulární nebo regulární
+					- provedli jsme Gaussovu eliminaci (=řádkové úpravy), a pak se dívali na počet pivotů (=rank), jestli je menší než $n$ nebo ne
+						- spoléhali jsme na to, že ty úpravy to nezmění, že nám to řekne i o původní matici
+
+- regularita je taky důležitá, aby nám vůbec mohla běžet  Gramova-Schmidtova ortonormalizace:
+
+	V algoritmu Grama-Schmidta v každém kroku počítáme:
+
+	$$\mathbf c_i = \mathbf b_i - \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j \quad \text{a pak normalizujeme} \quad \mathbf d_i = \frac{\mathbf c_i}{\| \mathbf c_i\|}$$
+
+	Protože jsou řádky matice 
+	$A$ lineárně nezávislé (matice je regulární), vektor 
+	$\mathbf b_i$ nikdy neleží v lineárním obalu předchozích vektorů 
+	$\operatorname{span}(\mathbf b_1, \dots, \mathbf b_{i-1})$.
+	Díky tomu je vektor 
+	$\mathbf c_i$ vždy nenulový (
+	$\mathbf c_i \neq 0$), a tedy jeho norma je ostře kladná: 
+	$\|\mathbf c_i\| > 0$.
+	Můžeme jím bezpečně dělit a nikdy nedojde k dělení nulou.
+
+	(Kdyby matice nebyla regulární, nějaký vektor 
+	$\mathbf b_i$ by byl lineární kombinací předchozích, vyšlo by 
+	$\mathbf c_i = \mathbf 0$ a algoritmus by zhavaroval na dělení nulou).
+
+- a Gram-Schmidt převede libovolnou bázi lib. prostoru na ortonormální bázi
+	- $L^{-1}$ je matice, která Gram-Schmidt. provede na regulární matici $A$, a tím vždy získáme unitární matici $Q$
+
+___
+
+Ještě btw k tomu 
+
+$L^{-1}A = Q$
+
+a 
+
+$A = LQ$
+
+Matice elementárních úprav (viz v rovnicích tzv. ekvivalentní úpravy) jsou bijektivní zobrazení, tj. že jo (viz věta o charakterizaci izomorfismů):
+- $L \ \cdot$ to do changes
+- $L^{-1} \ \cdot$ to undo changes
+
+$L$ = úpravy, které je potřeba provést na $Q$, abychom dostali $A$
+
+$L^{-1} $ = úpravy, které je potřeba provést na $A$, abychom dostali $Q$
+
+### QR rozklad
+> Jako bezprostřední důsledek dostáváme větu:
+> 
+> ![alt text](image-326.png)
+
+Důkaz: 
+
+Víme, že libovolná komplexní regulární matice $A$ má $LQ$ rozklad.
+Dále víme, že $A^T$ je též regulární (protože př. $\det A = \det A^T$, a nebo protože $\dim(R_A) = \dim(S_A)$). 
+
+Tzn. $A^T$ má též $LQ$ rozklad, tj. $A^T = LQ$
+
+Celou rovnici transponujeme:
+
+$A =  (LQ)^T = Q^T L^T$
+
+Označme si $Q^T$ jako $Q'$ a  $L^T$ jako $R$
+
+Ten apostrof je tam pro rozlišení.
+
+Tj. v $A = LQ$ a $A = QR$ není stejná matice $Q$
+
+Jako důsledek těchto úvah o transpozici:
+
+(ON = ortonormální)
+
+| **Vlastnost** | **$LQ$ rozklad** | **$QR$ rozklad** |
+| :--- | :--- | :--- |
+| **Báze** | Řádky matice $A$ | Sloupce matice $A$ |
+| **Unitární matice** | $Q$ má **řádky** jako ON bázi | $Q$ má **sloupce** jako ON bázi |
+| **Trojúhelníková matice** | $L$ je **dolní** trojúhelníková (*Lower*) | $R$ je **horní** trojúhelníková (*Right/Upper*) |
+| **Geometrický význam** | $i$-tý řádek $Q$ je kombinací prvních $i$ **řádků** $A$, viz ten Gram-Schmidt: $$\mathbf d_i = \frac{1}{\|\|\mathbf c_i\|\|} \left( \mathbf b_i - \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j \right)$$ | $i$-tý sloupec $Q$ je kombinací prvních $i$ **sloupců** $A$ |
+| |$i$-tý řádek $A$ je kombinací prvních $i$ **řádků** $Q$ $$\mathbf b_i = \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j + \|\|\mathbf c_i\|\| \mathbf d_i$$  | $i$-tý sloupec $A$ je kombinací prvních $i$ **sloupců** $Q$ |
+________
+
+Tohle: 
+
+$$\mathbf b_i = \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j + \|\mathbf c_i\| \mathbf d_i$$
+
+jde vysvětlit pomocí:
+
+
+
+
+$$A=\begin{pmatrix} 
+\text{— } \mathbf b_1 \text{ —} \\ 
+\vdots \\ 
+\mathbf{\text{— } b_i \text{ —}} \\ 
+\vdots \\ 
+\text{— } \mathbf b_n \text{ —} 
+\end{pmatrix} 
+= \underbrace{\begin{pmatrix} 
+L_{1,1} & 0 & \dots & 0 \\ 
+\vdots & \ddots & & \vdots \\ 
+{L_{i,1}} & {L_{i,2}} & \dots & {L_{i,i}} & 0 & \dots & 0 \\ 
+\vdots & & \ddots & \vdots \\ 
+L_{n,1} & L_{n,2} & \dots & L_{n,n} 
+\end{pmatrix}}_{\large L}
+\cdot
+\underbrace{\begin{pmatrix} 
+\text{— } \mathbf d_1 \text{ —} \\ 
+\vdots \\ 
+\text{— } \mathbf d_i \text{ —} \\ 
+\vdots \\ 
+\text{— } \mathbf d_n \text{ —} 
+\end{pmatrix}}_{\large Q}$$
+
+> Dlužno dodat, že $QR$ rozklad není jednoznačný, a další $QR$ rozklady se dají spočítat pomocí jiných metod.
+
+> Téma skalárního součinu ještě neopustíme. Přestože jsme homogenní soustavy lin. rovnic už mnohokrát probírali, pomocí skal. součinu na ně získáme nový, netradiční pohled.
