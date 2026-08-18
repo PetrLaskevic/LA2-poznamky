@@ -307,9 +307,320 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 - to jedna implikace (použit předpoklad "díky isometrii")
 
 ![alt text](image-297.png)
-- v tomhle je schovaná i ta druhá, je tam psáno "pokud", ale to jistě $\iff$, protože ta rovnost je definiční robnost isometrie, a isometrie je definována pomocí ekvivalence:
+- v tomhle je schovaná i ta druhá, je tam psáno "pokud", ale to jistě $\iff$, protože ta rovnost je definiční rovnost isometrie, a isometrie je definována pomocí ekvivalence:
 	- ![alt text](image-298.png)
 
 > Zjistili jsme, že ortonormální báze mají řadu pěkných vlastností, které umožní zjednodušit řadu výpočtů.
 >
 > Ovšem nevíme, jak takové ortonormální báze nalézt. To se dozvíme příště.
+
+## Kolmá projekce, Gramova-Schmidtova ortonormalizace
+
+> Cílem této lekce je konstrukce ortonormální báze. K tomu budeme potřebovat kolmou projekci, kterou znáte z deskriptivní geometrie, a která se často využívá v inženýrství, v architektuře, leckde jinde.
+>
+> My si ji však nadefinujeme obecněji, totiž v rámci libovolného vektorového prostoru se skalárním součinem.
+
+### Ortogonální projekce
+
+![alt text](image-299.png)
+- takže skutečně se pokusíme spočítat lineární kombinaci vektoru $\boldsymbol u \in U$ pomocí vektorů z $V$, kterých je typicky míň než v $U$
+	- tím získáme jakousi "aproximaci" původního vektoru, které právě říkáme **ortogonální projekce**
+	- a koeficienty budou Fourierovy koeficienty, protože se jedná o ortonormální bázi
+
+![alt text](image-300.png)
+- prostě ověříme linearitu vůči skalárnímu násobku a vůči součtu
+
+![alt text](image-301.png)
+- použili jsme linearitu skalárního součinu k součtu a skal. násobku, a také definici ortogonální projekce
+
+![alt text](image-302.png)
+- použiza linarita skal. součinu vůči součtu a skal. součinu (=tj. vytýkáme mj. skal. součin, jehož výsledek je že jo skalár)
+
+- pak vlastnosti ortonormální báze, kde $\langle \mathbf b_j | \mathbf b_i \rangle$ není $0$, ale $1$ právě když $i=j$.
+- dostali jsme, že skal. součin je $0$, tj. ten vektor je kolmý na jakékoli $\mathbf b_i$, je tedy kolmý na všechny vektory z $B$.
+
+### Projekce vektoru je jemu nejbližší vektor z podprostoru
+![alt text](image-303.png)
+- vezmeme nějaký jiný $\mathbf v$ z $V$ než tu projekci vektoru $\mathbf u$ a dokážeme, že je vzdálenost vždy vyšší, tj. $|| \mathbf u - \mathbf v || > || \mathbf u - p_B(\mathbf u) ||$
+
+- to $|| \mathbf u - \mathbf v || = || \mathbf w + \mathbf z ||$ jde vidět z obrázku, kdyý ty vektory vnímáme jako body = vzdálenost mezi koncovým bodem $\mathbf u$ a $\mathbf v$ je $|| \mathbf u - \mathbf v ||$
+	- pak se podíváme na trojúhelníky, najdeme dva pravoúhlé, které jsou podobné podle věty SUS (strana úhel strana): žlutá a zelená odvěsna jsou stejné, takže i přepona musí být stejná:
+
+	![alt text](image-304.png)
+
+	- tahle úvaha ale funguje jenom v $\reals^3$
+
+- ve skutečnosti platí obecně (v libovolném prostoru se skal. součinem), vyjádříme si $\mathbf u$ z $\mathbf z$, a $\mathbf v$ z $\mathbf w$:
+	- $\mathbf u	 = \mathbf z + p_B(\mathbf u)$
+	- $\mathbf v = p_B(\mathbf u) - \mathbf w$
+	- $|| \mathbf u - \mathbf v || = ||\mathbf z + p_B(\mathbf u) - p_B(\mathbf u) + \mathbf w||$
+
+- skal. součin  $\langle \mathbf w | \mathbf w \rangle$ je $ > 0$, protože $\mathbf w$ je netriviální vektor, protože lib. námi zvolený $\mathbf v$ je jiný než $p_B(\mathbf v)$
+
+> ![alt text](image-305.png)
+>
+> Pokud bychom si v prostoru $V$ vzali jinou ortonormální bázi, dostali bychom stejnou ortogonální projekci.
+>
+> Jinými slovy ortogonální projekci by šlo zadefinovat tak, že jde o vektor z daného podprostoru, který minimalizuje normu rozdílu od vektoru, který promítáme.
+
+### Metoda nejmenších čtverců
+> Kolmou projekci lze využít při řešení soustav, a to v tom případě, že máme soustavu, která sice nemá řešení, ale naším cílem je nějaké přibližné řešení, které minimalizuje chybu. (Čili najít nejbližší vektor pravých stran, se kterým už soustava řešení má)
+>
+> Pokud daná soustava nemá řešení, tzn. vektor pravých stran nenáleží do sloupcového prostoru matice $A$, tak naším cílem bude vektor pravých stran pozměnit co nejméně (=minimalizovat normu rozdílu těchto $2$ vektorů), aby nyní soustava řešení měla.
+> ![alt text](image-306.png)
+
+- $\mathbf b \notin S_A$, (kde $S_A$ = sloupcový prostor), znamená, že $\mathbf b$ nepatří do množiny vektorů, které lze vygenerovat lineární kombinací sloupců = neexistuje $\mathbf x$, které by obsahovalo koeficienty té lin. kombinace
+
+- promítnutí $\mathbf b$ do $S_A$:
+	- **Pozorování:** vektor $\mathbf b' := p_{S_A}(\mathbf b)$ je vektor z $S_A = \text{span}(\text{sloupců})$, který je nejbližší k $\mathbf b$ v tom smyslu, že minimalizuje $||\mathbf b - \underbrace{p_{S_A}(\mathbf b)}_{\large\mathbf b'}||$
+- "čtverců", protože norma určená standardním skalárním součinem na $\reals^n$ nebo $\mathbb{C}^n$ je součet druhých mocnin = "čtverců"	
+
+> Princip metody nejmenších čtverců lze implementovat 2 způsoby
+>
+> ![alt text](image-307.png)
+- skutečně tady u té rovnosti čárka $'$ nechybí, viz důkaz:
+
+![alt text](image-308.png)
+- $A^T(\mathbf b' - \mathbf b) = \mathbf 0$ jsou ty skal. součiny zapsané maticovým součinem (každý řádek z $A^T$ krát vektor $\mathbf b' - \mathbf b$ je $0$)
+
+> S pomocí kolmé projekce už bude Gramova-Schmidtova ortonormalizace jednoduchá. Postupně probírám vektory libobolné báze jeden po druhém, nejprve kolmou projekcí zjistíme vektor, který je kolmý na všechny doposud zpracované vektory, a potom stačí už jen upravit jeho normu.
+
+![alt text](image-309.png)
+- původní dané body (červeně) neležely v jedné rovině, ty nové (modře) už v jedné rovině leží = soustava řešitelná je
+
+### Gramova-Schmidtova ortonormalizace
+![alt text](image-310.png)
+- Začínáme s prázdnou bazí $D$ (ve které není žádný vektor), a v každé iteraci smyčky do $D$ jeden vektor (kolmý na všechny dosavadní vektory v $D$) přidáváme
+ - tedy v každém dalším opakování smyčky má $D$ větší velikost, to $\mathbf d_i =$ je v podstatě `.append` z Pythonu
+
+To jest:
+
+V každém kroku děláme projekci do jiného podprostoru = v každé další iteraci projekce s o $1$ větším počtem vektorů, s o $1$ větší dimenzí
+
+V 1. iteraci nemám nic - podprostor má dimenzi $0$ (je to jen bod v počátku):
+
+![alt text](image-311.png)
+- ta suma je rovna $0$, protože ${\color{red} 0} < \color{red} 1$ (=konvence, tzv. "prázdná suma")
+
+V 2. iteraci promítám na podprostor dimenze $1$ = na $\text{span}\set{\mathbf d_1}$
+
+![alt text](image-312.png)
+
+V 3. iteraci promítám na podprostor dimenze $2$ = na $\text{span}\set{\mathbf d_1, \mathbf d_2}$
+
+![alt text](image-313.png)
+
+Tady to náhodou vyšlo $D = \set{\mathbf d_1, \mathbf d_2, \mathbf d_3} = \set{(1,0,0)^T, (0,1,0)^T, (0,0,1)^T}$, pro jiné pořadí výpočtu už nemusí.
+
+Gram-Schmidtova ortonormalizace záleží na pořadí zpracování vektorů = pokaždé vznikne ortonormální báze, ale číselné hodnoty mohou vyjít jiné, viz ukázka (kde jsme přečíslovali vektory báze $B$):
+
+![alt text](image-314.png)
+![alt text](image-315.png)
+![alt text](image-316.png)
+![alt text](image-317.png)
+
+> Na závěr bych vás chtěl přesvědčit, že tento postup je korektní, že skutečně vždy vydá ortonormální bázi, která generuje stejný prostor jako původní báze.
+
+![alt text](image-318.png)
+- protože $\mathbf d_i$ je jenom skal. násobek $\mathbf c_i$
+- že jo v každém kroku máme $i-1$ vektorů, které tvoří ortonormální bázi, a když k nim přidáme $i$-tý vektor, kolmý na ty předchozí, tak budeme mít znovu ortonormální bázi, ale už o $i$ vektorech
+
+![alt text](image-319.png)
+- tj. chceme-li ověřit, že délka je $1$, tak to vyjde: 
+
+	druhé rovnítko = linearita normy vůči skalárnímu násobku (= můžeme z normy vytknout $\frac{1}{\|\mathbf c_i\|}$) =vychází z linearity skal. součinu:
+
+	$\displaystyle{\|\mathbf d_i\| := \sqrt{\langle \mathbf d_i \mid  \mathbf d_i \rangle} = \sqrt{\left\langle \frac{1}{\| \mathbf c_i\|} \mathbf c_i \mathrel{\Big|} \frac{1}{\|\mathbf c_i\|} \mathbf c_i \right\rangle}}$
+
+	Ze skalárního součinu pod odmocninou můžeme vytknout jak z první tak z druhé složky, z té druhé sice (jsme-li v $\mathbb{C}$) komplexně sdružené číslo, ale to se nijak neprojeví, protože $\frac{1}{\|c_i\|}$ je vždy realné.
+
+	$\displaystyle{= \sqrt{\frac{1}{\|\mathbf c_i\|} \cdot \frac{1}{\|\mathbf c_i\|} \langle \mathbf c_i \mid \mathbf c_i \rangle} = \sqrt{\frac{1}{\|\mathbf c_i\|^2} \cdot \|\mathbf c_i\|^2} = \frac{1}{\|\mathbf c_i\|} \|\mathbf c_i\|}$
+
+> Pro úplnost je třeba ještě uvést, že v každé iteraci tohoto algoritmu se nám zachovává prostor, který je generován prvními $i$-vektory
+>
+>![alt text](image-320.png)
+- čili vyměnili jsme $\mathbf b_i$ z $\mathbf c_i$ a generuje to furt stejný prostor
+- stejně tak když $\mathbf c_i$ vyměníme na $\mathbf d_i$
+
+Lemma o výměně můžeme použít, protože $\mathbf c_i$ je lin. kombinace, ve které je u $\mathbf b_i$ nenulový koeficient.
+- že jo $\mathbf c_i = 1 \cdot \mathbf b_i - \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j$
+
+Pak také $\mathbf d_i$ je lin. kombinace $\mathbf c_i$, kde nenulový koeficient (dokonce tou nejjednodušší možnou = nenulovým skal. násobkem)
+
+![alt text](image-321.png)
+- Že jo báze prostoru $U$ je libovolných $n$ lineárně nezávislých vektorů z prostoru $U$ (kde $n = \dim U$), tak můžeme vzít ty z podprostoru a pak do těch $n$ doplnit dalšími LN z $U$, které projektujeme do těch co už máme v té ortonormální bázi.
+
+Aka:
+
+Báze $C$ prostoru $U$, jejichž prvních $k$ vektorů je z ortonormální báze $B$ podprostoru $V$ dimenze $k$ 
+
+$C = (\mathbf b_1, \dots, \mathbf b_k, \mathbf c_1, \dots, \mathbf c_m)$, kde $m+k = \dim U$
+
+($k = \dim V$)
+
+> Pokud na tuto bázi pustíme Gramovu-Schmidtovu ortonormalizaci, tak, že vektory báze $B$ jsou na začátku, tak tím získáme nakonec ortonormální bázi celého prostoru $U$, které obsahuje vektory podprostoru $V$ jakou svou podmnožinu.
+
+(že jo informaticky bych si řekl, že bych mohl skipnout prvních $k$, začít až od $c_1$ (tedy začít ortonormalizaci od $i=k+1$), ale nic se nestane, pokud to provedeme od začátku do konce = ty, které už kolmé jsou, a jednotkovou velikost mají, zůstanou nezměněny)
+
+> Na Gramovu-Schmidtovu ortonormalizaci můžeme pohlížet také pomocí řádkových úprav matice. Pokud si výchozí bázi $B = (\mathbf b_1, \mathbf b_2, \mathbf b_3)$ narovnáme do matice coby její řádky, potom výpočet ortonormální báze odpovídá řádkovým úpravám:	
+>
+> ![alt text](image-322.png)
+- tj. přičetli jsme k řádku vždy vhodné skalární násobky předchozích řádků
+	- ty na obrázku jsou jen ty, co mě napadly, aby to vyšlo číselně, na následujícím obrázku jsou už ty, jejichž smysl odpovídá těm projekcím apod. (TODO: možná překreslit)
+- řádky výsledné matice tvoří ortonormální bázi
+
+![alt text](image-323.png)
+- to, že **dolní trojúhelníková** dává smysl, protože:
+1. v 1. kroku Gram-Schmidtovy ortonormalizace na hlavní diadonále té matice úprav je, co mám udělat s tím původním vektorem báze (vždy ho budeme chtít vzít jednou, a od něj odečítat projekci) a vlevo od toho jsou koeficienty, kolikát máme odečíst násobky předchozích řádků, které už jsou vektory té nové báze $D$
+2. v 2. kroku Gram-Schmidtovy ortonormalizace výsledný vektor škálujeme, aby byla jeho norma $1$, takže na hlavní diagonále je $1$ všude kromě řádku, která udává, co se má stát s naším řádkem, který chceme zmenšit/zvětšit.
+
+Tyto dolní trojúhelníkové matice úprav můžeme mezi sebou vynásobit a získat matici, která "najednou" vyrobí z matice $A$, jejíž řádky jsou řádky báze, matici unitární $Q$, jejíž řádky jsou řádky ortonormální báze.
+Označme si tuto matici $L^{-1}$.
+
+Tedy:
+
+$L^{-1}A = Q$
+
+Tato matice bude též dolní trojúhelníková, protože dolní trojúhelníkové matice jsou uzavřené na součiny (= součin dvou dolních t. matic je dolní t. matice).
+
+Když tuto rovnost vynásobíme zleva maticí $L$, dostáváme:
+
+$A = LQ$
+
+Jinými slovy:
+### LQ rozklad
+![alt text](image-324.png)
+
+(prof. Fiala tomu LQ rozklad explicitně neříkal, ale podařilo se mi najít anglický [zdroj](https://rtmath.net/assets/docs/finmath/html/8ae6a59f-a8a0-497c-afa4-abfdc0509149.htm#!), který ano + je tam paralela s QR rozkladem)
+
+![alt text](image-325.png)
+- regularita je důležitá, aby šlo udělat **unitární** matici (a + to dává smysl vzhledem k použítí = převodu báze na ortonormální)
+	- cílová **unitární matice** $Q$ je definována $Q^{-1} = Q^H$, tedy je **regulární**, tedy má hodnost $n$. 
+	
+		Hodnost matice nemůžeme pomocí elementárních úprav zvýšit. Tedy, vstupní matice musí být regulární = mít hodnost $n$.
+
+		Důvody (LA1):
+
+		$$\dim(R_A) = \dim(S_A) = \operatorname{rank}(A) = \operatorname{rank}(A^T)$$
+		---
+		$$A \sim\sim A' \implies R_A = R_{A'} \implies \dim(R_A) = \dim(R_{A'})$$
+		---
+		$$\operatorname{rank}(A) = \operatorname{rank}(A')$$
+
+		- elementární úpravy nemění dimenzi řádkového prostoru.	
+			- dimenze řádkového prostoru je rovna dimenzi sloupcového prostoru (protože př. $\det A = \det A^T$ - tedy buď obě jsou singulární (rank < n), anebo regulární (rank = n))
+				- tím jsme btw v LA1 určovali, jestli je matice singulární nebo regulární
+					- provedli jsme Gaussovu eliminaci (=řádkové úpravy), a pak se dívali na počet pivotů (=rank), jestli je menší než $n$ nebo ne
+						- spoléhali jsme na to, že ty úpravy to nezmění, že nám to řekne i o původní matici
+
+- regularita je taky důležitá, aby nám vůbec mohla běžet  Gramova-Schmidtova ortonormalizace:
+
+	V algoritmu Grama-Schmidta v každém kroku počítáme:
+
+	$$\mathbf c_i = \mathbf b_i - \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j \quad \text{a pak normalizujeme} \quad \mathbf d_i = \frac{\mathbf c_i}{\| \mathbf c_i\|}$$
+
+	Protože jsou řádky matice 
+	$A$ lineárně nezávislé (matice je regulární), vektor 
+	$\mathbf b_i$ nikdy neleží v lineárním obalu předchozích vektorů 
+	$\operatorname{span}(\mathbf b_1, \dots, \mathbf b_{i-1})$.
+	Díky tomu je vektor 
+	$\mathbf c_i$ vždy nenulový (
+	$\mathbf c_i \neq 0$), a tedy jeho norma je ostře kladná: 
+	$\|\mathbf c_i\| > 0$.
+	Můžeme jím bezpečně dělit a nikdy nedojde k dělení nulou.
+
+	(Kdyby matice nebyla regulární, nějaký vektor 
+	$\mathbf b_i$ by byl lineární kombinací předchozích, vyšlo by 
+	$\mathbf c_i = \mathbf 0$ a algoritmus by zhavaroval na dělení nulou).
+
+- a Gram-Schmidt převede libovolnou bázi lib. prostoru na ortonormální bázi
+	- $L^{-1}$ je matice, která Gram-Schmidt. provede na regulární matici $A$, a tím vždy získáme unitární matici $Q$
+
+___
+
+Ještě btw k tomu 
+
+$L^{-1}A = Q$
+
+a 
+
+$A = LQ$
+
+Matice elementárních úprav (viz v rovnicích tzv. ekvivalentní úpravy) jsou bijektivní zobrazení, tj. že jo (viz věta o charakterizaci izomorfismů):
+- $L \ \cdot$ to do changes
+- $L^{-1} \ \cdot$ to undo changes
+
+$L$ = úpravy, které je potřeba provést na $Q$, abychom dostali $A$
+
+$L^{-1} $ = úpravy, které je potřeba provést na $A$, abychom dostali $Q$
+
+### QR rozklad
+> Jako bezprostřední důsledek dostáváme větu:
+> 
+> ![alt text](image-326.png)
+
+Důkaz: 
+
+Víme, že libovolná komplexní regulární matice $A$ má $LQ$ rozklad.
+Dále víme, že $A^T$ je též regulární (protože př. $\det A = \det A^T$, a nebo protože $\dim(R_A) = \dim(S_A)$). 
+
+Tzn. $A^T$ má též $LQ$ rozklad, tj. $A^T = LQ$
+
+Celou rovnici transponujeme:
+
+$A =  (LQ)^T = Q^T L^T$
+
+Označme si $Q^T$ jako $Q'$ a  $L^T$ jako $R$
+
+Ten apostrof je tam pro rozlišení.
+
+Tj. v $A = LQ$ a $A = QR$ není stejná matice $Q$
+
+Jako důsledek těchto úvah o transpozici:
+
+(ON = ortonormální)
+
+| **Vlastnost** | **$LQ$ rozklad** | **$QR$ rozklad** |
+| :--- | :--- | :--- |
+| **Báze** | Řádky matice $A$ | Sloupce matice $A$ |
+| **Unitární matice** | $Q$ má **řádky** jako ON bázi | $Q$ má **sloupce** jako ON bázi |
+| **Trojúhelníková matice** | $L$ je **dolní** trojúhelníková (*Lower*) | $R$ je **horní** trojúhelníková (*Right/Upper*) |
+| **Geometrický význam** | $i$-tý řádek $Q$ je kombinací prvních $i$ **řádků** $A$, viz ten Gram-Schmidt: $$\mathbf d_i = \frac{1}{\|\|\mathbf c_i\|\|} \left( \mathbf b_i - \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j \right)$$ | $i$-tý sloupec $Q$ je kombinací prvních $i$ **sloupců** $A$ |
+| |$i$-tý řádek $A$ je kombinací prvních $i$ **řádků** $Q$ $$\mathbf b_i = \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j + \|\|\mathbf c_i\|\| \mathbf d_i$$  | $i$-tý sloupec $A$ je kombinací prvních $i$ **sloupců** $Q$ |
+________
+
+Tohle: 
+
+$$\mathbf b_i = \sum_{j=1}^{i-1} \langle \mathbf b_i \mid \mathbf d_j \rangle \mathbf d_j + \|\mathbf c_i\| \mathbf d_i$$
+
+jde vysvětlit pomocí:
+
+
+
+
+$$A=\begin{pmatrix} 
+\text{— } \mathbf b_1 \text{ —} \\ 
+\vdots \\ 
+\mathbf{\text{— } b_i \text{ —}} \\ 
+\vdots \\ 
+\text{— } \mathbf b_n \text{ —} 
+\end{pmatrix} 
+= \underbrace{\begin{pmatrix} 
+L_{1,1} & 0 & \dots & 0 \\ 
+\vdots & \ddots & & \vdots \\ 
+{L_{i,1}} & {L_{i,2}} & \dots & {L_{i,i}} & 0 & \dots & 0 \\ 
+\vdots & & \ddots & \vdots \\ 
+L_{n,1} & L_{n,2} & \dots & L_{n,n} 
+\end{pmatrix}}_{\large L}
+\cdot
+\underbrace{\begin{pmatrix} 
+\text{— } \mathbf d_1 \text{ —} \\ 
+\vdots \\ 
+\text{— } \mathbf d_i \text{ —} \\ 
+\vdots \\ 
+\text{— } \mathbf d_n \text{ —} 
+\end{pmatrix}}_{\large Q}$$
+
+> Dlužno dodat, že $QR$ rozklad není jednoznačný, a další $QR$ rozklady se dají spočítat pomocí jiných metod.
+
+> Téma skalárního součinu ještě neopustíme. Přestože jsme homogenní soustavy lin. rovnic už mnohokrát probírali, pomocí skal. součinu na ně získáme nový, netradiční pohled.
