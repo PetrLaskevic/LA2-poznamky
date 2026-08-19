@@ -624,3 +624,212 @@ L_{n,1} & L_{n,2} & \dots & L_{n,n}
 > Dlužno dodat, že $QR$ rozklad není jednoznačný, a další $QR$ rozklady se dají spočítat pomocí jiných metod.
 
 > Téma skalárního součinu ještě neopustíme. Přestože jsme homogenní soustavy lin. rovnic už mnohokrát probírali, pomocí skal. součinu na ně získáme nový, netradiční pohled.
+
+### Ortogonální doplněk
+
+> Pojem kolmosti $2$ vektorů nyní rozšíříme na celé množiny. Dozvíme se přitom zajímavé poznatky o struktuře vektorových prostorů se skalárním součinem.
+> 
+> ![alt text](image-327.png)
+
+![alt text](image-328.png)
+- intuitivně mi příjde víc vektorů které to filtrují => menší množina
+	- pro $W^\perp$ je v podmínce jen $|W|$ vektorů, na které musí být vektor kolmý, aby v $W^\perp$ byl 
+	- to je míň, než $|V|$ vektorů, na které musí být vektor kolmý, aby byl v $V^\perp$
+- **PŘESNĚJI:** díky tomu, že $W \subseteq V$, tak pro členství v $V^\perp$ musí být vektor kolmý na všechny vektory z $W$ a případně nějaké navíc z $V$, proto je ta množina $V^\perp$ menší nebo rovna $W^\perp$
+
+![alt text](image-329.png)
+- že jo uzavřenost na skalární násobky ($\mathbf u \in V^\perp \implies t \mathbf u \in V^\perp$) a na součty ($\mathbf u \in V^\perp \land \mathbf w \in V^\perp \implies (\mathbf u + \mathbf w) \in V^\perp$)
+
+Kdybychom tam chtěli formálněji přidat kvantifikátor($\forall \mathbf v \in V$), tak:
+
+- Pro násobek skalárem:
+
+	Nechť $\mathbf u \in V^\perp$ a $t \in T$. Pak:
+
+$$\forall \mathbf v \in V: \langle t \mathbf u \mid \mathbf v \rangle = t \langle \mathbf u \mid \mathbf v \rangle = t \cdot 0 = 0 \implies t \mathbf u \in V^\perp$$
+
+
+- Pro součet:
+
+	Nechť $\mathbf u, \mathbf w \in V^\perp$. Pak:
+
+$$\forall \mathbf v \in V: \langle \mathbf u + \mathbf w \mid \mathbf v \rangle = \langle \mathbf u \mid \mathbf v \rangle + \langle \mathbf w \mid \mathbf v \rangle = 0 + 0 = 0 \implies \mathbf u + \mathbf w \in V^\perp$$
+
+A nebo se vyhnout i té konvenci s nechť, a nechat se unést kvantifikátory (běžnější styl je ten s "nechť")
+
+$\forall \mathbf u, \mathbf w \in \mathbf U: \quad \big( \mathbf u \in V^\perp \land \mathbf w \in V^\perp \big) \implies \big( \forall \mathbf v \in V: \langle \mathbf u + \mathbf w \mid \mathbf v \rangle = \langle \mathbf u \mid \mathbf v \rangle + \langle \mathbf w \mid \mathbf v \rangle = 0 + 0 = 0 \big) \implies \mathbf u + \mathbf w \in V^\perp$
+___
+$\forall \mathbf u \in \mathbf U, \, \forall t \in T: \quad \mathbf u \in V^\perp \implies \big( \forall \mathbf v \in V: \langle t \mathbf u \mid \mathbf v \rangle = t \langle \mathbf u \mid \mathbf v \rangle = t \cdot 0 = 0 \big) \implies t \mathbf u \in V^\perp$
+____
+
+![alt text](image-330.png)
+- platí pro podprostor, nikoli jen podmnožinu
+- podprostor a jeho ortogonální doplněk se protínají pouze v počátku
+
+**Důkaz:**	
+1.  inkluze $\set{\mathbf 0} \subseteq V \cap V^\perp$:
+
+	počátek totiž patří do všech podprostorů daného prostoru (a že jo $V^\perp$ je také podprostor), tj. každý průnik jej musí obsahovat
+
+2. inkluze $V \cap V^\perp \subseteq \set{\mathbf 0}$:
+
+	na druhou stranu, pokud by do toho průniku patřil nějaký vektor $\mathbf u$:
+
+	$\mathbf u \in  V \cap V^\perp \implies \mathbf u \in V \land \mathbf u\in V^\perp \implies \mathbf u \perp \mathbf u \implies \langle \mathbf u \mid \mathbf u \rangle = 0 \implies \mathbf u = 0$
+
+> Na realné matici si ukážeme, že jsme ve skutečnosti už s ortogonálním doplňkem už pracovali.
+>
+> Pokud si matici převedeme do odstupňovaného tvaru, můžeme určit její řádkový prostor ($R_A$), což je lin. obal všech nenulových řádků, a také, pomocí zpětné substituce můžeme určit jádro této matice ($\ker A$). 
+>
+> Tyto 2 prostory jsou ve skutečnosti navzájem ortogonálními doplňky.
+> ### $\ker A = (R_A)^\perp$
+> ![alt text](image-331.png)
+
+![alt text](image-332.png)
+> - pomocí zpětné substituce získáme bázi jádra, což bude $n-r$ vektorů, kde $n$ je počet sloupců (že jo $n-r$ = počet volných proměnných)
+
+> Búno můžeme předpokládat, že prvních $r$ řádků generuje řádkový prostor (pokud by to tak nebylo, řádky matice přerovnáme)
+>
+> ![alt text](image-333.png)
+
+> Pro každé $\mathbf b_i$ (=řádek matice, který generuje řádkový prostor) a každé $\mathbf c_j$ (=vektor z báze jádra) platí:
+![alt text](image-334.png)
+- $A \mathbf c_j = \mathbf 0$ platí protože $\mathbf c_j \in \ker A \iff A \mathbf c_j = \mathbf 0$, viz definice jádra $\ker A := \set{\mathbf x \in T^n | A \mathbf x = \mathbf 0}$
+- $\mathbf b_i$ je $i$-tý řádek $A$, proto $\langle \mathbf b_i \mid \mathbf c_j \rangle$ odpovídá $i$-té složce vektoru $A \mathbf c_j$, která je teda rovna $0$
+	- resp. přesně řečeno $\mathbf b_1$ a $\mathbf b_2$ z ukázky byly vektory řádků $A'$ (= $A$ převedené do odstupňovaného tvaru)
+		- ale to je jedno, řádkovými úpravami se řádkový prostor nemění = prvních $r$ řádků $A$ generuje stejný prostor jako prvních $r$ řádků $A'$ (za předpokladu, že jsme řádky nijak nepermutovali s ostatními $n-r$ řádky)
+
+> Potom $\mathbf u$ (=lib. vektor z **řádkového prostoru**) a $\mathbf v$ (=lib. vektor z **prostoru jádra matice**) splňují:
+![alt text](image-335.png)
+- $\langle \mathbf b_i \mid \mathbf c_j \rangle = 0$, viz o pár řádek výše
+	- tohle: ![alt text](image-334.png)
+
+Tedy skutečně, libovolné dvojice vektorů z těchto dvou prostorů jsou kolmé, a tedy jsou si navzájem kolmé celé ty prostory $R_A$ a $\ker A$ (= jsou si navzájem ortogonálními doplňky).
+___
+> Hlavním poznatkem z této lekce je tato věta:
+> ### Pro prostor $U$ konečné dimenze se skalárním součinem a každý jeho podprostor $V$ platí: $(V^\perp)^\perp = V$ a $\dim V + \dim V^\perp = \dim U$
+> 
+> ![alt text](image-337.png)
+- $V^\perp = \ker A$  podle předchozí věty
+
+![alt text](image-338.png)
+- tu můžeme nalézt pomocí Gramovy-Schmidtovy ortonormalizace
+
+![alt text](image-339.png)
+- opět pomocí Gramovy-Schmidtovy ortonormalizace
+	- že jo vezmeme vektory z $B$ a přidáme k nim další nezávislé vektory z $U$, a celou takto vzniklou bázi ortonormalizujeme
+		- potom bude $B \subseteq H$
+
+![alt text](image-340.png)
+> - všechno to jsou konečné množiny, protože prostor $U$ má konečnou dimenzi (=konečný počet vektorů v bázi)
+
+> Naším cílem je ukázat, že tato množina $C$ je ve skutečnosti bází ortogonálního doplňku prostoru $V$
+
+> Nejprve ukážeme, že lib. vektor z $V$ je kolmý ke každému vektoru, který lze vygenerovat z množiny $C$
+>
+> ![alt text](image-341.png)
+- $\langle \mathbf b_i \mid \mathbf c_j \rangle = 0$, protože to jsou 2 různé vektory ortonormální báze
+
+![alt text](image-342.png)
+- to odpovídá, každý vektor z $\text{span } C$ je kolmý na každý vektor z $V$
+
+Zatím jsme si neukázali, že v $V^\perp$ nemohou být žádné další vektory. Na to se zaměříme nyní, tj. důkaz $V^\perp \subseteq \text{span } C$
+
+(Cíl je že jo $(\text{span } C \subseteq V^\perp) \land (V^\perp \subseteq \text{span } C) \implies \text{span } C = V^\perp$)
+
+> Nyní vězměme libovolný $\mathbf w \in V^\perp$ a podíváme se, jaké souřadnice má $[\mathbf w]_H$
+>
+> ![alt text](image-343.png)
+
+že jo $[\mathbf w]_H = (a_1, \dots, a_n)^T$,
+kde ty koeficienty dostaneme z $\mathbf w = a_1 \mathbf h_1 + \dots + a_n \mathbf h_n$,
+a protože je $H$ ortonormální, tak dokonce: 
+$$\mathbf w = \langle \mathbf w \mid \mathbf h_1 \rangle \mathbf h_1 + \dots + \langle \mathbf w \mid \mathbf h_n \rangle \mathbf h_n$$
+- toto je $\mathbf w$ vyjádřený pomocí lineární kombinace vektorů báze $H$ prostoru $U$, ve kterém všechny naše podprostory jsou
+- dál v důkazu budeme pro $\mathbf w$ používat tuto lineární kombinaci
+
+Důležité je si ještě uvědomit, že jsme si tu $H$ naporcovali na vektory $\mathbf b_1, \dots, \mathbf b_k$ a $\mathbf c_1, \dots, \mathbf c_l$ (tedy některé z těch mnou označených "háček" budou "béčka" a některá "céčka").
+
+![alt text](image-344.png)
+- $\langle \mathbf w \mid \mathbf b_i \rangle = 0$ protože $B$ je báze $V$
+
+To znamená, že náš $\mathbf w$:
+
+$$\mathbf w = \langle \mathbf w \mid \mathbf b_1 \rangle \mathbf b_1 + \dots + \langle \mathbf w \mid \mathbf b_k \rangle \mathbf b_k + \langle \mathbf w \mid \mathbf c_1 \rangle \mathbf c_1 + \dots + \langle \mathbf w \mid \mathbf c_l \rangle \mathbf c_l$$
+
+je možné vyjádřit jenom pomocí vektorů $\mathbf c_1, \dots, \mathbf c_l$
+
+To znamená, že $\mathbf w$ patří do lineárního obalu $C$. Předtím jsme řekli, že $\mathbf w$ je libovolný. Tzn. každý $\mathbf w \in \text{span }C$, tj. $V^\perp \subseteq \text{span }C$
+
+> V tuto chvíli jsme ve skutečnosti ukázali i 2. z inkluzí, čili množina $C$ generuje ortogonální doplněk prostoru $V$.
+
+- že jo $$\forall \mathbf w \in V^\perp: \quad \mathbf w =\langle \mathbf w \mid \mathbf c_1 \rangle \mathbf c_1 + \dots + \langle \mathbf w \mid \mathbf c_l \rangle \mathbf c_l$$
+
+každý $\mathbf w$ je dán právě lineární kombinací vektorů z $C$, tzn. $C$ je dokonce báze $ V^\perp$ (ty vektory jsou LN). Tj. $\text{span } C = V^\perp$
+
+> Nyní už je jednoduché důkaz dokončit:
+>
+> ![alt text](image-345.png)
+- už jsme dokázali, že $\text{span } C = V^\perp$, tzn. $\dim V^\perp = \dim \text{span } C = |C|$
+- $\dim V = |B|$ máme z předpokladů důkazu ("zvolíme ON bázi $B$ prostoru $V$")
+
+![alt text](image-346.png)
+
+Na tohle, aby to bylo zcela zřejmé, provedeme kus důkazu, který jsme už provedli, symetricky:
+
+1. ![alt text](image-341.png)
+![alt text](image-342.png)
+	- kolmost je symetrická vlastnost
+
+	Předtím jsme použili: "každé $\mathbf v \in \text{span }C$ je kolmé ke každému $\mathbf u \in \text{span }B$"
+
+	Teď použijeme "každý vektor $\mathbf u \in\text{span }B$ je kolmý na každý vektor $\mathbf v \in \text{span } C$"
+
+	$(\text{span }C)^\perp := \set{\mathbf u \in U | \forall \mathbf v \in \text{span }C: \mathbf u \perp \mathbf v}$
+
+	a protože $\text{span}(B) \subseteq U$, tak:
+	$$\text{span } B \subseteq (\text{span } C)^\perp$$
+
+	substitujeme
+	(už jsme dokázali $\text{span } C = V^\perp$):
+
+	$$V \subseteq (V^\perp)^\perp$$
+
+___
+
+2. Nyní chceme ukázat $(V^\perp)^\perp \subseteq V$, abychom ukázali rovnost (zase 
+
+$(V \subseteq (V^\perp)^\perp) \land  ((V^\perp)^\perp \subseteq V) \implies V = (V^\perp)^\perp$
+
+)
+
+Vezměme libovolný $\mathbf x \in (V^\perp)^\perp$. Znovu si jej můžeme vyjádřit jako lineární kombinaci vektorů báze $H$:
+
+$$\mathbf x = \langle \mathbf x \mid \mathbf b_1 \rangle \mathbf b_1 + \dots + \langle \mathbf x \mid \mathbf b_k \rangle \mathbf b_k + \langle \mathbf x \mid \mathbf c_1 \rangle \mathbf c_1 + \dots + \langle \mathbf x \mid \mathbf c_l \rangle \mathbf c_l$$
+
+Už víme, že $C$ je báze $V^\perp$, tedy víme $\langle \mathbf x \mid \mathbf c_i \rangle = 0$
+
+Vidíme tedy, že každé $\mathbf x$ můžeme vyjádřit jenom pomocí vektorů $B$, což je báze prostoru $V$
+
+$$\mathbf x = \langle \mathbf x \mid \mathbf b_1 \rangle \mathbf b_1 + \dots + \langle \mathbf x \mid \mathbf b_k \rangle \mathbf b_k$$
+
+- tím jsme ukázali $\mathbf{x} \in (V^\perp)^\perp \implies \mathbf{x} \in \operatorname{span}(B) = V$, což je definice podmnožiny $(V^\perp)^\perp \subseteq V$
+
+- můžeme tu rovnost ale interpetovat dále, a dostat z ní i druhou inkluzi, a tedy přímo rovnost:
+
+	$\forall \mathbf x \in (V^\perp)^\perp: \quad \mathbf x = \langle \mathbf x \mid \mathbf b_1 \rangle \mathbf b_1 + \dots + \langle \mathbf x \mid \mathbf b_k \rangle \mathbf b_k$
+
+	znamená, že $B$ je báze $(V^\perp)^\perp$, tedy bychom mohli říct i $\text{span } B = (V^\perp)^\perp$
+
+	A čemu ještě se rovná $\text{span } B$, no přece $V$.
+
+	Tedy $V = (V^\perp)^\perp$, QED
+
+	- tohle přesně btw použil předtím:
+
+		> > V tuto chvíli jsme ve skutečnosti ukázali i 2. z inkluzí, čili množina $C$ generuje ortogonální doplněk prostoru $V$.
+
+		> - že jo $$\forall \mathbf w \in V^\perp: \quad \mathbf w =\langle \mathbf w \mid \mathbf c_1 \rangle \mathbf c_1 + \dots + \langle \mathbf w \mid \mathbf c_l \rangle \mathbf c_l$$
+____
+
+> V příštích přednáškách se budeme zabývat maticemi, které se skalárním součinem úzce souvisejí. Těmto maticím se říká pozitivně definitní.
