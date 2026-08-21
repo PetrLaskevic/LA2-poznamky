@@ -356,3 +356,67 @@ Tohle přesně říká kus prezentace:
 		$\mathbf w = (0, \dots, 0, u_1, \dots, u_m)^T: \quad \mathbf w^H \begin{pmatrix} A & 0_{n,m} \\ 0_{m,n} & B \end{pmatrix} \mathbf w > 0$ $\implies$
 
 		$\mathbf u^H B \mathbf u > 0$, tzn. $B$ je pozitivně definitní
+
+### Charakteristika pozitivně definitních matic
+> Pozitivně definitní matice lze definovat i alternativními způsoby:
+>
+> ![alt text](image-366.png)
+
+> Tuto větu si dokážeme jako posloupnost 3 implikací.
+
+1. Důkaz matice $A$ je pozitivně definitní $\implies$ $A$ má všechna vlastní čísla realná kladná
+
+	pozitivně definitní matice je hermitovská matice, pro kterou navíc platí pro netriv. komplex. $\mathbf v: \quad \mathbf v^H A \mathbf v > 0$
+
+	![alt text](image-367.png)
+	- abychom vůbec mohli uvažovat o kladnosti
+	- to víme z  této věty (nadpis "Diagonalizace hermitovských matic" v části [Diagonalizace](Diagonalizace.md)):
+	![alt text](image-213.png)
+
+	> Vezměme si libovolný netriviální vektor $\mathbf v$, který je příslušný některému z těch vl. čísel:
+	>
+	> ![alt text](image-368.png)
+	- $\mathbf v^H A \mathbf v > 0$ protože předpoklad $A$ je pozit. def.
+	- $A \mathbf v = \lambda \mathbf v$ definiční rovnost vl. vektoru
+		- vytknutí $\lambda$ před maticový součin
+	- maticový součin $\mathbf v^H \mathbf v$ odpovídá standardnímu maticovému součinu na $\mathbb{C}^n$ (máme ortonormální standardní bázi, vůči které jsou vektory vyjádřené by default)
+	- $\langle \mathbf v | \mathbf v \rangle > 0$ je axiom skal. součinu
+	- $\lambda \langle \mathbf v | \mathbf v \rangle > 0 \land \langle \mathbf v | \mathbf v \rangle > 0 \implies \lambda > 0$
+		- odsud máme cíl, že libovolné vlastní číslo matice $A$ je nejen realné, ale i kladné
+
+2. Důkaz $A$ má všechna vlastní čísla kladná $\implies$ existuje regulární matice $U$ taková, že $U^H U = A$
+
+	![alt text](image-369.png)
+
+	zase:
+	
+	![alt text](image-213.png)
+
+	- na diagonále matice $D$ jsou kladná vlastní čísla - tzn. můžeme vzít další diagonální matici, kterou označíme $\tilde{D}$, definovanou tak, že prvky na diagonále odmocníme
+
+	- nyní stačí vyhodnotit $U^H U$, použito:
+		- substituce, $(XY)^H = Y^H X^H$, 
+		
+		- $\tilde D^H \tilde D = D$ = potká se řádek se sebou samým jako sloupcem, $\text{odmocnina}^2$
+			- stačila by obyč. transpozice, ale hermitovská udělá stejnou věc, protože matice $\tilde D$ realná
+	
+	- $U= \tilde D R$ regulární protože
+		- $\tilde D$ regulární = odvozena z $D$, která na hl. diag. z předpokladu kladná vl. č., tj. $\text{rank } \tilde D = n$
+		- $R$ regulární protože je unitární = podle def. $R^H R = I$ $\implies$ existuje inverzní matice = $R^{-1}$ , taky jde říct, že všechny její sloupce LN, protože jsou na sebe kolmé (opět vztah $R^H R = I$ => že jo pro $i \neq j$: $\mathbf r_i^H \mathbf r_j = 0$ )
+
+3. Důkaz existuje regulární matice $U taková, že $A = U^H U$ $\implies$ matice $A$ je pozitivně definitní
+
+![alt text](image-370.png)
+- $U \mathbf v \neq 0$ už jsem v tomto dokumentu vysvětloval
+
+> Matice $U$, která se vyskystla v bodu 3. věty:
+>
+> ![alt text](image-371.png)
+>
+> není jednoznačně dána. 
+
+> Ovšem v případě, že si stanovíme dodatečné podmínky, tak už jednoznačná je.
+>
+> Takovou dodatečnou podmínkou je, že ta matice má být horní trojúhelníková, a má mít také kladnou diagonálu.
+>
+> Taková matice vždy existuje a nazývá se **Choleského rozklad**
