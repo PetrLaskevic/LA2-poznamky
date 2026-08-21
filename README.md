@@ -77,3 +77,4 @@ Pro optimální vykreslení otevřít Preview ve VS Code.
 3. [Vlastní čísla a vlastní vektory](Vlastni_cisla_a_vlastni_vektory.md)
 4. [Diagonalizace](Diagonalizace.md)
 5. [Skalární součin](Skalární_součin.md)
+6. [Pozitivně definitní matice](Pozitivně_definitní_matice.md)
