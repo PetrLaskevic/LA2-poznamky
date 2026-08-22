@@ -420,3 +420,244 @@ Tohle přesně říká kus prezentace:
 > Takovou dodatečnou podmínkou je, že ta matice má být horní trojúhelníková, a má mít také kladnou diagonálu.
 >
 > Taková matice vždy existuje a nazývá se **Choleského rozklad**
+
+### Choleského rozklad
+
+![alt text](image-372.png)
+
+- $U$ spočteme pomocí následujícího algoritmu:
+
+![alt text](image-373.png)
+- $O(n^3)$ protože dvojitý `for` loop a uvnitř toho vnitřního $\sum$
+- matice $U$, kterou počítáme je "zero initialised", tj jakoby máme 2D pole vyplněné nulami, do kterého postupně dopočítáváme hodnoty
+	-  proto vypadá smyčka `for j = i + 1, ..., n` takhle, nevyplňuje nic vlevo od hlavní diagonály, tam nechá ty nuly
+
+Ty operace jde snadno odvodit z $U^H U$ (důkaz bude následovat potom):
+
+Matice 
+$U$ je horní trojúhelníková, takže její hermitovská transpozice 
+$U^H$ je dolní trojúhelníková s komplexně sdruženými prvky 
+$\overline{u_{ij}}$.
+
+Pro větší názornost obrázku jsem u $U^H$ nechal indexování z $U$.
+
+$\underbrace{\begin{pmatrix}
+\overline{u_{11}} & 0 & 0 & \dots & 0 \\
+\overline{u_{12}} & \overline{u_{22}} & 0 & \dots & 0 \\
+\overline{u_{13}} & \overline{u_{23}} & \overline{u_{33}} & \dots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\overline{u_{1n}} & \overline{u_{2n}} & \overline{u_{3n}} & \dots & \overline{u_{nn}}
+\end{pmatrix}}_{U^H}
+\cdot
+\underbrace{\begin{pmatrix}
+u_{11} & u_{12} & u_{13} & \dots & u_{1n} \\
+0 & u_{22} & u_{23} & \dots & u_{2n} \\
+0 & 0 & u_{33} & \dots & u_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \dots & u_{nn}
+\end{pmatrix}}_{U}
+=\underbrace{\begin{pmatrix}
+a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
+a_{31} & a_{32} & a_{33} & \dots & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
+\end{pmatrix}}_{A}$
+
+Odvoďmě si např. výpočet $u_{22}$:
+
+Maticový součin z definice, pak algebraické úpravy.
+
+$$
+a_{22} = \begin{pmatrix}
+\overline{u_{12}} & \overline{u_{22}} & 0 & \dots & 0
+\end{pmatrix}
+\begin{pmatrix}
+u_{12} \\
+u_{22} \\
+0 \\
+\vdots \\
+0
+\end{pmatrix} = \overline{u_{12}}u_{12} + \overline{u_{22}}u_{22}$$
+
+$$\overline{u_{22}}u_{22} = a_{22} - \overline{u_{12}}u_{12}$$
+
+$$|u_{22}|^2 = a_{22} - \overline{u_{12}}u_{12}$$
+
+$$|u_{22}| = \sqrt{a_{22} - \overline{u_{12}}u_{12}}$$
+
+$$u_{22} = \sqrt{a_{22} - \overline{u_{12}}u_{12}}$$
+
+Obecně pak:
+
+$$u_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} \overline{u_{ki} } u_{ki}}$$
+
+To $\overline{u_{ki}}$ zde představuje $i$-tý sloupec $U^H$, který ale "vyrobíme na místě" z matice $U$ - tedy zde bereme $i$-tý sloupec $U$ a na každý prvek aplikujeme komplexní sdružení.
+
+Podobně si odvoďme např. $u_{34}$
+
+$$a_{34} = 
+
+\begin{pmatrix}
+\overline{u_{13}} & \overline{u_{23}} & \overline{u_{33}} & \dots & 0 \\
+\end{pmatrix}
+
+\begin{pmatrix}
+u_{14} \\
+u_{24} \\
+u_{34} \\
+u_{44} \\
+\vdots \\
+0
+\end{pmatrix} = \overline{u_{13}}u_{14} + \overline{u_{23}}u_{24} + \overline{u_{33}} u_{34}$$
+
+$$\overline{u_{33}} u_{34} = a_{34} - \overline{u_{13}}u_{14} - \overline{u_{23}}u_{24}$$
+
+$$u_{34} = \frac{1}{\overline{u_{33}}} (a_{34} - \overline{u_{13}}u_{14} - \overline{u_{23}}u_{24})$$
+
+A protože znění věty říká, že $U$ má kladnou, to znamená realnou diagonálu, tak $\overline{u_{33}} = u_{33}$
+
+$$u_{34} = \frac{1}{u_{33}} (a_{34} - \overline{u_{13}}u_{14} - \overline{u_{23}}u_{24})$$
+
+Obecně pak:
+
+$$u_{ij} = \frac{1}{u_{ii}} (a_{ij}- \sum_{k=1}^{i-1} \overline{u_{ki}}u_{kj})$$
+
+To $\overline{u_{ki}}$ zde představuje $i$-tý sloupec $U^H$, který ale "vyrobíme na místě" z matice $U$ - tedy zde bereme $i$-tý sloupec $U$ a na každý prvek aplikujeme komplexní sdružení.
+
+#### Ukázka 
+
+Než jsem si rozepsal to nahoře, jak vznikly členy toho Choleského rozkladu tak mě to mátlo.
+
+![alt text](image-374.png)
+
+#### Správnost výpočtu Choleského rozkladu
+
+Zde se vyrojí implikace, ač v původní větě nebyly:
+
+> „Pro každou pozitivně definitní matici 
+$A$ existuje jednoznačná horní trojúhelníková matice 
+$U$ s kladnou diagonálou taková, že 
+$A = U^H U$.“
+
+Ale prof. Fiala formuluje algoritmus zároveň jako test pozitivní definitnosti:
+
+- **Vstup:** Libovolná hermitovská matice $A$.
+- **Výstup:** Choleského rozklad $U$, pokud je $A$ pozitivně definitní, jinak STOP (matice není pozitivně definitní).
+
+To je tahle část obrázku (začátek popisu algoritmu):
+
+![alt text](image-376.png)
+
+a tahle z průběhu algoritmu:
+![alt text](image-377.png)
+
+Tedy formálně:
+
+$A$ pozitivně definitní $\iff$ existuje Choleského rozklad (algoritmus uspěl)
+
+![alt text](image-375.png)
+1. čili algoritmus uspěje $\implies$  $A$ je pozitivně definitní
+	- že jo **algoritmus uspěl = našel horní trojúhelníkovou $U$ s kladnými realnými čísly na diagonále** (žádnou jinou najít nemůže = tak je algoritmus postaven = na hl. diagonálu umisťuje realný výsledek odmocniny (kdyby nebyl realný, tak by vyhodil výjimku, a neuspěl by), a vlevo od diagonály vždy nuly protože tak je napsán vnitřní `for` loop)
+
+	- **tato $U$ je regulární**
+		- protože determinant **horní trojúhelníkové** $U$ je $\det U = \displaystyle\prod_{i=1}^n u_{ii}$ a prvky na diagonále jsou kladné, je nenulový
+
+			- a my víme, že $\det U \neq 0 \iff U \text{ je regulární}$
+
+	- $U$ je regulární a $U^H U$ tvoří $A$ $\implies$ $A$ je hermitovská
+		- viz charakteristika pozitivně definitních matic:
+
+			![alt text](image-378.png)
+		
+		- tato $A$ je stejná jako ta vstupní $A$ do algoritmu
+			- to je vlastnost toho, jak jsme sestrojili ten algoritmus
+				- viz to odvození nahoře, ve kterém je $A$ ta vstupní matice:
+
+				$\underbrace{\begin{pmatrix}
+\overline{u_{11}} & 0 & 0 & \dots & 0 \\
+\overline{u_{12}} & \overline{u_{22}} & 0 & \dots & 0 \\
+\overline{u_{13}} & \overline{u_{23}} & \overline{u_{33}} & \dots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\overline{u_{1n}} & \overline{u_{2n}} & \overline{u_{3n}} & \dots & \overline{u_{nn}}
+\end{pmatrix}}_{U^H}
+\cdot
+\underbrace{\begin{pmatrix}
+u_{11} & u_{12} & u_{13} & \dots & u_{1n} \\
+0 & u_{22} & u_{23} & \dots & u_{2n} \\
+0 & 0 & u_{33} & \dots & u_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \dots & u_{nn}
+\end{pmatrix}}_{U}
+=\underbrace{\begin{pmatrix}
+a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
+a_{31} & a_{32} & a_{33} & \dots & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
+\end{pmatrix}}_{A}$
+
+				tj. z tohoto součinu odvodíme pro algoritmus vzorečky pro výpočet prvků matice $U$, ale zároveň z nich můžeme vyjádřit prvky té původní matice $A$, když ji chceme spočítat, a naopak známe matici $U$:
+
+				$$u_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} \overline{u_{ki} } u_{ki}}$$
+
+				$$u_{ij} = \frac{1}{u_{ii}} (a_{ij}- \sum_{k=1}^{i-1} \overline{u_{ki}}u_{kj})$$
+
+				z těchto dvou rovnici si můžu hned odvodit $a_{ii}$, $a_{ij}$
+
+
+2. algoritmus musí uspět pro každou pozitivně definitní matici, tj. 
+
+	matice $A$ pozitivně definitní $\implies$ algoritmus uspěje
+
+	Dokazovat budeme obměnu:
+
+	algoritmus selže $\implies$ matice $A$ není pozitivně definitní
+
+	![alt text](image-379.png)
+	- $u_{ii}$ nelze určit, protože algoritmus selhal (tj, ikdyž jsme tam podle pseudokódu nějakou hodnotu zapsal, tak to bereme tak, že když alg. selhal, tak tu hodnotu nebudeme nijak interpretovat)
+
+	- $\mathbf 0$ na tomto obrázku značí nulové podmatice
+
+	> - algoritmus selhal při výpočtu $i$-tého prvku na diagonále $U$, tzn. nepodařilo se nám získat kladnou odmocninu
+	>
+	> $$u_{ii} = \sqrt{a_{ii} - \underbrace{\sum_{k=1}^{i-1} \overline{u_{ki} } u_{ki}}_{\normalsize{\mathbf c^H \mathbf c}}}$$
+
+	proto $a_{ii} < \mathbf c^H \mathbf c$
+
+	> Nyní už sestavíme vektor $\mathbf v$, s jehož pomocí dokážeme, že matice $A$ není pozitivně definitní
+
+	![alt text](image-380.png)
+
+	![alt text](image-381.png)
+	- ješte k tomu blokovému násobení: je potřeba si uvědomit jaký mají tvar, a jaké prvky teda putují do jakých bloků
+		- $\mathbf b \in \mathbb{C}^{(i-1) \times 1}$
+		- $\mathbf b^H \in \mathbb{C}^{1 \times (i-1)}$
+		- $B \in \mathbb{C}^{(i-1) \times (i-1)}$
+		- $\mathbf w \in \mathbb{C}^{(i-1) \times 1}$ 
+			- $B \mathbf w \in \mathbb{C}^{(i-1) \times 1}$ 
+		- $\mathbf b^H \mathbf w \in \mathbb{C}$
+		- v 1. součinu z řádku s $\mathbf b$ z toho vektoru jde vždy $1$ prvek, proto ok násobení se skalárem $1$ (= tam si to prostě představit po jednotlivých řádcích a sloupcích uvnitř bloků)
+		- část nepodstatné je tam kvůli součinu s nulovým "podvektorem" uvnitř blokového vektoru $\mathbf v$
+
+	> Substitujeme:
+	>- $\mathbf w = -C^{-1} \mathbf c$
+	>- $\mathbf b = C^H \mathbf c$
+	>- $B = C^H C$
+	>
+	> ![alt text](image-382.png)
+
+	![](image-383.png)
+
+	$={\color{red} -\mathbf c^H (C^{-1})^H} \cdot {\color{gold} C^H C} \cdot {\color{red} - C^{-1} \mathbf c}+ {\color{red} -\mathbf c^H (C^{-1})^H} \cdot {\color{green} C^H \mathbf c}+ {\color{green} \mathbf c^H C} \cdot {\color{red} -C^{-1}\mathbf c} + {\color{blue} a_{ii}}$
+	- pak $(C^{-1})^H C^H = (CC^{-1})^H = I^H = I$, všechny ty matice $C$ a jejich inverze se pokrátí:
+
+	![](image-384.png)
+
+	- když si vzpomenem na začátek této řady rovností, tak vyšlo: $\mathbf v^H A \mathbf v \le 0$, skutečně znamená, 
+	že matice není pozitivně definitní
+____
+
+> Choleského rozklad není jediný způsob, kterým lze zjistit, zdali je matice pozitivně definitní.
+>
+> Jaké jsou alternativní možnosti, si předvedeme příště.
