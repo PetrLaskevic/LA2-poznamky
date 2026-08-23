@@ -661,3 +661,107 @@ ____
 > Choleského rozklad není jediný způsob, kterým lze zjistit, zdali je matice pozitivně definitní.
 >
 > Jaké jsou alternativní možnosti, si předvedeme příště.
+
+## Rekurentní a Sylvestrova podmínka
+
+> K pozitivně definitním maticím jsme se dostali odvozením ze skalárního součinu. 
+
+> Dnes si předvedeme, že také souvisí s Gaussovou eliminací, a také s determinanty.
+
+### Rekurentní podmínka
+![alt text](image-385.png)
+- nutno si všimnout, že $\mathbf b \mathbf b^H$ vytvoří matici řádu $n-1$
+	- př. $b b^T = \begin{pmatrix} 2 \\ 6 \end{pmatrix} \begin{pmatrix} 2 & 6 \end{pmatrix} = \begin{pmatrix} 2 \cdot 2 & 2 \cdot 6 \\ 6 \cdot 2 & 6 \cdot 6 \end{pmatrix}$
+
+> Matice $B - \frac{1}{a_{11}} \mathbf b \mathbf b^H$ nám může na 1. pohled přijít nepřirozená, ale ve skutečnosti jsme ji už používali, když jsme používali Gaussovu eliminaci
+>
+> Pokud bychom v té blokové matci eliminovali sloupec $\mathbf b$ pomocí 1. řádku:
+> 
+> ![alt text](image-386.png)
+
+![alt text](image-387.png)
+- tato matice řádu $3$ opět hermitovská, opět na ni můžeme stejnou rekurentní podmínku:
+> Jinými slovy pozitivně definitní matice lze rozpoznat Gaussovou eliminací, pokud vždy eliminujeme shora dolů (= nikdy neměníme pořadí řádků ani řádky nenásobíme skalárem).
+>
+> ![alt text](image-388.png)
+- že jo base case, nejmenší $C := B - \frac{1}{a_{11}} \mathbf b \mathbf b^H$ je matice 1x1 = 1 číslo
+	- ta je pozitivně definitní $\iff$ to číslo je kladné
+		- to číslo je vlastním číslem, tj. $C \mathbf v = \lambda \mathbf v$
+		- pozitivně definitní matice je hermitovská, a ta má všechna vlastní čísla realná
+		- a pro pozit. def. navíc platí, že $\mathbf v^H C \mathbf v > 0$, tzn. to vlastní číslo je navíc kladné
+#### Důkaz
+> Nejprve si uvědomíme, že pokud chceme eliminovat 1. sloupec v této matici, takt to odpovídá elementární řádkovým úpravám, které jsou dány touto maticí (v součinu levá)
+>
+>![alt text](image-389.png)
+>
+> Následně eliminujeme i zbytek 1. řádku. Tzn. provedeme úplně stejné úpravy, ale ne na řádky, ale na sloupce. To odpovídá součinu s maticí úprav zprava = a ta odpovídá stejné matici co předtím, ale hermitovsky transponované:
+>
+> ![alt text](image-390.png)
+- $\begin{array}{|c|c|}
+\hline
+1 & \mathbf{0}^{\mathsf{H}} \\
+\hline
+-\frac{1}{a_{11}}\boldsymbol{b} & \mathbf{I} \\
+\hline
+\end{array}$ je **regulární**
+	* protože dolní trojúhelníková s $1$ na diagonále
+		- její $\det$ je  $\displaystyle\prod_{i=1}^n r_{ii} = 1$, a víme že $\det \neq 0 \iff \text{ matice regulární }$
+		- nebo taky protože každý sloupec začíná s o 1 delším úsekem nul => LN sloupce => regulární
+- $\begin{array}{|c|c|}
+\hline
+1 & -\frac{1}{a_{11}}\boldsymbol{b}^{\mathsf{H}} \\
+\hline
+\mathbf{0} & \mathbf{I} \\
+\hline
+\end{array}$ je **regulární**
+	- třeba proto, že pivoty prvky na hlavní diagonále
+	- nebo taky protože to je hermitovská transpozice té předchozí, která je regulární
+
+Ten součin je teda věta $R^H A R$ pozitivně definitní (kde $R$ je regulární) $\iff$ $A$ je pozitivně definitní.
+- ![alt text](image-356.png)
+
+$A$ je pozitivně definitní $\iff$ $R^H A R = \begin{array}{|c|c|}
+\hline
+a_{11} & \mathbf{0}^{\mathsf{H}} \\
+\hline
+\mathbf{0} & \boldsymbol{B} - \frac{1}{a_{11}}\boldsymbol{b}\boldsymbol{b}^{\mathsf{H}} \\
+\hline
+\end{array}$ je pozitivně definitní $\iff$ oba bloky obsahující diagonálu musí být pozitivně definitní (bylo na to už pozorování) $\iff$ $B - \frac{1}{a_{11}} \mathbf b \mathbf b^H$ je pozitivně definitní
+
+____
+
+oba bloky $\begin{array}{|c|c|}
+\hline
+a_{11} & \mathbf{0}^{\mathsf{H}} \\
+\hline
+\mathbf{0} & \boldsymbol{B} - \frac{1}{a_{11}}\boldsymbol{b}\boldsymbol{b}^{\mathsf{H}} \\
+\hline
+\end{array}$ obsahující diagonálu musí být pozitivně definitní:
+
+- matice 1x1 $(a_{11})$ je pozitivně definitní  $\iff$ $a_{11} \in \reals^+$ , což jsme taky chtěli vědět 
+- $B - \frac{1}{a_{11}} \mathbf b \mathbf b^H$ tedy musí být pozitivně definitní, co je cíl
+____
+
+> Z rekurentní podmínky lze odvodit i tzv. 
+> ### Sylvestrova podmínka
+>
+>![alt text](image-391.png)
+
+![alt text](image-392.png)
+![alt text](image-393.png)
+- důkaz: použijeme algoritmus z rekurzivní podmínky, a pak budeme intepretovat výsledek
+	- $a_{11}^{'}, \dots, a_{nn}^{'} > 0 \implies \det A_1, \dots, \det A_n > 0$
+		- protože $\det A_i^{'} = a_{ii}^{'} \cdot \det(A_{i-1})$
+			- každé to $\det(A_{i - \text{něco}})$ můžeme rozexpandovat na součin kladných $a$ček
+				- že jo base case je součin kladných $a$ček krát $\det(A_1)$, což je jedno kladné číslo, prvek $a_{11}$
+	- $\det A_1, \dots, \det A_n > 0 \implies a_{11}^{'}, \dots, a_{nn}^{'} > 0 $
+		- z té rovnosti $\det A_i^{'} = a_{ii}^{'} \cdot \det(A_{i-1})$ máme kladné $a_{ii}^{'} = \frac{\det A_i^{'}}{\det(A_{i-1})}$ vzniklé jako podíl dvou kladných čísel
+
+
+> Kromě pozitivně definitních matic se můžeme setkat také s negativně definitními, semidefinitními, či indefinitními maticemi.
+>
+> Ikdyž jsme se jim podrobně nevěnovali, věřím, že vlastnosti pozitivně definitních matic dovedete převést i na ty ostatní.
+
+> My se však nyní vydáme jiným směrem. Připomínám, že pozitivně definitní matice jsme odvodili ze skalárního součinu, který byl definován na aritmetických vektorových prostorech na realnými či komplexními čísly. 
+>
+> Budeme se zabývat otázkou, jak lze skalární součin, resp. koncept podobný skalárnímu součinu nadefinovat i ve vektorových prostorech nad obecnými tělesy.
