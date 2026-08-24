@@ -78,3 +78,4 @@ Pro optimální vykreslení otevřít Preview ve VS Code.
 4. [Diagonalizace](Diagonalizace.md)
 5. [Skalární součin](Skalární_součin.md)
 6. [Pozitivně definitní matice](Pozitivně_definitní_matice.md)
+7. [Kvadratické a bilineární formy](Kvadratické_a_bilineární_formy.md)
