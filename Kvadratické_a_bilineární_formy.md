@@ -64,7 +64,7 @@ Zde je definice z Wikipedie:
 > Ne vždy se nám musí podařit matici kvadratické formy najít
 >
 > ![](image-402.png)
-- jinde než na $\mathbb{Z}_2$, tedy na tělese s charakteristikou jinou než $2$ bude vždy existovat od každé bilineární formy její symetrická verze (TODO: bylo to na cvičení, doplnit důvod) 
+- jinde než na $\mathbb{Z}_2$, tedy na tělese s charakteristikou jinou než $2$ bude vždy existovat od každé bilineární formy její symetrická verze - viz dále: 
 
 > Záhy si ukážeme, jak z předpisu pro kvadratickou formu můžeme sestavit symetrickou matici bilineární formy, a zároveň nám to dá odpověď na otázku, kdy matice kvadratické formy neexistuje.
 >
@@ -73,7 +73,7 @@ Zde je definice z Wikipedie:
 > ![alt text](image-403.png)
 
 v důkazu:
-- předpokládáme, že $g$ a $f$ existuje (což můžeme dokud není řeč o maticích, tak není na $f$ podmínka, aby byla symetrická => existuje vždy => $g$ existuje vždy) 
+- předpokládáme, že $g$ a $f$ existuje (což můžeme dokud není řeč o maticích, tak není na $f$ podmínka, aby byla symetrická => $f$ existuje vždy => $g$ existuje vždy) 
 - $g$ existuje $\iff g(\mathbf v) = f(\mathbf v, \mathbf v)$ 
 - linarita bilin. normy v 1. a 2. složce
 - v posledním kroku máme na pravé straně $f(\mathbf b_i, \mathbf b_j) + f(\mathbf b_j, \mathbf b_i)$
@@ -85,6 +85,27 @@ v důkazu:
 		> v tělesech ostatních charakteristik má číslo $2$ vždy svůj inverzní prvek (zde $2$ bereme tak, že sečteme dvakrát neutrální prvek vzhledem k násobení)
 		>
 		> **proto v tělesech, které nemají charakteristiku 2, je vždy matice kvadratické formy dána jednoznačně** (a tedy definována, že)
+
+#### Co si z toho odnést
+
+Vždy, kdy v tělese existuje číslo $2$, můžeme vytvořit matici symetrické bilineární formy.
+- a z té pak - viz (forward ref) analytické vyjádření - vytvořit polynom ("funkční předpis")
+
+![alt text](image-404.png)
+- že jo nějaká kvadratická forma k bilineární formě existuje vždy (není zde žádný požadavek na symetrii, jedné kvadratické formě může odpovídat víc bilineárních forem)
+- a pak pomocí vzorce $a_{ij} = \frac 1 2 (g(\mathbf b_i + \mathbf b_j) - g(\mathbf b_i) - g(\mathbf b_j))$ si vytvořit symetrickou matici bilineární formy
+	- a kdybychom chtěli polynom téhle bilin. formy, tak spočteme analytické vyjádření
+
+Takže vlastně takhle trochu oklikou umíme "symetrizovat" bilineární formu.
+- a z ní pak sestrojit i matici kvadratické formy ( protože že jo symetrická matice bilineární formy a matice kvadratické formy se liší jenom vstupy - jestli tam pošleme 2 stejné vektory nebo různé)
+
+Proto se matice kvadratické formy definuje tak, že je to "ta symetrická", protože prakticky vždy jde sestrojit, a neztratíme tím žádné možnosti.
+
+(kromě toho edge case, kdy bychom něměli číslo 2, viz $\mathbb{Z}_2$ - pak bychom se asi museli smířit s tím co máme, a netrvat na symetrii - stejně by symetrická a nesymetrická verze téže formy po dosazení vstupních vektorů měla dát stejné číslo)
+
+##### Proč teda chceme symetrii
+
+Spousta nástrojů v lineární algebře pracuje s symetrickými maticemi.
 ____
 
 > Máme-li ať už bilineární nebo kvadratickou formu popsánu pomocí její matice, můžeme hodnotu této formy vyhodnotit pomocí maticového součinu.
