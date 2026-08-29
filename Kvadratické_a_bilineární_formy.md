@@ -205,7 +205,7 @@ a $g(\mathbf v) = f(\mathbf v, \mathbf v)$ že jo
 ![alt text](image-420.png)
 
 > U ostatních těles dá diagonalizace forem trochu více práce.
-### Diagonalizace matic forem nad ostatními tělesy
+### Diagonalizace matic forem nad ostatními tělesy a polární báze
 ![alt text](image-421.png)
 ![alt text](image-422.png)
 - $R$ je matice přechodu od nové báze k původní bázi, $[id]_{B, E}$
@@ -542,3 +542,255 @@ a_{ii} & a_{i1} & \mathbf{d}^T \\ \hline
 a_{1i} & 0 & \mathbf{c}^T \\ \hline 
 \mathbf{d} & \mathbf{c} & C 
 \end{pmatrix}$$
+
+> Zbývá ošetřit situaci, kdy celý 1. řádek i sloupec jsou nulové
+>
+> ![alt text](image-431.png)
+
+- tj. nemusíme nic řešit, prostě zahodíme 1. řádek i sloupec, protože už jsou vynulované, což je stav, ke kterému jsme se chtěli v ostatních předmětech dostat.
+
+### Metody diagonalizace matic forem
+> Ve výsledku jsem získali 2 metody, jakým způsobem se dají matice forem diagonalizovat
+>
+> ![alt text](image-432.png)
+> - tak, jak jsme se naučili diagonalizovat matice lineárních zobrazení
+![alt text](image-413.png)
+![alt text](image-425.png)
+
+- že jo samotným těm maticím "je jedno", jaký význam jim přidělíme (pro tento kontext tu matici formy "dezinterpretujeme" jako jinou matici, matici nějakého lineárního zobrazení), víme, že máme tu větu, že tedy ten součin 3 matic nalézt půjde = diagonalizovat půjdou, a můžeme tedy hledat $D = R^{-1}AR$, najít vlastní čísla, která budeme dávat do $D$, a spočíst ty matice přechodu = tam dáme vlastní vektory (viz dříve)
+	- případně tedy díky té větě jenom nalézt tu $R$ a pak místo inverze spočítat prostou transpozici
+
+> pokud nemáme realnou symetrickou matici, nebo jen nechceme využívat vlastních čísel:
+>
+> ![alt text](image-433.png)
+
+- což jsme právě dělali v tom důkazu = použijeme důkaz jako algoritmus
+- *současně* zde ale stále znamená jedno po druhém, tj. nejdřív provedeme řádkovou operaci, poté provedeme odpovídající sloupcovou operaci, viz další pozorování:
+
+![alt text](image-434.png)
+
+> Jakmile se nám podaří matici $A$ převést eliminací na dolní trojúhelníkovou matici, tak vzhledem k tomu, že po celou dobu udržujeme matici symetrickou, tak výsledná matice bude nejenom dolní trojúhelníková, ale ve skutečnosti i diagonální.
+>
+> ![alt text](image-435.png)
+
+#### Ukázka diagonalizace symetrické matice pomocí Gaussovy eleminace
+![alt text](image-436.png)
+
+$$R = [id]_{B,E} = \begin{pmatrix}
+\vert &  & \vert \\
+[\text{id}(\mathbf{b}_1)]_E & \dots & [\text{id}(\mathbf{b}_n)]_E \\
+\vert & &\vert
+\end{pmatrix}
+
+= \begin{pmatrix}
+\vert &  & \vert \\
+\mathbf{b}_1 & \dots & \mathbf{b}_n \\
+\vert & &\vert
+\end{pmatrix}
+
+$$
+
+- vpravo máme za začátku matici identity, a pak, jak postupně upravujeme řádkovými úpravami matici nalevo, tak se do té matice napravo ty úpravy také propisují, a je tak na konci "seznamem" všech těch úprav, právě tou maticí řádkových úprav $R^T$
+
+- viz vysvětlení u nadpisu "Diagonalizace matic forem nad ostatními tělesy"
+
+	- ![alt text](image-413.png)
+	- $D = R^T A R$ je diagonální matice, vyjádření téže formy vůči nové bázi, kterou nazveme polární
+		- proto $R$ musí být matice přechodu od polární báze k původní bázi pro pravý vstupní vektor
+		- a $R^T$ musí být matice přechodu (ač teda transponovaná, protože levý vstup vstupuje jako řádek) od polární báze k původní bázi pro levý vstupní vektor
+	- kde ta transpozice se odkazuje na předchozí pozorování:
+	- ![alt text](image-408.png)
+	- ![alt text](image-409.png)
+
+- nebo další pohled na věc, $R^T$ jsou úpravy, které z $A$ udělaly $D$, která je od polární báze $B$ k $B$, a $R$ je pak $[id]_{B,E}$
+
+> Nyní přejdeme ještě dále, a předvedeme si, že v případě realných čísel můžeme získat matici, která kromě nul bude už obsahovat pouze $1$ a $-1$.
+
+### Sylvestrův zákon setrvačnosti
+![alt text](image-437.png)
+![alt text](image-438.png)
+
+> U forem na $\reals^2$ ve skutečnosti můžeme rozebrat všechny možné případy, protože je jen konečně mnoho signatur (že jo, počtů 1, -1, 0 na hlavní diagonále, kde můžou být celkově 2 prvky).
+
+![alt text](image-439.png)
+- ten "pringle" je sedlová plocha
+
+#### Důkaz Sylvestrova zákona setrvačnosti
+> Důkaz rozdělíme na 2 části:
+> 1. Ukážeme, že nějaká taková vhodná báze existuje
+> 2. Ukážeme jednoznačnost počtu $1, -1, 0$
+
+![alt text](image-440.png)
+1. **Existence vhodné báze**
+
+	Realné symetrické matice lze diagonalizovat pomocí ortogonálních matic
+
+	(afaik analogie s tím, jak hermitovské matice lze diagonalizovat pomocí unitárních matic)
+
+	![alt text](image-441.png)
+	> - pomocnou matici $D'$ si nyní rozložíme jako součin $3$ diagonálních matic, přičemž $D$ bude obsahovat znaménka prvků, které jsou v $D'$ na diagonále.
+
+	> - naším cílem je určit matici $S$ tak, aby byla regulární, tzn. aby všechny prvky na diagonále $S$ byly nenulové.
+	>	- s těmi odmocninami tam ve výsledku součinu vznikne $|d'_{ii}|$, a $d_{ii}$ tam přidá znaménko, čímž vznikne původní prvek $d'_{ii}$
+	>		- že jo $\sqrt{d'_{ii}} \sqrt{d'_{ii}} = \sqrt{(d'_{ii})^2} =  |d'_{ii}|$
+	>		- $\sqrt{-d'_{ii}} \sqrt{-d'_{ii}} = \sqrt{(d'_{ii})^2} =  |d'_{ii}|$
+
+	![alt text](image-442.png)
+	- $SR$ regulární protože:
+		- $S$ regulární, tak jsme ji zkonstruovali
+		- $R$ je regulární z věty, že realné symetrické matice lze vždy diagonalizovat
+	- $A = (SR)^T DSR$
+		- vzniklo dosazením $D' = S^T DS$ do $A = R^T D' R$:
+			1.  $A = R^T D' R$
+			2. $A = R^T S^T DS R$
+			3. $R^T S^T = (SR)^T$
+
+	> Nyní zbývá pomocí součinu matic $S$ a $R$ převést danou bázi $B$ na hledanou vhodnou bázi $C$. Za tím účelem nejprve součin $SR$ invertujeme, a potom tento součin vezmeme jako matici přechodu $[id]_{C,B}$
+	>
+	> ![alt text](image-443.png)
+	- asi spíš ověříme že ta rovnost vyjde, a tím si potvrdíme, že ten součin vyjde, idk jestli za tou volbou je nějaký intuitivní důvod:
+	> = Nyní už můžeme snadno ověřit, že když matici $A$ vynásobíme zleva  $[id]^T_{C,B}$ a zprava $[id]_{C,B}$, jinými slovy vyhodnotíme  $((SR)^{-1})^T (SR)^T DSR(SR)^{-1}$, dostáváme přesně diagonální matici $D$, tak, jak je uvedeno ve znění věty
+	- v úpravě výrazu $((SR)^{-1})^T (SR)^T DSR(SR)^{-1}$ použijeme:
+		- $((SR)^{-1})^T = ((SR)^T)^{-1}$
+		- $((SR)^T)^{-1} (SR)^T = I$
+		- $SR(SR)^{-1} = I$
+
+	![alt text](image-444.png)
+	- tu ekvivalenci jsme odvodili pomocí toho, že $[id]_{B,C} = [id]_{C,B}^{-1}$
+
+2. **Jednoznačnost počtu $1, -1, 0$**
+
+> V druhé části důkazu si ukážeme, že počet $1, -1, 0$ je v diagonální matici přímo dán danou formou $g$.
+
+![alt text](image-445.png)
+- tj vektory báze uspořádáme tak, aby to takhle vyšlo
+- $\mathbf B$ vznikne uspořádáním vektorů $B$ do sloupců
+
+> Podotýkám, že báze $B$ má jiný význam, než v 1. části důkazu věty.
+
+> Nejprve si ukážeme, že se v obou dvou maticích shoduje počet nul na diagonále. 
+>
+> Počet nul na diagonále v matici $B$ je roven $n - \text{rank } \mathbf B$
+>
+> Matici $\mathbf C$ ovšem můžeme získat z matice $\mathbf B$ tak, že ji zprava i zleva vynásobíme maticí přechodu, což je regulární matice, a součin s regulární maticí nemění hodnost.
+>
+> Proto je hodnost matice $\mathbf B$ stejná jako hodnost matice $\mathbf C$.
+
+$\text{rank }(\mathbf B) = \text{rank }(\text{matice přechodu } \cdot \mathbf B \cdot \text{ matice přechodu}) = \text{rank }(\mathbf C)$
+
+![alt text](image-446.png)
+
+> Nyní se zaměříme na počet $1$. Sporem dokážeme, že $\# 1 \text{ v } B$ a $\# 1 \text{ v } C$ se rovnají
+
+> Předpokládejme nejprve, že by matice $B$ obsahovala více jedniček než matice $C$, čili $r > s$.
+>
+> V tomto případě uvažme 2 podprostory daného prostoru $\reals^n$:
+- $\color{green} U = \text{span}(\mathbf b_1, \dots, \mathbf b_r)$ = generovaný prvními $r$ vektory z báze $B$
+- $\color{blue} V = \text{span}(\mathbf c_{s+1}, \dots, \mathbf c_n)$ = generovaný posledními $n-s$ vektory z báze $C$
+
+- $\dim U = r$
+- $\dim V = n-s$
+
+![alt text](image-447.png)
+
+![alt text](image-448.png)
+
+![alt text](image-449.png)
+- věta z LA1, z [prezentace Věta o výměně, dimenze](https://kam.mff.cuni.cz/~fiala/LA1/542-vymena.pdf)
+
+Levá strana této rovnosti přesahuje $n$.
+
+Na pravé straně $\dim(\text{span } U \cup V) \le \dim \reals^n = n$
+
+To znamená $\dim(U \cap V) \ge 1$
+
+![alt text](image-450.png)
+
+$U \cap V$ má tedy kladnou dimenzi, tzn kromě $\mathbf 0$ obsahuje alespoň $1$ netriviální $\mathbf v$
+
+- že jo vektorový prostor dimenze $0$ obsahuje $\mathbf 0$
+	- ač báze prázdná množina
+		- ta $\sum$ nula vektorů se taky definuje jako $\mathbf 0$
+	- že jo, aby to byl vektorový prostor, tak musí podle def. vektorového prostoru platit, že $(V, +)$ je Abelovská grupa
+		- a ta má jako jeden ze svých axiomů:
+
+			V prostoru $V$ existuje prvek $\mathbf{0} \in V$ takový, že pro každý vektor $\mathbf{v} \in V$ platí $\mathbf{v} + \mathbf{0} = \mathbf{v}$
+
+> Když si zapíšeme vektor souřadnic vektoru $\mathbf v$ vůči bázi $B$, zjistíme, že může mít **nenulové** souřadnice pouze v prvních $r$ složkách, protože je lin. kombinací **pouze** vektorů $\mathbf b_1, \dots, \mathbf b_r$
+>
+> Vektor $\mathbf v$ je navíc nenulový, tzn. alespoň jedna z těchto prvních $r$ složek je nenulová.
+>
+> Podobně, pohlížíme-li na $\mathbf v$ jako na vektor, kterž jsme získali lineární kombinací posledních $n-s$ vektorů z báze $C$, zjistíme, že souřadnice tohoto vektoru vůči bázi $C$ mají prvních $n-s$ složek nulových, a pot následují další koeficienty, z nichž alespoň jeden je také nenulový.
+>
+> ![alt text](image-451.png)
+
+- stejně tak protože $\mathbf v \neq \mathbf 0$, alespoň jedno z $d_{s+1}, \dots ,d_n$ je nenulové
+
+![alt text](image-452.png)
+- že jo $r = \# 1 \text{ v } \mathbf B$, a $\mathbf B$ je uspořádána tak, že nejdřív jsou sloupce s $1$ na diagonále, pak sloupce s $-1$, pak s $0$
+	- tj. prvních $r$ sloupců v $\mathbf B$ obsahuje $1$
+- tj. tím $\mathbf B \begin{pmatrix} a_1 \\ \vdots \\ a_n \\ 0 \\ \vdots \\ 0\end{pmatrix}$ se odstraní  části s $-1$, výsledkem bude $\begin{pmatrix} a_1 \\ \vdots \\ a_n \\ 0 \\ \vdots \\ 0\end{pmatrix}$ 
+
+![alt text](image-453.png)
+
+$[\boldsymbol{v}]_C = (0, \dots, 0, d_{s+1}, \dots, d_n)^\mathsf{T}$
+
+- prvních $s$ sloupců $\mathbf C$ mají na diag. $1$, pak jsou ty s $-1$, na konec jsou ty s $0$ 
+
+- tj. tím $C \begin{pmatrix}0 \\ \vdots \\ 0 \\ d_{s+1} \\ \vdots \\d_n \end{pmatrix}$ se jednak odstraní části $\mathbf C$ s $1$, pak se části s $-1$ potkají s koeficienty $d_{s+1}, \dots, d_{\text{rank}(C)}$ (protože víme, kolik ), a části s $0$ se potkají s koeficienty $d_{\text{rank}(C) + 1}, \dots, d_n$, takže výsledkem bude vektor $\begin{pmatrix} 0 \\ \vdots \\ 0 \\ -d_{s+1} \\ \vdots \\-d_{\text{rank}(C)} \\ 0 \\ \vdots \\ 0 \end{pmatrix}$
+
+Pak z $[\mathbf v]_C \begin{pmatrix} 0 \\ \vdots \\ 0 \\ -d_{s+1} \\ \vdots \\-d_{\text{rank}(C)} \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ hned dostáváme $-d_{s+1}^2 - \dots - d_{\text{rank}(C)}^2$
+
+![alt text](image-454.png)
+> - Hodnota kvadratické formy jednoho vektoru nemůže být současně kladná a nekladná (že jo $\mathbf C$ a $\mathbf B$ jsou matice stejné formy)
+>	- odvodili jsme tedy spor s naším přepokladem , že $r > s$, tj. že by v matici $\mathbf B$ bylo víc jedniček než v matici $\mathbf C$
+
+- Symetricky dokážeme $s \ngtr r$
+	- předpokládejme pro spor, že $r < s$
+	  
+		1. Definujme podprostory:
+		- $U = \text{span}(c_1, \dots, c_s)$, $\dim U = s$
+		- $V = \text{span}(b_{r+1}, \dots, b_n)$, $\dim V = n-r$
+		2. Součet jejich dimenzí je $\dim U + \dim V = s + (n - r) = n + (s - r)$.
+		- znovu tedy platí věta o průniku a spojení $\dim U + \dim V = \dim(U \cap V) + \dim(\text{span}(U \cup V))$
+
+		Na pravé straně $\dim(\text{span } U \cup V) \le \dim \reals^n = n$
+
+		To znamená $\dim(U \cap V) \ge 1$
+
+		3. $U \cap V$ obsahuje netriviální vektor
+		4. Zvolme $\mathbf v \in (\text{span}(c_1, \dots, c_s) \cap \text{span}(b_{r+1}, \dots, b_n)) \setminus \set 0$
+
+		$[\mathbf v]_C = (a_1, \dots, a_s, 0, \dots, 0)^T$
+
+		$[\mathbf v]_B = (0, \dots, 0, d_{r+1}, \dots, d_n)^T$
+
+		5. Vyhodnoťme $[\mathbf v]_C^T \mathbf C [\mathbf v]_C$ a $[\mathbf v]_B^T \mathbf B [\mathbf v]_B$
+
+		$g(\mathbf v ) = [\mathbf v]_C^T \mathbf C [\mathbf v]_C = a_1^2 + \dots + a_s^2 > 0$
+
+		$g(v) = [v]_B^T B [v]_B = -d_{r+1}^2 - \dots - d_{\text{rank}(B)}^2 \le 0$
+
+		čímž jsme zase došli ke sporu
+
+Celkově tedy $(r \nless s) \land (r \ngtr s) \implies r = s$ 
+
+> A proto mají obě matice stejný počet jak jedniček (to jsme teď dokázali), tak nul (to jsme už dokázali na začátku druhé části důkazu), tak i $-1$ (ty na diagonále zbývají, když mají obě matice stejný řád, a ostatních prvků mají stejně) 
+___________
+
+> Na závěr bych rád Sylvestrův zákon setrvačnosti vztáhl k tomu, co jsme se naučili dříve.
+>
+> Pokud bychom si vzali pozitivně definitní realnou matici, tak ji lze diagonalizovat na jednotkovou matici.
+>
+> Vzpomeňme si, že Choleského rozklad je součin horní trojúhelníkové matice $U$ se svou hermitovskou transpozicí. A v případě, že pracujeme s realnými maticemi, můžeme hermitovskou transpozici nahradit normální transpozicí a doprostřed tohoto součinu prostě vložit jednotkovou matici.
+>
+> ![alt text](image-455.png)
+
+> Sylvestrův zákon setrvačnosti můžeme ve skutečnosti vyslovit i pro komplexní symetrické formy. Zde si musíme uvědomit, že komplexní symetrická matice není totéž co hermitovská matice. 
+>
+> U této věty dostaneme diagonální matice, které budou mít na diagonále jedničky a nuly, jinými slovy se $-1$ můžeme vyhnout, protože ty lze v komplexním oboru odmocnit.
+>
+> ![alt text](image-456.png)
+
+> Sylvestrův zákon setrvačnosti bylo poslední tvrzení, kterým jsme završili budování teorie v našem kurzu lineární algebry. 
+> Přiště si předvedeme, jak formy souvisejí s kuželosečkami a také si předvedeme několik dalších aplikací lineární algebry v jiných oblastech matematiky.
