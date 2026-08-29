@@ -715,3 +715,82 @@ $U \cap V$ má tedy kladnou dimenzi, tzn kromě $\mathbf 0$ obsahuje alespoň $1
 		- a ta má jako jeden ze svých axiomů:
 
 			V prostoru $V$ existuje prvek $\mathbf{0} \in V$ takový, že pro každý vektor $\mathbf{v} \in V$ platí $\mathbf{v} + \mathbf{0} = \mathbf{v}$
+
+> Když si zapíšeme vektor souřadnic vektoru $\mathbf v$ vůči bázi $B$, zjistíme, že může mít **nenulové** souřadnice pouze v prvních $r$ složkách, protože je lin. kombinací **pouze** vektorů $\mathbf b_1, \dots, \mathbf b_r$
+>
+> Vektor $\mathbf v$ je navíc nenulový, tzn. alespoň jedna z těchto prvních $r$ složek je nenulová.
+>
+> Podobně, pohlížíme-li na $\mathbf v$ jako na vektor, kterž jsme získali lineární kombinací posledních $n-s$ vektorů z báze $C$, zjistíme, že souřadnice tohoto vektoru vůči bázi $C$ mají prvních $n-s$ složek nulových, a pot následují další koeficienty, z nichž alespoň jeden je také nenulový.
+>
+> ![alt text](image-451.png)
+
+- stejně tak protože $\mathbf v \neq \mathbf 0$, alespoň jedno z $d_{s+1}, \dots ,d_n$ je nenulové
+
+![alt text](image-452.png)
+- že jo $r = \# 1 \text{ v } \mathbf B$, a $\mathbf B$ je uspořádána tak, že nejdřív jsou sloupce s $1$ na diagonále, pak sloupce s $-1$, pak s $0$
+	- tj. prvních $r$ sloupců v $\mathbf B$ obsahuje $1$
+- tj. tím $\mathbf B \begin{pmatrix} a_1 \\ \vdots \\ a_n \\ 0 \\ \vdots \\ 0\end{pmatrix}$ se odstraní  části s $-1$, výsledkem bude $\begin{pmatrix} a_1 \\ \vdots \\ a_n \\ 0 \\ \vdots \\ 0\end{pmatrix}$ 
+
+![alt text](image-453.png)
+
+$[\boldsymbol{v}]_C = (0, \dots, 0, d_{s+1}, \dots, d_n)^\mathsf{T}$
+
+- prvních $s$ sloupců $\mathbf C$ mají na diag. $1$, pak jsou ty s $-1$, na konec jsou ty s $0$ 
+
+- tj. tím $C \begin{pmatrix}0 \\ \vdots \\ 0 \\ d_{s+1} \\ \vdots \\d_n \end{pmatrix}$ se jednak odstraní části $\mathbf C$ s $1$, pak se části s $-1$ potkají s koeficienty $d_{s+1}, \dots, d_{\text{rank}(C)}$ (protože víme, kolik ), a části s $0$ se potkají s koeficienty $d_{\text{rank}(C) + 1}, \dots, d_n$, takže výsledkem bude vektor $\begin{pmatrix} 0 \\ \vdots \\ 0 \\ -d_{s+1} \\ \vdots \\-d_{\text{rank}(C)} \\ 0 \\ \vdots \\ 0 \end{pmatrix}$
+
+Pak z $[\mathbf v]_C \begin{pmatrix} 0 \\ \vdots \\ 0 \\ -d_{s+1} \\ \vdots \\-d_{\text{rank}(C)} \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ hned dostáváme $-d_{s+1}^2 - \dots - d_{\text{rank}(C)}^2$
+
+![alt text](image-454.png)
+> - Hodnota kvadratické formy jednoho vektoru nemůže být současně kladná a nekladná (že jo $\mathbf C$ a $\mathbf B$ jsou matice stejné formy)
+>	- odvodili jsme tedy spor s naším přepokladem , že $r > s$, tj. že by v matici $\mathbf B$ bylo víc jedniček než v matici $\mathbf C$
+
+- Symetricky dokážeme $s \ngtr r$
+	- předpokládejme pro spor, že $r < s$
+	  
+		1. Definujme podprostory:
+		- $U = \text{span}(c_1, \dots, c_s)$, $\dim U = s$
+		- $V = \text{span}(b_{r+1}, \dots, b_n)$, $\dim V = n-r$
+		2. Součet jejich dimenzí je $\dim U + \dim V = s + (n - r) = n + (s - r)$.
+		- znovu tedy platí věta o průniku a spojení $\dim U + \dim V = \dim(U \cap V) + \dim(\text{span}(U \cup V))$
+
+		Na pravé straně $\dim(\text{span } U \cup V) \le \dim \reals^n = n$
+
+		To znamená $\dim(U \cap V) \ge 1$
+
+		3. $U \cap V$ obsahuje netriviální vektor
+		4. Zvolme $\mathbf v \in (\text{span}(c_1, \dots, c_s) \cap \text{span}(b_{r+1}, \dots, b_n)) \setminus \set 0$
+
+		$[\mathbf v]_C = (a_1, \dots, a_s, 0, \dots, 0)^T$
+
+		$[\mathbf v]_B = (0, \dots, 0, d_{r+1}, \dots, d_n)^T$
+
+		5. Vyhodnoťme $[\mathbf v]_C^T \mathbf C [\mathbf v]_C$ a $[\mathbf v]_B^T \mathbf B [\mathbf v]_B$
+
+		$g(\mathbf v ) = [\mathbf v]_C^T \mathbf C [\mathbf v]_C = a_1^2 + \dots + a_s^2 > 0$
+
+		$g(v) = [v]_B^T B [v]_B = -d_{r+1}^2 - \dots - d_{\text{rank}(B)}^2 \le 0$
+
+		čímž jsme zase došli ke sporu
+
+Celkově tedy $(r \nless s) \land (r \ngtr s) \implies r = s$ 
+
+> A proto mají obě matice stejný počet jak jedniček (to jsme teď dokázali), tak nul (to jsme už dokázali na začátku druhé části důkazu), tak i $-1$ (ty na diagonále zbývají, když mají obě matice stejný řád, a ostatních prvků mají stejně) 
+___________
+
+> Na závěr bych rád Sylvestrův zákon setrvačnosti vztáhl k tomu, co jsme se naučili dříve.
+>
+> Pokud bychom si vzali pozitivně definitní realnou matici, tak ji lze diagonalizovat na jednotkovou matici.
+>
+> Vzpomeňme si, že Choleského rozklad je součin horní trojúhelníkové matice $U$ se svou hermitovskou transpozicí. A v případě, že pracujeme s realnými maticemi, můžeme hermitovskou transpozici nahradit normální transpozicí a doprostřed tohoto součinu prostě vložit jednotkovou matici.
+>
+> ![alt text](image-455.png)
+
+> Sylvestrův zákon setrvačnosti můžeme ve skutečnosti vyslovit i pro komplexní symetrické formy. Zde si musíme uvědomit, že komplexní symetrická matice není totéž co hermitovská matice. 
+>
+> U této věty dostaneme diagonální matice, které budou mít na diagonále jedničky a nuly, jinými slovy se $-1$ můžeme vyhnout, protože ty lze v komplexním oboru odmocnit.
+>
+> ![alt text](image-456.png)
+
+> Sylvestrův zákon setrvačnosti bylo poslední tvrzení, kterým jsme završili budování teorie v našem kurzu lineární algebry. 
+> Přiště si předvedeme, jak formy souvisejí s kuželosečkami a také si předvedeme několik dalších aplikací lineární algebry v jiných oblastech matematiky.
