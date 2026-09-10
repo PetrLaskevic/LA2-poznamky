@@ -79,3 +79,4 @@ Pro optimální vykreslení otevřít Preview ve VS Code.
 5. [Skalární součin](Skalární_součin.md)
 6. [Pozitivně definitní matice](Pozitivně_definitní_matice.md)
 7. [Kvadratické a bilineární formy](Kvadratické_a_bilineární_formy.md)
+8. [Přímky svírajicí stejný úhel](Přímky_svírající_stejný_úhel.md)
