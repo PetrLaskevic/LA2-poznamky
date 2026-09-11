@@ -868,12 +868,18 @@ Nyní podle stejného postupu to pojďme dokázat obecně:
 
 Dokážeme to indukcí.
 
-**Indukční předpoklad**: Tvrzení věty platí pro všechny grafy s $n-1$ hranami. Tzn. pro každý takový graf $H$ je počet koster $\kappa(H) = \det(L^{11}_H)$
+**Indukční předpoklad**: Tvrzení věty platí pro všechny grafy s $m-1$ hranami. Tzn. pro každý takový graf $H$ je počet koster $\kappa(H) = \det(L^{11}_H)$
+
+- V indukčním předpokladu je bezpečnější formulovat:
+
+	„Tvrzení platí pro všechny grafy s méně než $m$ hranami.“
+
+	Při kontrakci hrany $e$ mohou vzniknout násobné hrany nebo smyčky. Smyčky můžeme ihned odebrat (nemají vliv na počet koster $\kappa$ ani na Laplaceovu matici $L$). Po odebrání smyček ale graf může mít méně než $m - 1$ hran. To je tzv. silná indukce, s ní to funguje bez jakéhokoliv problému.
 
 **Indukční krok**:
-Máme graf $G$ s $n$ hranami, pro ten platí rekurentní formule $\kappa(G) = \kappa(G - e) + \kappa(G \circ e)$ (tu jsme si už odvodili předtím)
-- $G - e$ je graf s $n-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G - e) = \det(L_{G - e}^{11})$
-- $G \circ e$ je graf s $n-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G \circ e) = \det(L_{G \circ e}^{11})$
+Máme graf $G$ s $m$ hranami, pro ten platí rekurentní formule $\kappa(G) = \kappa(G - e) + \kappa(G \circ e)$ (tu jsme si už odvodili předtím)
+- $G - e$ je graf s $m-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G - e) = \det(L_{G - e}^{11})$
+- $G \circ e$ je graf s $m-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G \circ e) = \det(L_{G \circ e}^{11})$
 
 Dosadíme do $\kappa(G) = \kappa(G - e) + \kappa(G \circ e)$ a dostaneme:
 $\kappa(G) = \det(L_{G - e}^{11})  + \det(L_{G \circ e}^{11})$
