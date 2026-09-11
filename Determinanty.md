@@ -738,3 +738,187 @@ $\det \begin{pmatrix}{u} +{v} &{a} \\{w} +{x} &{b} \end{pmatrix} = \det \begin{p
 ![alt text](image-72.png)
 
 ## Počet koster grafu
+
+> Determinanty mohou být užitečné i mimo lineární algebru. Rád bych vám nyní předvedl překvapivý vztah, a to, že je můžeme použít k určení počtu koster nějakého grafu.
+
+![alt text](image-464.png)
+
+> K určení počtu koster grafu využijeme 2 grafové operace: 
+> - odebrání hrany
+> - kontrakci hrany
+
+![alt text](image-465.png)
+![alt text](image-466.png)
+> - kontrakci hrany $e$ značíme $G \circ e$
+
+![alt text](image-467.png)
+- ![](vznik_nasobne_hrany.png)
+- ![](vznik_smycky.png)
+
+> Vidíme, že těmito 2 operacemi můžeme dostat složitější strukturu, které se říká multigraf.
+### Multigraf a kostra multigrafu
+![alt text](image-468.png)
+- př. v tom obrázku má násobná hrana 2 vlákna: 
+
+	![](vznik_smycky.png)
+
+> Máme-li v našem grafu nějakou hranu, která spojuje 2 různé vrcholy (tedy ne smyčku), potom platí, že kostry lze rozdělit do 2 skupin:
+>- ty, které danou hranu neobsahují
+>- ty, které danou hranu obsahují
+
+<style>
+
+	.gold{
+		border: 5px solid gold;
+		padding: 10px;
+	}
+
+	.green{
+		border: 5px solid green;
+		padding: 10px
+	}
+</style>
+
+<div class="gold">
+
+> Snadno se nahlédne, že ty kostry, které danou hranu neobsahují, jsou také kostry grafu, z něhož je tato hrana odstraněna
+
+</div>
+<br>
+<div class="green">
+
+> Na druhou stranu, ty kostry, které danou hranu $e$ obsahují, lze získat z koster grafu, v němž je $e$ kontrahována, tak, že při dekontrakci jednoduše hranu $e$ vždy přidáme.
+
+</div>
+<br>
+
+> Tento argument jde jednoduše shrnout do rekurentní formule:
+> 
+> ![alt text](image-469.png)
+
+> Oba grafy, ať už vzniklé odebráním nebo kontrakcí hrany, mají o tuto hranu méně. Tudíž tuto rekurentní formuli lze použít pro výpočet počtu koster grafu.
+
+![alt text](image-470.png)
+- listy jsou obecně kostry (tady když jsme viděli, že někde jsou 2, nebo 3, tak už jsme řekli, že víme - asi aby se vešlo na slide)
+
+> - můžeme si všimnout, že můžeme vybrat i smyčku, ovšem protože smyčka nemůže být součástí žádné kostry, tak platí $\kappa(G) = \kappa(G - e)$
+
+> Výpočet podle této rekurence je však neefektivní.
+>
+> Proto si ukážeme jinou metodu, ve které se ovšem tato rekurence využívá.
+>
+> K určení počtu koster grafu využijeme tzv. Laplaceovu matici.
+
+### Laplaceova matice
+![alt text](image-471.png)
+
+- Dá se definovat i takto:
+
+	Laplaceova matice $L$ o rozměrech $n \times n$ je definována jako rozdíl:
+	$$L = D - A$$
+	Kde:
+
+	$D$ je matice stupňů (diagonální matice, kde na diagonále $D_{ii}$ je počet sousedů vrcholu $i$, tedy jeho stupeň $\deg(v_i)$).
+	$A$ je matice sousednosti ($A_{ij} = 1$, pokud mezi vrcholy $i$ a $j$ vede hrana, jinak $0$).
+
+	Jednotlivé prvky matice $L$ tedy vypadají takto:
+
+	- $L_{ii} = \deg(v_i)$ (na hlavní diagonále je stupeň vrcholu)
+	- $L_{ij} = -1$, pokud jsou vrcholy $i$ a $j$ spojeny hranou ($i \neq j$)
+	- $L_{ij} = 0$, pokud vrcholy $i$ a $j$ nejsou spojeny hranou ($i \neq j$)
+
+![alt text](image-472.png)
+- přičteme-li k nějakému řádku ostatní řádky, dostaneme nulový řádek
+- nebo když k nějakému sloupci ostatní sloupce, dostaneme nulový sloupec (ta matice $L_G$ je symetrická, protože matice sousednosti je symetrická = máme symetrický graf, a matice stupňů je diagonální = tzn. taky symetrická)
+- že jo takové úpravy němení determinant, a matice, která má nulový řádek nebo sloupec má nulový determinant, tzn. je singulární
+
+![alt text](image-473.png)
+- že jo, u souvislého grafu, když z té matice vyškrteneme 1. řádek i 1. sloupec, tak změníme počet $-1$ v některém sloupci, což znamená, že nedostaneme nulový řádek při přičtení všech řádků k nějakému jinému řádku
+
+### Věta: Počet koster grafu (Každý graf $G$ na alespoň 2 vrcholech má $\det L_G^{11}$ koster)
+![alt text](image-474.png)
+![alt text](image-475.png)
+> - každá smyčka by přispěla 2 do stupně vrcholu, a také, jako hrana nám 2 odečte (že jo, to je vidět z té definice $D - A$)
+#### Ukázka výpočtu pomocí věty:
+![alt text](image-476.png)
+
+> První z věcí, kterou bychom měli prozkoumat je, jak determinant Laplaceovy matice závisí na tom, kterou kombinaci řádků a sloupců odstraníme, protože Laplaceova matici závisí na tom, jak očíslujeme vrcholy daného grafu, a tudíž ji můžeme sestavit i různým způsobem. To si rozebereme na následující ukázce:
+>
+> ![alt text](image-477.png)
+- TODO: ten vztah v důsledku už jsme někde viděli, ne?
+
+![alt text](image-478.png)
+
+Podloží pro důkaz věty, ke které budeme směřovat:
+
+![alt text](image-479.png)
+### Souvislost  mezi rekurencí a linearitou determinantu
+![alt text](image-480.png)
+> Matice $A$ a $B$ se liší pouze v levém horním rohu.
+- když si teda 1. sloupec rozložíme na součet 2 čísel, a pak použijeme linearitu determinantu k součtu:
+
+
+![alt text](image-481.png)
+
+Nyní podle stejného postupu to pojďme dokázat obecně:
+
+### Věta: Každý multigraf $G$ s $|V_G| \ge 2$ splňuje $\kappa(G) = \det(L^{11}_G)$
+
+![alt text](image-482.png)
+
+Dokážeme to indukcí.
+
+**Indukční předpoklad**: Tvrzení věty platí pro všechny grafy s $n-1$ hranami. Tzn. pro každý takový graf $H$ je počet koster $\kappa(H) = \det(L^{11}_H)$
+
+**Indukční krok**:
+Máme graf $G$ s $n$ hranami, pro ten platí rekurentní formule $\kappa(G) = \kappa(G - e) + \kappa(G \circ e)$ (tu jsme si už odvodili předtím)
+- $G - e$ je graf s $n-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G - e) = \det(L_{G - e}^{11})$
+- $G \circ e$ je graf s $n-1$ hranami, pro ten už platí indukční předpoklad, tedy surely $\kappa(G \circ e) = \det(L_{G \circ e}^{11})$
+
+Dosadíme do $\kappa(G) = \kappa(G - e) + \kappa(G \circ e)$ a dostaneme:
+$\kappa(G) = \det(L_{G - e}^{11})  + \det(L_{G \circ e}^{11})$
+
+- a teď použijeme to, co jsme si ukázali na slidu "Souvislost  mezi rekurencí a linearitou determinantu" (že jsou matice $A := L^{11}_G$, $B := L_{G-e}^{11}$ shodné kromě $(L_{G-e}^{11})_{11} = (L^{11}_G)_{11} - 1$ (tam hrana z 1. do 2. vedla, zvyšovala tak stupeň), a tedy 1. sloupec $L^{11}_G$ vyjádříme jako součet 1. sloupce $L_{G-e}^{11}$, a vektoru $\mathbf e_1$ std. báze, pak rozložíme výsledek na 2 determinanty (linearita), a dojdeme tím k $\det L_{G-e}^{11} + \det L_{G \circ e}^{11}$ (2. člen dostaneme Laplaceovým rozvojem podél 1. sloupce, tj. $(-1)^{1+1} 1 \det C$, viz ta poznámka, že $C = A^{11} = B^{11}$ ($C := L^{11}_{G \circ e}$), tedy 2. člen = $(-1)^{1+1} 1 \det L^{11}_{G \circ e} = \det L^{11}_{G \circ e}$ ) ), dostaneme $\det(L_{G - e}^{11})  + \det(L_{G \circ e}^{11}) = \det(L_G^{11})$, a tím indukční krok dokončíme. Tím tedy budeme mít dokázané $\kappa(G) = \det(L_G^{11})$
+
+**Základ indukce (Base case)**:
+
+souvislý 2vrcholový $G$ bez smyček, $\kappa(G) = \det(L^{11}_G)$ platí, protože: pro něj, když má jen 2 vrcholy, platí:
+
+$\kappa(G) = \underbrace{|E_G|}_{\text{počet vláken v násobné hraně}} = \underbrace{\deg(v_2)}_{\text{stupeň, ať už 1. či 2. vrcholu}} = \underbrace{(L_G)_{2,2}}_{\text{tak je } L_G \text{ definována}} = \underbrace{\det L^{11}_G}_{\text{po odebrání 1. řádku a 1. sloupce z 2x2 matice zbyde akorát 1x1}}$
+
+![alt text](image-483.png)
+<details> 
+<summary>
+
+tj. viz ukázka, matice $A$, $B$ se liší jen v 1. sloupci a 1. řádku, zbytek mají stejný = matici $C$
+
+</summary>
+
+- ![alt text](image-484.png)
+	- důvod, proč se liší jenom v 1. řádku a sloupci tady:
+
+		![alt text](image-479.png)
+
+</details>
+
+> Jak při odebrání, tak při kontrakci hrany nám klesne celkový počet hran, proto podle indukčního předpokladu platí:
+>
+> ![alt text](image-485.png)
+
+![alt text](image-486.png)
+<details>
+<summary>
+když si teda 1. sloupec rozložíme na součet 2 čísel, a pak použijeme linearitu determinantu k součtu:
+</summary>
+
+![alt text](image-481.png)
+
+</details>
+
+![alt text](image-487.png)
+
+> Hezkou a stručnou aplikací uvedené věty je tzv. Cayleyho vzorec.
+### Cayleyho vzorec = počet koster úplného grafu
+![alt text](image-488.png)
+
+> Kromě počtu koster lze determinanty použít i k řešení jiných kombinatorických problémů. Ovšem to už je nad rámec našeho kurzu.
