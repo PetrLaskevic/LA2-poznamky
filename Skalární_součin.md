@@ -257,44 +257,38 @@ Stejně, tak, když zachovává normu (=předpoklad), tak se norma této lin. ko
 
 ![alt text](image-293.png)
 - červeně tedy máme členy, které se díky předpokladu rovnají
-	- tzn. součty zbytků se rovnájí
+- tzn. součty zbytků se rovnájí, což dává rovnici:
+
+$$t \langle \mathbf v | \mathbf u \rangle + \bar t \langle \mathbf u | \mathbf v \rangle = t \langle f(\mathbf v) | f(\mathbf u) \rangle + \bar t \langle f(\mathbf u) | f(\mathbf v) \rangle$$
+
 
 - je to komplexní rovnice, tj. číslo na levé i na pravé části má reálnou a imaginární část.
 
+- nemusíme "vědet", že tam potřebujeme dosadit $t=1$ a $t=i$, ono to vyjde, i když tam dosadíme 1x obecné komplexní číslo $t = r + il$
 
-TODO: zamyslet se 
-Naše rovnice vypadá v podstatě takto:
+$$(r + il) \langle \mathbf v | \mathbf u \rangle + (r - il) \langle \mathbf u | \mathbf v \rangle = (r + il) \langle f(\mathbf v) | f(\mathbf u) \rangle + (r - il) \langle f(\mathbf u) | f(\mathbf v) \rangle$$
 
-$t \bar{A} + \bar{t} A = t \bar{B} + \bar{t} B$
+$$r \langle \mathbf v | \mathbf u \rangle + il \langle \mathbf v | \mathbf u \rangle + r \langle \mathbf u | \mathbf v \rangle - il \langle \mathbf u | \mathbf v \rangle = r \langle f(\mathbf v) | f(\mathbf u) \rangle + il \langle f(\mathbf v) | f(\mathbf u) \rangle + r \langle f(\mathbf u) | f(\mathbf v) \rangle - il \langle f(\mathbf u) | f(\mathbf v) \rangle$$
 
-my chceme zjistit, čemu se rovná realná a čemu imaginární část.
+- to je komplexní rovnice, tj. když se rovná celé, tak se musí rovnat realná a komplexní složka:
 
-Pokud zvolíme pouze jednu hodnotu, například 
-$t = 1$:
+	**realná:**
 
-$$\bar{A} + A = \bar{B} + B$$
-Protože 
-$A + \bar{A} = 2\operatorname{Re}(A)$, tato rovnice nám říká pouze to, že:
+	$r \langle \mathbf v | \mathbf u \rangle +  r \langle \mathbf u | \mathbf v \rangle = r \langle f(\mathbf v) | f(\mathbf u) \rangle + r \langle f(\mathbf u) | f(\mathbf v) \rangle \quad /:r$
 
-$$\operatorname{Re}(\langle\boldsymbol{u}\mid\boldsymbol{v}\rangle) = \operatorname{Re}(\langle f(\boldsymbol{u})\mid f(\boldsymbol{v})\rangle)$$
-To znamená: reálné části se rovnají, ale o imaginárních částech nevíme vůbec nic. (Například čísla 
-$2 + 5\mathrm{i}$ a 
-$2 - 3\mathrm{i}$ mají stejnou reálnou část, ale nejsou stejná).
+	a tohle už je přesně rovnice, co měl Fiala pro $t=1$:
 
-Proč potřebujeme i druhou hodnotu (
-$t = \mathrm{i}$)?
-Abychom zjistili, co se děje s imaginární částí, potřebujeme druhou nezávislou rovnici. Proto dosadíme 
-$t = \mathrm{i}$:
+	$\langle \mathbf v | \mathbf u \rangle +  \langle \mathbf u | \mathbf v \rangle = \langle f(\mathbf v) | f(\mathbf u) \rangle + \langle f(\mathbf u) | f(\mathbf v) \rangle$
 
-$$\bar{A} - A = \bar{B} - B$$
-Tato druhá rovnice nám dává informaci o imaginární části:
+	**imaginární:**
 
-$$\operatorname{Im}(\langle\boldsymbol{u}\mid\boldsymbol{v}\rangle) = \operatorname{Im}(\langle f(\boldsymbol{u})\mid f(\boldsymbol{v})\rangle)$$
+	$il \langle \mathbf v | \mathbf u \rangle - il \langle \mathbf u | \mathbf v \rangle = il \langle f(\mathbf v) | f(\mathbf u) \rangle - il \langle f(\mathbf u) | f(\mathbf v) \rangle \quad /:il$
 
+	a tohle už je přesně rovnice, co měl Fiala pro $t=i$:
 
-TODO: pak teda dobrá otázka, co s tím t=1 a t=i
-
-- když odečteme druhou rovnici od první, máme výsledek
+	$\langle \mathbf v | \mathbf u \rangle - \langle \mathbf u | \mathbf v \rangle = \langle f(\mathbf v) | f(\mathbf u) \rangle - \langle f(\mathbf u) | f(\mathbf v) \rangle$
+- jelikož jsme vykrátili tu imaginární složku, tak máme soustavu o 2 realných rovnicích
+- když odečteme druhou rovnici od první, máme výsledek (= ten poslední řádek ze slidu)
 
 ### Maticová charakterizace bijektivních isometrií (Věta o charakterizaci izometrie pomocí její matice)
 > v ukázkách **isometrií** jsem záměrně uváděl jejich matice, protože matice zobrazení lze hezky využít při charakterizaci bijektivních isometrií. To je shrnuto v této větě:
