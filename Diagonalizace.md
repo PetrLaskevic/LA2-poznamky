@@ -75,8 +75,19 @@ $B$.** (viz pozorování)
 6. definice $p_A(x)$
 
 > Máme-li vlastní číslo matice $A$, která je podobná matici $B$, potom toto vl. číslo má v obou maticích shodnou **algebraickou násobnost**:
-![alt text](image-181.png)
-Protože algebraická násobnost je násobnost kořene v charakteristickém polynomu a char. polynomy obou matic jsou naprosto shodné.
+>
+> ![alt text](image-181.png)
+>
+> Protože algebraická násobnost je násobnost kořene v charakteristickém polynomu a char. polynomy obou matic jsou naprosto shodné.
+
+To výše uvedené můžeme shrnout jako:
+
+### Dvě pozorování a související důsledky o násobnostech vlastních čísel podobných matic
+
+![alt text](image-489.png)
+(https://kam.mff.cuni.cz/~fiala/LA2/412-podobnost.pdf, slide 2/14)
+____________________________
+
 
 > Mezi podobnými maticemi, které přísluší témuž lineárnímu zobrazení se budeme snažit nalézt ty, které mají co nejjednodušší struktury. Ukázka:
 ![alt text](image-182.png)
@@ -112,7 +123,7 @@ V důkazu použito:
 	$a_1 = \lambda_1$ a $a_2 = 0$ (určeno jednoznačně, protože $\mathbf v_1, \mathbf b_2$ jsou v bázi $B$, jsou tedy lineárně nezávislé)
 
 	= vždy vybereme koeficient u příslušeného vlastního vektoru z báze $1$ a u ostatních $0$.
-### Pro každé vlastní číslo platí, že jeho geometrická násobnost je menší nebo rovna jeho algebraické násobnosti
+### Pro každé vlastní číslo platí, že jeho geometrická násobnost je menší nebo rovna jeho algebraické násobnosti (Věta o vztahu geometrické a algebraické násobnosti vlastního čísla)
 ![alt text](image-192.png)
 #### Důkaz
 ![alt text](image-193.png)
@@ -346,14 +357,14 @@ Důkaz:
 
 ### Diagonalizovatelná matice
 ![alt text](image-191.png)
-#### Kdy je  matice diagonalizovatelná
+#### Kdy je matice diagonalizovatelná (nezbytná a postačující podmínka, kdy je matice diagonalizovatelná)
 > Podmínka z pozorování je splněna př. v případě, že máme tolik různých vlastních čísel, kolik je řád dané matice. Potom totiž platí, že jim odpovídající vlastní vektory jsou navzájem lineárně nezávislé, a lze z nich sestavit hledanou bázi.
 >
 > ![alt text](image-197.png)
 >
-> Toto je však podmínka, která je pouze postačující.
+> Toto je však podmínka, která je pouze **postačující**.
 
-> Pro matice, u kterých dokážeme rozložit charakteristický polynom na součin lin. faktorů pak dokonce máme podmínku, kerá je nutná a postačující:
+> Pro matice, u kterých dokážeme rozložit charakteristický polynom na součin lin. faktorů pak dokonce máme podmínku, která je **nutná a postačující**:
 >
 > ![alt text](image-198.png)
 
@@ -540,7 +551,7 @@ R^{-1}AR &= D
 \end{align*}
 $$
 )
-### Diagonalizace Hermitovských matic
+### Diagonalizace Hermitovských matic (Věta o diagonalizaci speciálních komplexních matic)
 ![alt text](image-213.png)
 Tj. diagonální $D = R^{-1}AR$, tj. $A$ je podobná diagonální $D$ = matice $A$ je diagonalizovatelná.
 
@@ -824,7 +835,8 @@ $$R = [id]_{B,E} = \begin{pmatrix}
 
 $$\underbrace{\mathbf A}_{\large [f]_{E,E}} \cdot \underbrace{\mathbf R}_{\large [id]_{B,E}} = \underbrace{\mathbf R}_{\large [id]_{B,E}} \cdot \underbrace{\mathbf D}_{\large [f]_{B,B}}$$
 
-> Pro jednoduchost se omezme na matice, které jsou podobny jednomu Jordanovu bloku ($AR = R J_{\lambda}$). Potom sloupce příslušné matice $R$ splňují $(A - \lambda I)^i \mathbf v_i = \mathbf 0$
+#### Tvrzení o zobecněných vlastních vektorech
+> Pro jednoduchost se omezme na matice, které jsou podobny jednomu Jordanovu bloku ($AR = R J_{\lambda}$). Potom sloupce příslušné matice $R$ splňují $(A - \lambda I)^i \mathbf v_i = \mathbf 0$ (takový $\mathbf v$ nazveme **zobecněný vlastní vektor**)
 >
 > ![alt text](image-247.png)
 - $(A - \lambda I)^i \mathbf v_i = \mathbf 0$ plyne přímo ze součinu $R J_{\lambda}$

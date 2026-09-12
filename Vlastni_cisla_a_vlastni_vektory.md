@@ -284,7 +284,7 @@ $$
 
 ### Vlastnosti vlastních čísel a vlastních vektorů
 
-#### Vlastní vektory odpovídající stejnému vlastnímu číslu tvoří podprostor
+#### Vlastní vektory odpovídající stejnému vlastnímu číslu tvoří podprostor (Pozorování o podprostoru vlastních vektorů)
 ![alt text](image-128.png)
 - různá vlastní čísla budou mít různé podprostory
 
@@ -311,7 +311,7 @@ Na této množině $U$ (= "vlastní vektory odpovídající stejnému vlastnímu
 
 ![](image-132.png)
 
-#### Vlastní vektory odpovídající různým vlastním číslům jsou lineárně nezávislé
+#### Vlastní vektory odpovídající různým vlastním číslům jsou lineárně nezávislé (Věta o lineární nezávislosti vlastních vektorů)
 ![alt text](image-133.png)
 > Tzn. podprostory, které přísluší vlastním číslům $\lambda_1, \dots, \lambda_k$, se protínají pouze v počátku
 
@@ -408,7 +408,7 @@ protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mat
 
 > Stupeň charakteristického polynomu se shoduje s řádem matice (= $n$-tá mocnina $x$, součin podle diagonály)
 
-### Kořen charakteristického polynomu je vlastní číslo matice
+### Kořen charakteristického polynomu je vlastní číslo matice (Věta o kořenech charakteristického polynomu matice)
 
 ![alt text](image-142.png)
 
@@ -523,7 +523,7 @@ elementární úpravy:
 
 determinant jako součin prvků na diagonále, protože je dolní trojúhelníková
 
-### Konstrukce matic podle polynomu
+### Konstrukce matic podle polynomu (Věta o konstrukci matice s předepsaným charakteristickým polynomem)
 
 > Je také zajímavé, že matice, jejíž sekundární diagonála obsahuje samé $1$, a poslední sloupec obsahuje parametry $b_0, \dots, b_{n-1}$, tak její charakteristický polynom obsahuje právě parametry $b_0, \dots, b_{n-1}$ jako koeficienty u příslušných mocnin $x$.
 
@@ -587,7 +587,7 @@ Označme $(x^n + b_{n-1} x^{n-1} + \dots + b_1 x + b_0)(-1)^n$ jako $P_n(x)$
 
 	________
 
-### Koeficienty charakteristického polynomu
+### Koeficienty charakteristického polynomu (pozorování o hodnotách tří koeficientů charakteristického polynomu matice)
 ![alt text](image-152.png)
 Zase, $0^0$ je v lineární algebře $1$:
 $$\begin{align*}
@@ -661,6 +661,7 @@ Určíme si, která je jeho složka s největší absolutní hodnotou, to bude $
 Vektor $\mathbf u$ normalizujeme tak, že ho vydělíme touto největší složkou.
 
 ![alt text](image-159.png)
+
 ($i$-tá rovnice = součin prvků z $i$-tého řádku $A$ se složkami $\mathbf v$ a na pravé straně $\lambda$-násobek $i$-té složky vektoru $\mathbf v$, ovšem ta je rovna $1$)
 
 $$\sum_{j=1}^n a_{ij}v_j = \lambda v_i$$

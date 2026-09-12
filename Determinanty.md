@@ -261,7 +261,7 @@ prezentace: https://kam.mff.cuni.cz/~fiala/LA2/121-linearita.pdf
 
 > K tomu nejprve budeme muset prozkoumat vlastnost determinantu, které se říká linearita
 
-### Linearita determinantu
+### Linearita determinantu (Věta o linearitě determinantu)
 > Věta: Determinant matice je lineárně závislý (= myšleno závisí lineárně, není to myšleno jako s vektory) na každém jejím řádku a sloupci, tj, vzhledem ke skalárnímu násobku řádku:
 
 ![alt text](image-20.png)
@@ -325,7 +325,7 @@ TLDR: Pro trojici matic, kde $i$-tý řádek v $A$ je součtem $i$-tého řádku
 - k 2. důsledku, viz (REF1)
 ![alt text](image-34.png)
 
-### Determinant součinu
+### Determinant součinu (Věta o determinantu součinu dvou matic)
 
 ![alt text](image-35.png)
 (V případě, že alespoň 1 z nich singulární, pak bude singulární i jejich součin, a det. singulární maice = 0, tedy dostaneme $0=0$)
@@ -425,9 +425,9 @@ protože jsme si právě dokázali, že pro jakékoli obecné matice $A, B$ plat
 2. $\det A \neq 0 \implies$ $A$ regulární:
 
  	$\det A \neq 0 \implies$ $\frac{1}{\det(A)}$ je definováno, rovná se to tedy $\det(A^{-1})$ $\implies$ když je definován $\det(A^{-1})$, tak to znamená, že existuje $A^{-1}$ $\implies$ $A$ regulární
-### Laplaceův rozvoj
+### Laplaceův rozvoj (Věta o Laplaceově rozvoji determinantu)
 ![alt text](image-43.png)
-Pro jakýkoli řádkový index $i$ platí, že determinant $A$ lze rozložit jako součet dílčích determinantů matic $A^{ij}$, kde indexem $j$ probíráme sloupce od prvního k poslednímu a vždy bereme součin prvku v $i$-tém řádku a v $j$-tém sloupci, vynásobíme znaménkem $(-1)^{i+j}$ a poté determinantem matice o $1$ menšího řádu = $\det A^{ij}$ = ten můžeme spočítat třeba rekuretně, aplikovánáním tohoto pravidla znovu (základní případ rekurze determinant matice 1x1 (což je prostě 1 skalár), což je přímo to číslo, co tam je). Te výpočet by byl neefektivní, protože exponenciálně mnoho členů. 
+> Pro jakýkoli řádkový index $i$ platí, že determinant $A$ lze rozložit jako součet dílčích determinantů matic $A^{ij}$, kde indexem $j$ probíráme sloupce od prvního k poslednímu a vždy bereme součin prvku v $i$-tém řádku a v $j$-tém sloupci, vynásobíme znaménkem $(-1)^{i+j}$ a poté determinantem matice o $1$ menšího řádu = $\det A^{ij}$ = ten můžeme spočítat třeba rekurentně, aplikováním tohoto pravidla znovu (základní případ rekurze determinant matice 1x1 (což je prostě 1 skalár), což je přímo to číslo, co tam je). Ten výpočet by byl neefektivní, protože exponenciálně mnoho členů. 
 
 (**forward ref REF2**: proto se tahle metoda prakticky hlavně používá, když je na nějakém řádku hodně nul, část práce jde skipnout)
 
@@ -553,7 +553,7 @@ kde $A^{ij}$ je podmatice získaná z $A$ odstraněním $i$-tého řádku a $j$-
 ![alt text](image-52.png)
 ![alt text](image-53.png)
 ![alt text](image-54.png)
-### Věta $A^{-1} = \frac{1}{\det A} \ \text{adj} \ A$
+### Věta $A^{-1} = \frac{1}{\det A} \ \text{adj} \ A$ (Věta o adjungované matici)
 ![alt text](image-55.png)
 
 #### Důkaz věty
@@ -646,7 +646,7 @@ A^{-1} &= \frac{1}{\det A} \cdot \operatorname{adj} A
 \end{align*}
 $$
 
-### Cramerovo pravidlo
+### Cramerovo pravidlo (Cramerovo pravidlo pro řešení soustav přes determinanty)
 
 ![alt text](image-63.png)
 
@@ -835,7 +835,7 @@ $\det \begin{pmatrix}{u} +{v} &{a} \\{w} +{x} &{b} \end{pmatrix} = \det \begin{p
 ![alt text](image-473.png)
 - že jo, u souvislého grafu, když z té matice vyškrteneme 1. řádek i 1. sloupec, tak změníme počet $-1$ v některém sloupci, což znamená, že nedostaneme nulový řádek při přičtení všech řádků k nějakému jinému řádku
 
-### Věta: Počet koster grafu (Každý graf $G$ na alespoň 2 vrcholech má $\det L_G^{11}$ koster)
+### Věta: Počet koster grafu (Věta o počtu koster grafu: Každý graf $G$ na alespoň 2 vrcholech má $\det L_G^{11}$ koster)
 ![alt text](image-474.png)
 ![alt text](image-475.png)
 > - každá smyčka by přispěla 2 do stupně vrcholu, a také, jako hrana nám 2 odečte (že jo, to je vidět z té definice $D - A$)

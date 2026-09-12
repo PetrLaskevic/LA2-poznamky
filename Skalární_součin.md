@@ -116,7 +116,7 @@ $\sqrt{\langle \mathbf u | \mathbf u \rangle \langle \mathbf v | \mathbf v \rang
 ![alt text](image-273.png)
 ![](dukaz_cauchy_schwarz.png)
 
-### Důsledky Cauchyho-Schwarzovy nerovnosti
+### Důsledky Cauchyho-Schwarzovy nerovnosti (Vztah mezi aritmetickým a kvadratickým průměrem)
 
 ![alt text](image-274.png)
 Btw **Definice: kvadratický průměr**
@@ -155,6 +155,7 @@ Pak aplikujeme Cauchyho-Schwarzovu větu.
 A zbytek dokončíme stejně, akorát na tu abs. hodnotu u $u_i$ pod odmocninou.
 </details>
 
+#### Trojúhelníková nerovnost
 ![alt text](image-276.png)
 - makes sense, to nalevo by se to mohlo od sebe odečíst
 
@@ -169,7 +170,7 @@ A zbytek dokončíme stejně, akorát na tu abs. hodnotu u $u_i$ pod odmocninou.
 > Kosinus pravého úhlu je 0, a proto definice kolmých vektorů bude velice jednoduchá:
 
 ![alt text](image-277.png)
-
+### Pozorování o navzájem kolmých vektorech
 ![alt text](image-278.png)
 - tedy $\mathbf v_0$ nepatří do množiny netriválních vektorů, což je spor
 
@@ -206,13 +207,15 @@ S vektory standardní báze jako sloupce to je vidět hned, ale platí to pro ja
 ![alt text](image-283.png)
 ![alt text](image-284.png)
 
-### Vlastnosti ortonormální báze: Fourierovy koeficienty
+### Vlastnosti ortonormální báze: Fourierovy koeficienty (Tvrzení o Fourierových koeficientech)
 ![alt text](image-285.png)
 - pro ty vektory jsou kolmé, pro $i \neq j$ je skal. součin $0$, jenom pro $i=j$ to je $1$
 
 ![alt text](image-286.png)
 
 ![alt text](image-287.png)
+#### Věta o výpočtu skalárního součinu z Fourierových koeficientů
+![alt text](image-287.2.png)
 - této věty jsme už využili, když jsme definovali standardní skalární součin na $\reals^n$ a $\mathbb{C}^n$ (ty že jo mají by default standardní bázi, která je ortonormální)
 	- ![alt text](image-260.png)
 		- pokud bychom si v $\mathbb{C}^n$ nebo $\reals^n$ vzali jinou než ortonormální bázi, tak by v skalárním součinu byly **smíšené členy**, viz část <details> <summary>
@@ -293,7 +296,7 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 
 - když odečteme druhou rovnici od první, máme výsledek
 
-### Maticová charakterizace bijektivních isometrií
+### Maticová charakterizace bijektivních isometrií (Věta o charakterizaci izometrie pomocí její matice)
 > v ukázkách **isometrií** jsem záměrně uváděl jejich matice, protože matice zobrazení lze hezky využít při charakterizaci bijektivních isometrií. To je shrnuto v této větě:
 >
 > ![alt text](image-294.png)
@@ -339,7 +342,7 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 - pak vlastnosti ortonormální báze, kde $\langle \mathbf b_j | \mathbf b_i \rangle$ není $0$, ale $1$ právě když $i=j$.
 - dostali jsme, že skal. součin je $0$, tj. ten vektor je kolmý na jakékoli $\mathbf b_i$, je tedy kolmý na všechny vektory z $B$.
 
-### Projekce vektoru je jemu nejbližší vektor z podprostoru
+### Projekce vektoru je jemu nejbližší vektor z podprostoru (Tvrzení o kolmé projekci a normě)
 ![alt text](image-303.png)
 - vezmeme nějaký jiný $\mathbf v$ z $V$ než tu projekci vektoru $\mathbf u$ a dokážeme, že je vzdálenost vždy vyšší, tj. $|| \mathbf u - \mathbf v || > || \mathbf u - p_B(\mathbf u) ||$
 
@@ -361,7 +364,7 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 >
 > Pokud bychom si v prostoru $V$ vzali jinou ortonormální bázi, dostali bychom stejnou ortogonální projekci.
 >
-> Jinými slovy ortogonální projekci by šlo zadefinovat tak, že jde o vektor z daného podprostoru, který minimalizuje normu rozdílu od vektoru, který promítáme.
+> Jinými slovy ortogonální projekci by šlo zadefinovat tak, že jde o vektor z daného podprostoru, který **minimalizuje** normu rozdílu od vektoru, který promítáme.
 
 ### Metoda nejmenších čtverců
 > Kolmou projekci lze využít při řešení soustav, a to v tom případě, že máme soustavu, která sice nemá řešení, ale naším cílem je nějaké přibližné řešení, které minimalizuje chybu. (Čili najít nejbližší vektor pravých stran, se kterým už soustava řešení má)
@@ -372,7 +375,7 @@ TODO: pak teda dobrá otázka, co s tím t=1 a t=i
 - $\mathbf b \notin S_A$, (kde $S_A$ = sloupcový prostor), znamená, že $\mathbf b$ nepatří do množiny vektorů, které lze vygenerovat lineární kombinací sloupců = neexistuje $\mathbf x$, které by obsahovalo koeficienty té lin. kombinace
 
 - promítnutí $\mathbf b$ do $S_A$:
-	- **Pozorování:** vektor $\mathbf b' := p_{S_A}(\mathbf b)$ je vektor z $S_A = \text{span}(\text{sloupců})$, který je nejbližší k $\mathbf b$ v tom smyslu, že minimalizuje $||\mathbf b - \underbrace{p_{S_A}(\mathbf b)}_{\large\mathbf b'}||$
+	- **Pozorování:** vektor $\mathbf b' := p_{S_A}(\mathbf b)$ je vektor z $S_A = \text{span}(\text{sloupců})$, který je nejbližší k $\mathbf b$ v tom smyslu, že minimalizuje $||\mathbf b - \underbrace{p_{S_A}(\mathbf b)}_{\normalsize\mathbf b'}||$
 - "čtverců", protože norma určená standardním skalárním součinem na $\reals^n$ nebo $\mathbb{C}^n$ je součet druhých mocnin = "čtverců"	
 
 > Princip metody nejmenších čtverců lze implementovat 2 způsoby

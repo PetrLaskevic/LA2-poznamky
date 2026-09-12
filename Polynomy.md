@@ -195,12 +195,12 @@ prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten 
 > Ani v tělesech, která algebraicky uzavřená jsou tento proces nemusí být možné provést v plné obecnosti, a kupříkladu i nad komplexními čísly se používají pouze numerické metody
 
 - v tuto chvíli zbývá pouze přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$, což lze přeformulovat jako:
-
+#### Věta o Vandermondově matici 
 ![alt text](image-94.png)
 = prostě najít polynom taokvý, který se "fitne" do každého takového bodu.
 
 To uděláme soustavou:
-#### Vandermondova matice
+**Vandermondova matice**
 ![alt text](image-95.png)
 - side note - první sloupec je $x_i^0$ (což v lingebře $1$ i pro $0^0$)
 
