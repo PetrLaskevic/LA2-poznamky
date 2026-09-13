@@ -560,7 +560,7 @@ a_{1i} & 0 & \mathbf{c}^T \\ \hline
 - že jo samotným těm maticím "je jedno", jaký význam jim přidělíme (pro tento kontext tu matici formy "dezinterpretujeme" jako jinou matici, matici nějakého lineárního zobrazení), víme, že máme tu větu, že tedy ten součin 3 matic nalézt půjde = diagonalizovat půjdou, a můžeme tedy hledat $D = R^{-1}AR$, najít vlastní čísla, která budeme dávat do $D$, a spočíst ty matice přechodu = tam dáme vlastní vektory (viz dříve)
 	- případně tedy díky té větě jenom nalézt tu $R$ a pak místo inverze spočítat prostou transpozici
 
-> pokud nemáme realnou symetrickou matici, nebo jen nechceme využívat vlastních čísel:
+> pokud naše symetrická matice není **realná**, nebo jen nechceme využívat vlastních čísel:
 >
 > ![alt text](image-433.png)
 
