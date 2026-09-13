@@ -205,7 +205,7 @@ a $g(\mathbf v) = f(\mathbf v, \mathbf v)$ že jo
 ![alt text](image-420.png)
 
 > U ostatních těles dá diagonalizace forem trochu více práce.
-### Diagonalizace matic forem nad ostatními tělesy a polární báze
+### Diagonalizace matic forem nad ostatními tělesy a polární báze (Věta o diagonalizovatelnosti matic forem)
 ![alt text](image-421.png)
 ![alt text](image-422.png)
 - $R$ je matice přechodu od nové báze k původní bázi, $[id]_{B, E}$
@@ -606,7 +606,7 @@ $$
 
 > Nyní přejdeme ještě dále, a předvedeme si, že v případě realných čísel můžeme získat matici, která kromě nul bude už obsahovat pouze $1$ a $-1$.
 
-### Sylvestrův zákon setrvačnosti
+### Sylvestrův zákon setrvačnosti — o diagonalizaci kvadratických forem
 ![alt text](image-437.png)
 ![alt text](image-438.png)
 

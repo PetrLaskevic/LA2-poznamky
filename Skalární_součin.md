@@ -237,6 +237,7 @@ S vektory standardní báze jako sloupce to je vidět hned, ale platí to pro ja
 ![alt text](image-289.png)
 ![alt text](image-290.png)
 
+#### Věta o izometrii a normě
 > Ukážeme si větu, díky níž už nemusíme kontrolovat skalární součin všech možných dvojic vektorů, stačí zkontrolovat, že se zachovává skalární součin každého vektoru se sebou samým. Jinými slovy, tato podmínka je jednodušší než ta, kterou je isometrie definována.
 >
 > ![alt text](image-291.png)
@@ -331,7 +332,7 @@ $$r \langle \mathbf v | \mathbf u \rangle + il \langle \mathbf v | \mathbf u \ra
 - použili jsme linearitu skalárního součinu k součtu a skal. násobku, a také definici ortogonální projekce
 
 ![alt text](image-302.png)
-- použiza linarita skal. součinu vůči součtu a skal. součinu (=tj. vytýkáme mj. skal. součin, jehož výsledek je že jo skalár)
+- použita linarita skal. součinu vůči součtu a skal. součinu (=tj. vytýkáme mj. skal. součin, jehož výsledek je že jo skalár)
 
 - pak vlastnosti ortonormální báze, kde $\langle \mathbf b_j | \mathbf b_i \rangle$ není $0$, ale $1$ právě když $i=j$.
 - dostali jsme, že skal. součin je $0$, tj. ten vektor je kolmý na jakékoli $\mathbf b_i$, je tedy kolmý na všechny vektory z $B$.
@@ -416,6 +417,7 @@ Gram-Schmidtova ortonormalizace záleží na pořadí zpracování vektorů = po
 ![alt text](image-316.png)
 ![alt text](image-317.png)
 
+#### Správnost Gramovy Schmidtovy ortonormalizace
 > Na závěr bych vás chtěl přesvědčit, že tento postup je korektní, že skutečně vždy vydá ortonormální bázi, která generuje stejný prostor jako původní báze.
 
 ![alt text](image-318.png)
@@ -679,7 +681,7 @@ ____
 > Pokud si matici převedeme do odstupňovaného tvaru, můžeme určit její řádkový prostor ($R_A$), což je lin. obal všech nenulových řádků, a také, pomocí zpětné substituce můžeme určit jádro této matice ($\ker A$). 
 >
 > Tyto 2 prostory jsou ve skutečnosti navzájem ortogonálními doplňky.
-> ### $\ker A = (R_A)^\perp$
+> ### $\ker A = (R_A)^\perp$ (Věta o ortogonalitě a prostorech určených maticí)
 > ![alt text](image-331.png)
 
 ![alt text](image-332.png)
@@ -704,7 +706,7 @@ ____
 Tedy skutečně, libovolné dvojice vektorů z těchto dvou prostorů jsou kolmé, a tedy jsou si navzájem kolmé celé ty prostory $R_A$ a $\ker A$ (= jsou si navzájem ortogonálními doplňky).
 ___
 > Hlavním poznatkem z této lekce je tato věta:
-> ### Pro prostor $U$ konečné dimenze se skalárním součinem a každý jeho podprostor $V$ platí: $(V^\perp)^\perp = V$ a $\dim V + \dim V^\perp = \dim U$
+> ### Pro prostor $U$ konečné dimenze se skalárním součinem a každý jeho podprostor $V$ platí: $(V^\perp)^\perp = V$ a $\dim V + \dim V^\perp = \dim U$ (Věta o ortogonálním doplňku, mj. o jeho dimenzi)
 > 
 > ![alt text](image-337.png)
 - $V^\perp = \ker A$  podle předchozí věty

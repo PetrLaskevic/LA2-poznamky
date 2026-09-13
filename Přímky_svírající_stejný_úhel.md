@@ -4,6 +4,8 @@
 > I když tato otázka vypadá na 1. pohled geometricky nebo spíše kombinatoricky, předvedeme si, že koncepty z lineární algebry nám ji pomohou uspokojivě vyřešit.
 
 ![alt text](image-457.png)
+## Věta o počtu přímek svírajících stejný úhel
+![](image-457.2.png)
 - > věta bude pouze omezovat počet těchto přímek, čili nedokážeme zjistit, zda-li skutečně existují.
 - > představme si však, že nějakých takových $n$ přímek máme:
 ![alt text](image-458.png)

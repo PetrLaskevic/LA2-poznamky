@@ -5,7 +5,7 @@
 	-  $\mathbf v^T A^T$ je $(A\mathbf v)^T$, tj. $\langle \mathbf u | \mathbf v \rangle = (A\mathbf v)^T A \mathbf u$
 > Těmto maticím se říká pozitivně definitní matice, a v dnešní lekci budeme podrobněji zkoumat jejich vlastnosti.
 
-### Gramova matice
+### Gramova matice (Věta o skalárním součinu 2 vektorů a Gramově matici)
 ![alt text](image-347.png)
 
 $$G = \begin{pmatrix}
@@ -257,7 +257,12 @@ Máme na to předchozí pozorování:
 	1. $A$ je pozitivně definitní
 	2. Tzn. $(A^{-1})^H A A^{-1}$ je pozitivně definitní
 - a z rovnosti na tomhle obrázku vidíme, že i $A^{-1}$ je pozitivně definitní
+__________
+Když tedy shrneme to předtím, tak máme:
+#### Tři pozorování o vlastnostech pozitivně definitních matic vzhledem k maticovým operacím
+![alt text](image-490.png)
 
+#### Tvrzení o pozitivní definitnosti blokové matice
 ![alt text](image-361.png)
 ![alt text](image-362.png)
 
@@ -357,7 +362,7 @@ Tohle přesně říká kus prezentace:
 
 		$\mathbf u^H B \mathbf u > 0$, tzn. $B$ je pozitivně definitní
 
-### Charakteristika pozitivně definitních matic
+### Charakteristika pozitivně definitních matic (Věta o třech ekvivalentních podmínkách pro pozitivně definitní matice)
 > Pozitivně definitní matice lze definovat i alternativními způsoby:
 >
 > ![alt text](image-366.png)
@@ -421,7 +426,7 @@ Tohle přesně říká kus prezentace:
 >
 > Taková matice vždy existuje a nazývá se **Choleského rozklad**
 
-### Choleského rozklad
+### Choleského rozklad (Věta o Choleského rozkladu)
 
 ![alt text](image-372.png)
 
@@ -668,14 +673,14 @@ ____
 
 > Dnes si předvedeme, že také souvisí s Gaussovou eliminací, a také s determinanty.
 
-### Rekurentní podmínka
+### Rekurentní podmínka (Věta o rekurentní podmínce pro pozitivně definitní matice)
 ![alt text](image-385.png)
 - nutno si všimnout, že $\mathbf b \mathbf b^H$ vytvoří matici řádu $n-1$
 	- př. $b b^T = \begin{pmatrix} 2 \\ 6 \end{pmatrix} \begin{pmatrix} 2 & 6 \end{pmatrix} = \begin{pmatrix} 2 \cdot 2 & 2 \cdot 6 \\ 6 \cdot 2 & 6 \cdot 6 \end{pmatrix}$
 
 > Matice $B - \frac{1}{a_{11}} \mathbf b \mathbf b^H$ nám může na 1. pohled přijít nepřirozená, ale ve skutečnosti jsme ji už používali, když jsme používali Gaussovu eliminaci
 >
-> Pokud bychom v té blokové matci eliminovali sloupec $\mathbf b$ pomocí 1. řádku:
+> Pokud bychom v té blokové matici eliminovali sloupec $\mathbf b$ pomocí 1. řádku:
 > 
 > ![alt text](image-386.png)
 
@@ -743,7 +748,7 @@ a_{11} & \mathbf{0}^{\mathsf{H}} \\
 ____
 
 > Z rekurentní podmínky lze odvodit i tzv. 
-> ### Sylvestrova podmínka
+> ### Sylvestrova podmínka (Věta o pozitivně definitních maticích a determinantech)
 >
 >![alt text](image-391.png)
 
@@ -765,3 +770,5 @@ ____
 > My se však nyní vydáme jiným směrem. Připomínám, že pozitivně definitní matice jsme odvodili ze skalárního součinu, který byl definován na aritmetických vektorových prostorech na realnými či komplexními čísly. 
 >
 > Budeme se zabývat otázkou, jak lze skalární součin, resp. koncept podobný skalárnímu součinu nadefinovat i ve vektorových prostorech nad obecnými tělesy.
+
+TODO: možná sem přidat tu definici negativně definitními, semidefinitními, či indefinitními maticemi.
