@@ -608,8 +608,17 @@ $$
 
 ### Sylvestrův zákon setrvačnosti — o diagonalizaci kvadratických forem
 ![alt text](image-437.png)
-![alt text](image-438.png)
+#### Signatura
+![alt text](image-437.2.png)
 
+- signaturu matice formy můžeme určit tak, že pro ni najdeme diagonální matici (=diagonalizujeme ji), a pak s využitím Sylvestrova zákona setrvačnosti, víme, že bude existovat i matice, kde na diagonále budou jenom $1$, $-1$ a $0$. Tedy vydělíme nenulové prvky na diagonále, aby byly $1$, $-1$ (znaménka ponecháme)
+
+	- dá se tedy říct: 
+		- Počet kladných vlastních čísel: $p = 1$
+		- Počet záporných vlastních čísel: $q = 1$
+		-Počet nulových vlastních čísel: $r = 0$
+
+![alt text](image-438.png)
 > U forem na $\reals^2$ ve skutečnosti můžeme rozebrat všechny možné případy, protože je jen konečně mnoho signatur (že jo, počtů 1, -1, 0 na hlavní diagonále, kde můžou být celkově 2 prvky).
 
 ![alt text](image-439.png)
@@ -660,7 +669,7 @@ $$
 
 2. **Jednoznačnost počtu $1, -1, 0$**
 
-> V druhé části důkazu si ukážeme, že počet $1, -1, 0$ je v diagonální matici přímo dán danou formou $g$.
+> V druhé části důkazu si ukážeme, že počet $1, -1, 0$ (signatura) je v diagonální matici přímo dán danou formou $g$.
 
 ![alt text](image-445.png)
 - tj vektory báze uspořádáme tak, aby to takhle vyšlo
