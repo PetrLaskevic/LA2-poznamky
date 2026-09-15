@@ -197,7 +197,7 @@ prostě ty kořeny dají ty závorky, které když roznásobíme, tak máme ten 
 - v tuto chvíli zbývá pouze přechod $3. \to 1.$, tj. převod reprezentace hodnotami polynomu v $n+1$ různých bodech na reprezentaci koeficienty $a_0, \dots, a_n$, což lze přeformulovat jako:
 #### Věta o Vandermondově matici 
 ![alt text](image-94.png)
-= prostě najít polynom taokvý, který se "fitne" do každého takového bodu.
+= prostě najít polynom takový, který se "fitne" do každého takového bodu.
 
 To uděláme soustavou:
 **Vandermondova matice**
@@ -245,7 +245,7 @@ $$
 1		& x_n - x_0		& x_n^2 - x_0 \cdot x_n	& \dots & x_n^n - x_0 \cdot x_n^{n-1}
 \end{vmatrix}
 $$
-Vidíme, že z každého členu můžeme vytknout, a dost tak výraz pravé straně 1. rovnosti.
+Vidíme, že z každého členu můžeme vytknout, a dostat tak výraz na pravé straně 1. rovnosti.
 
 **Druhá rovnost, rozepsaná:**
 
@@ -306,7 +306,7 @@ x_3 - x_2
 
 Vidíme, že postupně odečítáme od $x$-ek s vyšším indexem všechny s nižším indexem, a pak vytýkáme, a to až po $x_n - x_{n-1}$.
 
-Jsou-li $x_0, \dots, x_n$ různé prvky tělesa, dostáváme v součin různých prvků tělesa, jinými slovy součin nenulových prvků tělesa, a ten je v každém tělese vždy nenulový. Proto je Vandermondova matice regulární (její det. je nenulový)
+Jsou-li $x_0, \dots, x_n$ různé prvky tělesa, dostáváme součin různých prvků tělesa, jinými slovy součin nenulových prvků tělesa, a ten je v každém tělese vždy nenulový. Proto je Vandermondova matice regulární (její det. je nenulový)
 
 #### Langrangeova interpolace
 ![alt text](image-100.png)

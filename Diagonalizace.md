@@ -32,9 +32,12 @@ To jest **matice $\mathbf A$, $ \mathbf B$ jsou si podobné, právě když jsou 
 >
 >)
 
-> Stejný vztah jako: ![alt text](image-175.png) lze formulovat pomocí podobnosti takto:
-![alt text](image-176.png)
-![alt text](image-177.png)
+> Stejný vztah jako: ![alt text](image-175.png) 
+>
+> lze formulovat pomocí podobnosti takto:
+> 
+> ![alt text](image-176.png)
+> ![alt text](image-177.png)
 
 > Bezprostředním důsledkem je, že jsou-li $A$, $B$ navzájem podobné, potom vlastní číslo $\lambda$ má v obou maticích stejnou **geometrickou násobnost** = dimenzi prostoru vlastních vektorů.
 

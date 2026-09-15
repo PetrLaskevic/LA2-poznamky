@@ -114,6 +114,12 @@ $\sqrt{\langle \mathbf u | \mathbf u \rangle \langle \mathbf v | \mathbf v \rang
 > Pro důkaz nerovnosti v ostatních případech nejprve prozkoumáme, jak vypadá 2. mocnina normy lin. kombinace, kde k $\mathbf u$ přičteme vhodný skalární násobek $\mathbf v$ (jaký vzít si ukážeme za chvíli)
 
 ![alt text](image-273.png)
+- to $t$ určíme prostě řešením $\bar t \langle \mathbf u | \mathbf v \rangle + t \bar t \langle \mathbf v | \mathbf v \rangle = 0$
+	- $\bar t (\langle \mathbf u | \mathbf v \rangle + t  \langle \mathbf v | \mathbf v \rangle) = 0$
+		- 2 řešení:
+			- $\bar t = 0$, tj. $t = 0$ - to se nám v důkazu hodit nebude, mnoho nám toho neřekne
+			- $t = - \frac{\langle \mathbf u | \mathbf v \rangle}{\langle \mathbf v | \mathbf v \rangle}$
+
 ![](dukaz_cauchy_schwarz.png)
 
 ### Důsledky Cauchyho-Schwarzovy nerovnosti (Vztah mezi aritmetickým a kvadratickým průměrem)
@@ -133,7 +139,24 @@ $$\left| \sum_{i=1}^{n} u_{i} \right| \leq \sqrt{\sum_{i=1}^{n} |u_{i}|^{2}} \cd
 (
 $\langle \boldsymbol{u} \mid \boldsymbol{u} \rangle = \sum u_i \overline{u_i} = \sum |u_i|^2$
 )
+
 ![alt text](image-275.png)
+- $|| \mathbf u || = \sqrt{\displaystyle\sum_{i=1}^n u_i u_i}$
+- $|| \mathbf v || = \sqrt{\displaystyle\sum_{n=1}^n 1 \cdot 1} = \sqrt n$
+
+Takže máme:
+$$\sum_{i=1}^n u_i \le \sqrt{\sum_{i=1}^n u_i^2} \cdot \sqrt n$$
+
+což algebraickými úpravami dostaneme do tvaru v znění věty (vydělíme obě strany $n$)
+
+$$\frac 1 n \sum_{i=1}^n u_i \le \frac{\sqrt{\sum_{i=1}^n u_i^2} \cdot \sqrt n}{n}$$
+
+
+$$\frac 1 n \sum_{i=1}^n u_i \le \frac{\sqrt{\sum_{i=1}^n u_i^2} \cdot \cancel{\sqrt n}}{\sqrt n \cancel{\sqrt n}}$$
+
+$$\frac 1 n \sum_{i=1}^n u_i \le \sqrt{\frac{\sum_{i=1}^n u_i^2}{n}}$$
+
+$$\frac 1 n \sum_{i=1}^n u_i \le \sqrt{\frac 1 n \sum_{i=1}^n u_i^2}$$
 
 <details>
 <summary>Detour, jak by to bylo u komplexních čísel</summary>
@@ -208,8 +231,10 @@ S vektory standardní báze jako sloupce to je vidět hned, ale platí to pro ja
 ![alt text](image-284.png)
 
 ### Vlastnosti ortonormální báze: Fourierovy koeficienty (Tvrzení o Fourierových koeficientech)
+> Důležitost tohoto tvrzení spočívá v tom, že máme-li ortonormální bázi $B$, pak koeficienty lineární kombinace (=souřadnice $[\mathbf v]_B$ ) můžeme spočítat mnohem snáze  = tyto Fourierovy koeficienty. V obecném případě bychom pro koeficienty lin. kombinace museli řešit soustavu lin. rovnic.
+
 ![alt text](image-285.png)
-- pro ty vektory jsou kolmé, pro $i \neq j$ je skal. součin $0$, jenom pro $i=j$ to je $1$
+- pro poslední rovnost: protože ty vektory jsou kolmé, pro $i \neq j$ je skal. součin $0$, jenom pro $i=j$ to je $1$
 
 ![alt text](image-286.png)
 

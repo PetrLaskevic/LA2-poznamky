@@ -265,11 +265,13 @@ prezentace: https://kam.mff.cuni.cz/~fiala/LA2/121-linearita.pdf
 > Věta: Determinant matice je lineárně závislý (= myšleno závisí lineárně, není to myšleno jako s vektory) na každém jejím řádku a sloupci, tj, vzhledem ke skalárnímu násobku řádku:
 
 ![alt text](image-20.png)
+
 = hodnota determinantu $t$-krát vzroste, pokud některý řádek dané matice vynásobíme celý skalárem $t$
 
 > tj. vzhledem ke sčítání řádků
 
 ![alt text](image-21.png)
+
 = dostaneme součet 2 determinantů v případě, že některý řádek dostaneme na součet 2 řádků
 #### Důkaz pro linearitu vůči skalárnímu násobku 
 ![alt text](image-22.png)
@@ -298,7 +300,7 @@ Tj splňují:
 - $A$ je definována pomocí $a_{kj} := ... \text{(viz výše)}$ a
 - $k \neq i \iff b_{kj} = c_{kj}$ 
 
-jinými slovy kromě $i$-tého řádku, které mají matice $B$ a $C$ jiný, tak se matice $B$ a $C$ shodují (a ten i-tý řádek bude ten, který jsme v předchozí ukázace obarvovali červeně a zeleně)
+jinými slovy kromě $i$-tého řádku, které mají matice $B$ a $C$ jiný, tak se matice $B$ a $C$ shodují (a ten i-tý řádek bude ten, který jsme v předchozí ukázce obarvovali červeně a zeleně)
 
 ![alt text](image-25.png)
 1. vyčleníme z produktu $a_{i, p(i)}$:
@@ -432,23 +434,26 @@ protože jsme si právě dokázali, že pro jakékoli obecné matice $A, B$ plat
 (**forward ref REF2**: proto se tahle metoda prakticky hlavně používá, když je na nějakém řádku hodně nul, část práce jde skipnout)
 
 #### Důkaz Laplaceova rozvoje
-Využívá linearity - tak, že $i$-tý řádek si rozložíme jako lineární kombinace vektorů standardní báze (transponovaných do řádků), které jsou vynásobeny postupně koeficienty, které se v tomto $i$-tém řádku vyskytují.
+> Využívá linearity - tak, že $i$-tý řádek si rozložíme jako lineární kombinace vektorů standardní báze (transponovaných do řádků), které jsou vynásobeny postupně koeficienty, které se v tomto $i$-tém řádku vyskytují.
 
 ![alt text](image-44.png)
 ($\mathbf{e_1^T} = (1, 0, \dots,0)^T$, $\mathbf{e_2^T} = (0, 1, 0, \dots,0)^T$, ..., $\mathbf{e_n^T} = (0, 0, 0, \dots,0, 1)^T$)
 
-Nyní můžeme schematicky zapsat determinant původní matice jako lineární kombinaci determinantů, v nichž je $i$-tý řádek nahrazen vektorem standardní báze. A zde využijeme i linearitu vůči skalárnímu násobku, protože příslušné koeficienty vytkneme před determinanty:
-![alt text](image-45.png)
+> Nyní můžeme schematicky zapsat determinant původní matice jako lineární kombinaci determinantů, v nichž je $i$-tý řádek nahrazen vektorem standardní báze. A zde využijeme i linearitu vůči skalárnímu násobku, protože příslušné koeficienty vytkneme před determinanty:
+>
+>![alt text](image-45.png)
+
 (řádky stvořené čistě z teček se nemění, stejné jako v původní matici = viz. linearita determinantu vůči součtu)
 
-(linearita vůči skalárnímu násobku = ty jednotlivé členy
+(linearita vůči skalárnímu násobku = ty jednotlivé členy)
 
-linearita vůči součtu, že to můžu takhle rozdělit na víc členů)
+(linearita vůči součtu, že to můžu takhle rozdělit na víc členů)
 
-Nyní stačí ukázat, že každý z těchto dílčích determinantů, který jako $i$-tý řádek obsahuje některý z vektorů standardní báze, je roven determinantu podmatice $A^{ij}$ vynásobeným příslušným znaménkem. 
+> Nyní stačí ukázat, že každý z těchto dílčích determinantů, který jako $i$-tý řádek obsahuje některý z vektorů standardní báze, je roven determinantu podmatice $A^{ij}$ vynásobeným příslušným znaménkem. 
 
-Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, tak ten má $1$ v $j$-tém sloupci:
-![alt text](image-46.png)
+> Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, tak ten má $1$ v $j$-tém sloupci:
+>
+> ![alt text](image-46.png)
 - použijeme pravidlo o přerovnání řádků, a tento řádek si dáme jako první
 	- na to jsme použili permutaci, která má cyklus délky $i$, protože jsme přerovnali prvních $i$ řádků (= předtím to byl $i$-tý řádek), čili hodnota determinantu se nám změní o znaménko, které se rovná $(-1)^{i+1}$ (pokud bychom se dívali striktně na ten exponent jako na počet inverzí v permutaci, tak v této permutaci je inverzí $i-1$ => $(-1)^{i-1} = (-1)^{i+1}$, on tady napsal tu druhou variantu z "**estetických důvodů**")
 		- ptal jsem se ho: 
@@ -479,6 +484,7 @@ Když se podíváme na jeden z těchto členů, ku příkladu na $j$-tý člen, 
 			**<u>Alternativní odvození:</u>**
 			- Cyklus o délce $k$ se dá rozložit na $(k-1)$ transpozic (výměn dvou prvků). Transpozice má znaménko $-$ (dokazovalo se to v LA1)
 				- zde to znamená $k$-tý řádek transpozicemi (prohozením 2 řádků) dostaneme až na první, každá transpozice mění znaménko
+					- těch transpozic (výměn řádků) bude $k-1$, takže dostáváme $(-1)^{k-1}$
 			- To znamená, že cyklus s lichým počtem prvků $k$ (lichý cyklus) je sudá permutace (znaménko $+$).
 			- A cyklus se sudým počtem prvků (sudý cyklus) je lichá permutace (znaménko $-$).
 		------
@@ -503,9 +509,9 @@ $\begin{vmatrix}- & \mathbf{e}_1^T & - \\
 \hline
 \end{array} \ \right|$ jsme si převedli matici na sort of "odstupňovaný" tvar a rozdělili na 4 bloky (=4 podmatice):
 - víme, že první řádek je $(1, 0, \dots, 0)^T$
-	- protože má $1$ na 1. pozici, tak jím můžeme vyeleminovat všechny prvky pod v 1. sloupci
+	- **protože má $1$ na 1. pozici, tak jím můžeme vyeleminovat všechny prvky pod v 1. sloupci**
 
-- vpravo dole je $A^{ij}$, protože obsahuje všechny prvky matice $A$ kromě toho 1. sloupce
+- vpravo dole je $A^{ij}$, protože obsahuje všechny prvky matice $A$ kromě toho 1. sloupce a 1. řádku (že jo původně i-tého sloupce a j-tého řádku, které máme pro $A^{ij}$ vyjmout, tak jsme je poprohazovali pryč do 1. řádku a sloupce blokové matice - v podstatě probublali jako v bubblesortu)
 
 > Matice, kterou jsme získali, vypadá tak, že má v levém horním rohu 1, a poté následují samé 0.
 
@@ -567,11 +573,11 @@ Nejpve sem dám ten slide celý, a pak ho okomentuju, v srozumitelnějším poř
 $A \cdot \operatorname{adj} A$
 
 ![alt text](image-56.png)
-$(A \cdot \operatorname{adj} A)_{2,2}$ je skalární součin $\color{green}{\text{2. řádku } A}$ s $\color{blue}{\text{2. sloupcem } \operatorname{adj} A}$
+$(A \cdot \operatorname{adj} A)_{2,2}$ je součin $\color{green}{\text{2. řádku } A}$ s $\color{blue}{\text{2. sloupcem } \operatorname{adj} A}$, výsledkem je skalár.
 
-V 2. sloupci $\operatorname{adj} A$ najdeme části členů (=znaménko $\cdot$ determinant) Laplaceova rozvoje podle 2. řádku.
+V 2. sloupci $\operatorname{adj} A$ najdeme části členů (znaménko $\cdot$ determinant) Laplaceova rozvoje podle 2. řádku.
 
-Když provádíme takto ten skalární součin s 2. řádkem $A$, tak tím tomu přidáme ty členy $a_{ij}$.
+Když provádíme takto ten součin s 2. řádkem $A$, tak tím tomu přidáme ty členy $a_{ij}$.
 
 Uvědomme si, že teď levá strana zcela odpovídá definici Laplaceova rozvoje podle 2. řádku, který nám tedy dává determinant $A$.
 
@@ -581,11 +587,11 @@ Toto platí pro všechny členy na hlavní diagonále nové matice vzniklé sou�
 (že jo vždycky sedí řádek, tedy část $a_{ij}$ s částí, kterého řádku to je rozvoj $(-1)^{i+j} \det A^{ij}$)
 
 ![alt text](image-59.png)
-- je tam drobná chybka v indexování
+- je tam drobná chybka v indexování  
  
 	-	(mělo by tam být $(A \cdot \operatorname{adj} A)_{12}$, protože touto částí slidu ![alt text](image-60.png) mimoděk předělal indexování z $C_{ij}$ na $C_{ji}$,
 
-		ptal jsem se, hlubší význam toto předělání nemá, čistě jde o to, zvýrazni, že v obou případech je tam stejný sloupec z $\operatorname{adj} A$ (oranžově) a v prvním případě stejné číslo u řádku a sloupce (červeně)
+		ptal jsem se, hlubší význam toto předělání nemá, čistě jde o to, zvýraznit, že v obou případech je tam stejný sloupec z $\operatorname{adj} A$ (oranžově) a v prvním případě stejné číslo u řádku a sloupce (červeně)
 		![](dotaz.png)
 		šlo by to vyřešit i takto:
 		![alt text](image-71.png), ale (ptal jsem se)
@@ -639,7 +645,7 @@ Dále pak algebraickými úpravami:
 $$
 \begin{align*}
 A \cdot \operatorname{adj} A &= \det(A) \cdot I \quad /:\det A \\
-\frac{1}{\det A} \cdot A \cdot \operatorname{adj} A &= I \quad / \ \text{komutativita} \\
+\frac{1}{\det A} \cdot A \cdot \operatorname{adj} A &= I \quad / \ \text{"komutativita" \\ (přesunutí skal. násobku dovnitř matic. součinu)} \\
 A \cdot \frac{1}{\det A} \cdot \operatorname{adj} A &= I \quad / \ \text{asociativita} \\
 A \cdot \underbrace{\left( \frac{1}{\det A} \cdot \operatorname{adj} A \right)}_{\mathbf{A^{-1}}}&= I \\
 A^{-1} &= \frac{1}{\det A} \cdot \operatorname{adj} A
@@ -654,7 +660,7 @@ $$
 Nechť $A \in T^{n \times n}$ je **regulární** matice a máme s ní soustavu lin. rovnic ($A\vec{x} = \vec{b}$). Potom víme, že řešení této soustavy je jednoznačné a Cramerovo pravidlo udává vzorec pro řešení této soustavy:
 $i$-tá složka řešení je dána: $x_i = \frac 1 {\det A} \cdot \det(A_{i \to \vec{b}})$
 
-#### Důkaz 1
+#### Důkaz
 
 ![alt text](image-65.png)
 (že jo lineární kombinace sloupců)
@@ -725,6 +731,11 @@ TODO: možná přidat důkaz, že díky linearitě vůči součtu můžeme indee
 Jakoby tohle v obecnosti 
 
 $\det \begin{pmatrix}{u} +{v} &{a} \\{w} +{x} &{b} \end{pmatrix} = \det \begin{pmatrix}{u} &{a} \\{w} &{b} \end{pmatrix} + \det \begin{pmatrix}{v} &{a} \\ {x} &{b} \end{pmatrix}$
+- afaik nejjednodušeji takto: $\det A = \det A^T$, a proto můžeme každou z těch matic transponovat:
+
+	$\det \begin{pmatrix} u+v & w+x \\ a & b \end{pmatrix} = \det \begin{pmatrix} u & w \\ a & b \end{pmatrix} + \det \begin{pmatrix} v & x \\ a & b \end{pmatrix}$
+
+	- a na to už můžeme použít linearitu vzhledem ke sčítání řadků, kterou už máme.
 
 ### Různé druhy obalu množiny v Euklidovském prostoru
 

@@ -351,7 +351,7 @@ $1 = 0$ nebo že „číslo je sudé a liché zároveň“).
 4. Závěr: Protože matematika se nesmí „rozbít“, musí být chyba v tom, co jsem si myslel na začátku – tedy cíl musí platit.
 
 ##### Důkaz věty:
-Myšlenka: začneme u nějakého $n$ lineárně závislých vektorů. Pak zjistíme, že pro $n-1$ vektorů nám vychází, že nutně musí být též lineárně závislé. Tak to opakujeme, než dojdeme k základnímu případu $n=1$. Ovšem pro $n=1$ vektorů určitě platí, že jsou lineárně nezávislé (je to že jo $1$ vektor). To je spor.
+**Myšlenka: začneme u nějakého $n$ lineárně závislých vektorů. Pak zjistíme, že pro $n-1$ vektorů nám vychází, že nutně musí být též lineárně závislé. Tak to opakujeme, než dojdeme k základnímu případu $n=1$. Ovšem pro $n=1$ vektorů určitě platí, že jsou lineárně nezávislé (je to že jo $1$ vektor). To je spor.**
 - těch mnoho iterací zmenšování $n$ si ale můžeme ušetřit
 	- to je ta fráze "$k$ je nejmenší počet lin. závislých vektorů"
 		- tím zaručíme, že tam není vektor navíc, který se neúčastní lin. kombinace, kterou vyjádřujeme nějaký jiný vektor, tj. že v té lin. kombinaci nejsou nulové koeficienty
@@ -359,7 +359,7 @@ Myšlenka: začneme u nějakého $n$ lineárně závislých vektorů. Pak zjist�
 				- ale tím argumentem, jako předtím, ukážeme, že $k-1$ vektorů je závislých
 					- což je spor
 
-Ještě ten počet $k$ se může že jo lišit podle množiny, kterou dostaneme. Víme, že to je alespoň $2$, ale může to být víc, př. $3$:
+Ještě ten počet $k$ se může že jo lišit podle množiny, kterou dostaneme. Víme, že to je alespoň $2$, ale může to být víc, př. tyto $3$ v rovině:
 
 ![alt text](image-135.png)
 
@@ -375,7 +375,7 @@ A protože chceme, aby to bylo pro všechny množiny, tak stanovíme $k$ a ne n�
 
 ![alt text](image-138.png)
 ![alt text](image-139.png)
-použito
+použito:
 - $\mathbf 0 = f(\mathbf 0)$ je že jo vlastnost lin. zobrazení:
 protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mathbf{v}) = 0 \cdot f(\mathbf{v}) = \mathbf{0}$
 - linearita lin. zobrazení vůči součtu  a vůči skal. násobku.
@@ -384,7 +384,7 @@ protože platí linearita vůči skal. násobku: $f(\mathbf{0}) = f(0 \cdot \mat
 ![alt text](image-140.png)
 - takže zase s netriviálními koeficienty vyšla lineární kombinace $k-1$ vektorů $\mathbf 0$ => těch $k-1$ vektorů je určitě lineárně závislých
 	- na začátku jsme ale řekli, že ten počet $k$ je mimimální, tedy odebrání jakéhokoli vektoru by působilo, že zbytek bude lin. nezávislý
-		- spor, takže $\mathbf v_1, \dots, \mathbf v_n$ jsou lineárně nezávislé.
+		- spor, takže $\mathbf v_1, \dots, \mathbf v_k$ jsou lineárně nezávislé.
 
 ##### Důsledek:
 ![alt text](image-134.png)
@@ -635,7 +635,7 @@ A protože se každé $\lambda_j$ vyskytovalo v $r_j$ závorkách, tak ta sumu o
 
 $$b_{n-1} = \sum_{i=1}^k r_i \lambda_i$$
 
-> Pro hledání kořenů polynom řádů vyšších než $5$ neexistují žádné přesné vzorce, a proto se při hledání kořenů a i vlastních čísel musíme spolehnout na numerické metody. U nich mlže být užitečné, víme-li předem, v jaké oblasti se čísla nacházejí. To říká následující věta:
+> Pro hledání kořenů polynom řádů vyšších než $5$ neexistují žádné přesné vzorce, a proto se při hledání kořenů a i vlastních čísel musíme spolehnout na numerické metody. U nich může být užitečné, víme-li předem, v jaké oblasti se čísla nacházejí. To říká následující věta:
 
 ### Věta o Geršgorinových kruzích
 
