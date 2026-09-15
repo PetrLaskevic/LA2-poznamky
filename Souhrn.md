@@ -7,46 +7,46 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 
 1. věta o linearitě determinantu. (8/10\)
 
-	$$
-	t\begin{vmatrix}
-	-a_1^T-\\
-	-a_2^T-\\
-	-a_3^T-\\
-	-a_4^T-\\
-	\end{vmatrix}=
-	\begin{vmatrix}
-	-ta_1^T-\\
-	-a_2^T-\\
-	-a_3^T-\\
-	-a_4^T-\\
-	\end{vmatrix}=
-	\begin{vmatrix}
-	-a_1^T-\\
-	-ta_2^T-\\
-	-a_3^T-\\
-	-a_4^T-\\
-	\end{vmatrix}
-	$$
-	$$
-	\begin{vmatrix}
-	-a_1^T-\\
-	-a_2^T-\\
-	-b^T+c^T-\\
-	-a_4^T-\\
-	\end{vmatrix}=
-	\begin{vmatrix}
-	-a_1^T-\\
-	-a_2^T-\\
-	-b^T-\\
-	-a_4^T-\\
-	\end{vmatrix}+
-	\begin{vmatrix}
-	-a_1^T-\\
-	-a_2^T-\\
-	-c^T-\\
-	-a_4^T-\\
-	\end{vmatrix}
-	$$
+$$
+t\begin{vmatrix}
+-a_1^T-\\
+-a_2^T-\\
+-a_3^T-\\
+-a_4^T-\\
+\end{vmatrix}=
+\begin{vmatrix}
+-ta_1^T-\\
+-a_2^T-\\
+-a_3^T-\\
+-a_4^T-\\
+\end{vmatrix}=
+\begin{vmatrix}
+-a_1^T-\\
+-ta_2^T-\\
+-a_3^T-\\
+-a_4^T-\\
+\end{vmatrix}
+$$
+$$
+\begin{vmatrix}
+-a_1^T-\\
+-a_2^T-\\
+-b^T+c^T-\\
+-a_4^T-\\
+\end{vmatrix}=
+\begin{vmatrix}
+-a_1^T-\\
+-a_2^T-\\
+-b^T-\\
+-a_4^T-\\
+\end{vmatrix}+
+\begin{vmatrix}
+-a_1^T-\\
+-a_2^T-\\
+-c^T-\\
+-a_4^T-\\
+\end{vmatrix}
+$$
 
 2. věta o determinantu součinu dvou matic. (6/12\)
 
@@ -70,14 +70,14 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 6. větu o počtu koster grafu. (8/14\)
 
     Laplaceova matice grafu $G$ na $V_G = \set{v_1, . . . , v_n}$ je $L_G \in R^ {n\times n}$, kde $k$ je násobnost hrany a $deg(v_i)$ nepočítá smyčky:
-	$$
+	$
 	L(G)_{ij}=
 	\begin{cases}
 	deg(v_i) & i=j\\
 	-k & (v_i,v_j) \in E_G \land i\ne j\\
 	0
 	\end{cases}
-	$$
+	$
 
 	potom má graf $\det(L^{1,1}_G)$ koster
 
@@ -91,7 +91,7 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 
     Vandermondova matice $V_{n+1}(x_0,\dots,x_n)$ je definovaná takto a koeficienty $a_0,...,a_n$ z polynomu $p$ řeší tuto soustavu:
 
-	$$
+	$
 	\underbrace{\begin{pmatrix}
 	1 &&x_0&&x_0^2&&... &&x_0^n\\
 	1 &&x_1&&x_1^2&&... &&x_1^n\\
@@ -110,7 +110,7 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 	\vdots\\
 	y_n\\
 	\end{pmatrix}
-	$$
+	$
 
 	k tomu:
 	Vandermondova matice $V_{n+1}$ je regulární pokud jsou $x_0,\dots,x_n$ navzájem různé
@@ -135,7 +135,7 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 
     Pro libovolná $b_0, b_1, . . . , b_{n−1} \in T$ má matice
 
-	$$
+	$
 	\begin{pmatrix}
 	0&0&\dots&0&-b_0\\
 	1&0&...&0&-b_1\\
@@ -143,7 +143,7 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 	\vdots&\vdots&\ddots&\vdots&\vdots\\
 	0&0&...&1&-b_{n-1}\\
 	\end{pmatrix}\in \Bbb{T}^{n\times n} 
-	$$
+	$
 
 	charakteristický polynom $(x^n+b_{n-1}x^{n-1}+\dots+b_1x+b_0)(-1)^n$ 
 
@@ -200,10 +200,10 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 23. vztah mezi aritmetickým a kvadratickým průměrem. (8/8\)
 
     pro $u\in \Bbb{R}^n$:
-	$$
+	$
 	\frac{\sum\limits_{i=1}^n{u_i}}{n}\leq
 	\sqrt{\frac{\sum\limits_{i=1}^n{u_i^2}}{n}}
-	$$
+	$
 
 24. trojúhelníkovou nerovnost. (6/10\)
 
@@ -279,23 +279,23 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 40. větu o pozitivně definitních maticích a determinantech. (8/10\)
 
     hermitovská matice $A$ řádu $n$ je pozitivně definitní, právě když matice $A_1,\dots,A_n$ mají kladné determinanty, kde $A_i$ se sestává z prvních $i$ řádků a sloupců $A$.
-	$$
-	\begin{matrix}
-	\textcolor{red}{A_1}\\
-	\textcolor{orange}{A_2}\\
-	\textcolor{gold}{A_3}\\
-	\end{matrix}
-	\fcolorbox{gold}{white}{$
-	\begin{matrix}
-	\fcolorbox{orange}{white}{
-	$\begin{matrix}
-	\fcolorbox{red}{white}{a}&b\\
-	d&f
-	\end{matrix}$
-	}&\begin{matrix}c\\g\end{matrix}\\
-	\begin{matrix}h&&i\end{matrix}&j
-	\end{matrix}$}
-	$$
+$$
+\begin{matrix}
+\textcolor{red}{A_1}\\
+\textcolor{orange}{A_2}\\
+\textcolor{gold}{A_3}\\
+\end{matrix}
+\fcolorbox{gold}{white}{$
+\begin{matrix}
+\fcolorbox{orange}{white}{
+$\begin{matrix}
+\fcolorbox{red}{white}{a}&b\\
+d&f
+\end{matrix}$
+}&\begin{matrix}c\\g\end{matrix}\\
+\begin{matrix}h&&i\end{matrix}&j
+\end{matrix}$}
+$$
 
 41. větu o diagonalizovatelnosti matic forem. (8/14\)
 
@@ -303,7 +303,7 @@ taky jsem to psal pro sebe, takže nezaručuju že se v tom dá vyznat.
 
 42. Sylvesterův zákon setrvačnosti — o diagonalizaci kvadratických forem. (10/14)
 
-    každá kvadratická forma má vzhledem k vhodné bázi diagonální matici která má navíc na diagonále pouze $0,1$ a $-1$. navíc každá taková matice odpovídajcí stejné bázi má stejnou trojici $(\#1,\#-1,\#0)$, kde $\#$značí počet dotyčných čísel na diagonále. trojice je takzvaná signatura  
+    každá kvadratická forma má vzhledem k vhodné bázi diagonální matici která má navíc na diagonále pouze $0,1$ a $-1$. navíc každá taková matice odpovídajcí stejné bázi má stejnou trojici $(\#1,\#-1,\#0)$, kde $\#$ značí počet dotyčných čísel na diagonále. trojice je takzvaná signatura  
 
 43. větu o počtu přímek svírajících stejný úhel. (6/8\)
 
