@@ -67,10 +67,24 @@ důkaz věty od pozice 8:30 je doplňující téma
 </li></ol>
 </details>
 
+[Souhrn (credits to kadlcak)](Souhrn.md)
+
 ## Moje poznámky
 
 Pro optimální vykreslení otevřít Preview ve VS Code.
 (Zobrazení `.md` na Githubu je částečně nekompatibilní)
+
+> Takto značím citaci
+- bullet point se obvykle vztahuje k obsahu nad ním (př obrázku)
+
+<details>
+<summary>
+Tohle jde rozbalit kliknutím (detaily nečeho)
+</summary>
+Zde by byl další text
+</details>
+
+________
 
 1. [Determinanty](Determinanty.md)
 2. [Polynomy](Polynomy.md)
