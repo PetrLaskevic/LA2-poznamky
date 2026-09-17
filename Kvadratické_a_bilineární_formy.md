@@ -103,6 +103,43 @@ Proto se matice kvadratické formy definuje tak, že je to "ta symetrická", pro
 
 (kromě toho edge case, kdy bychom něměli číslo 2, viz $\mathbb{Z}_2$ - pak bychom se asi museli smířit s tím co máme, a netrvat na symetrii - stejně by symetrická a nesymetrická verze téže formy po dosazení vstupních vektorů měla dát stejné číslo)
 
+Alternativně, **máme-li už nějakou nesymetrickou matici formy A**, tak z ní můžeme udělat symetrickou matici B takto: 
+
+$$B = \frac 1 2 (A + A^T)$$
+
+$B$ už je v pohodě matice kvadratické formy, protože je symetrická.
+
+Př. z analytického vyjádření kvadratické formy $g(\mathbf v) = v_1^2 + v_1 v_2 + 3 v_2^2$ (nad $\mathbb{Z}_5$) dostaneme $A = \begin{pmatrix} 1 & 1 \\ 0 & 3 \end{pmatrix}$ 
+
+<details> <summary> Viz ukázka výše s barevnými tečkami </summary>
+
+![](image-401.png)
+
+</details>
+
+<details>
+
+<summary>
+Zkouška výpočtené A
+</summary>
+
+$$\begin{pmatrix} v_1 & v_2 \end{pmatrix} \begin{pmatrix} 1 & 3 \\ 3 & 3 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$$
+
+$$\begin{pmatrix} v_1 & v_2 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ 0 & 3 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} v_1 & v_1 + 3v_2 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_1^2 + (v_1 + 3v_2)v_2 = v_1^2 + v_1v_2 + 3v_2^2$$
+- fungovalo by to i s $\begin{pmatrix} 1 & 0 \\ 1 & 3 \end{pmatrix}$, tj. nemusíme si pamatovat, které souřadnice (z dolních indexů) je která, nebo tak něco.
+
+</details>
+<br>
+
+Pak $A$ symetrizujeme:
+
+protože jsme nad $\mathbb{Z}_5$, tak $\frac 1 2$ bude $1 \cdot 2^{-1}$ (inverzní prvek k $2$), což v $\mathbb{Z}_5$ je $3$.
+
+$3 \left(\ \begin{pmatrix} 1 & 1 \\ 0 & 3 \end{pmatrix} + \begin{pmatrix} 1 & 0 \\ 1 & 3 \end{pmatrix} \ \right) = \begin{pmatrix} 1 & 3 \\ 3 & 3 \end{pmatrix}$
+
+To odpovídá výsledku ze slidu.
+______________
+
 ##### Proč teda chceme symetrii
 
 Spousta nástrojů v lineární algebře pracuje s symetrickými maticemi.
